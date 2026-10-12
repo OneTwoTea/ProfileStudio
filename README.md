@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Study Studio — preview
 
-## Getting Started
+Vietnamese course-storefront interface concept using the Sapphire & Gold visual direction. “Study Studio” and the content are temporary preview labels; business identity, founder, real course catalog, pricing, and testimonials still need to be supplied.
 
-First, run the development server:
+## Run locally
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm.cmd run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Open `http://localhost:3000/`.
 
 ## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Import this GitHub repository in Vercel and keep the **Next.js** framework preset and default build settings (`npm run build`).
+2. Add environment variables from `.env.example` in **Project Settings → Environment Variables** when needed. `NEXT_PUBLIC_API_MODE=mock` uses preview data. For a live API, set it to `http` and set `NEXT_PUBLIC_API_BASE_URL` to the backend endpoint. These values are public in the browser bundle; do not put secrets in `NEXT_PUBLIC_*` variables.
+3. Deploy the project. In **Project Settings → Domains**, add `www.profilestudio.me` (and optionally `profilestudio.me`, configured to redirect to the `www` domain). Confirm the DNS records Vercel shows for the domain.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The project uses the Next.js server runtime, so Vercel can serve optimized `next/image` images. No `vercel.json` is required.
+
+## Data and API
+
+- The default `NEXT_PUBLIC_API_MODE=mock` (also the fallback when unset) uses sample data from `mocks/` through `lib/api`.
+- `NEXT_PUBLIC_API_MODE=http` selects the HTTP adapter; set `NEXT_PUBLIC_API_BASE_URL` using `.env.example`.
+- Components use the data adapter and do not import mock fixtures directly.
+- Values with the `NEXT_PUBLIC_*` prefix are public in the browser bundle. Never put secrets, tokens, or private API keys there.
+- Enrollment/newsletter interactions in this preview do not submit real requests or process payments.
+- Real authentication, course authorization, and signed video playback depend on backend behavior and are not provided by this frontend.
+
+## Checks
+
+```bash
+npm.cmd run typecheck
+npm.cmd run lint
+npm.cmd run build
+```
