@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { CourseExplorer } from "@/components/sections/course-explorer";
 import { HeroCarousel } from "@/components/sections/hero-carousel";
+import { SiteFooter } from "@/components/sections/site-footer";
 import { MagneticLink, StoreHeader } from "@/components/sections/store-header";
 import { MotionEnhancements, PinnedLearningPath, ScrollProgress } from "@/components/motion/page-effects";
 import { apiClient } from "@/lib/api";
-import { CategoryChips, HeroSearch, MockNewsletter, TestimonialControls } from "@/components/sections/storefront-actions";
+import { CategoryChips, HeroSearch, TestimonialControls } from "@/components/sections/storefront-actions";
 
 const categories = [
   { slug: "tu-duy-sang-tao", name: "Tư duy sáng tạo", icon: "✳" },
@@ -64,6 +65,6 @@ export default async function Home() {
 
     <section className="closing-banner"><div className="shell closing-banner-inner"><div><span className="section-kicker section-kicker-light">BẮT ĐẦU TỪ MỘT ĐIỀU BẠN TÒ MÒ</span><h2>Điều gì bạn muốn<br /><em>học tiếp hôm nay?</em></h2></div><MagneticLink href="#featured-courses" className="button button-light">Tìm lớp học phù hợp <span>→</span></MagneticLink><span className="closing-spark" aria-hidden="true">✳</span></div></section>
 
-    <footer className="market-footer"><div className="shell"><div className="footer-main"><div className="footer-brand-col"><Link className="market-logo footer-logo" href="/"><span className="market-logo-mark">S</span><span>Study<span className="market-logo-sub">STUDIO · HONG THAI</span></span></Link><p>Không gian học tập trực tuyến<br />đang trong quá trình hoàn thiện.</p>{supportEmail && <a href={`mailto:${supportEmail}`}>{supportEmail}</a>}</div><div className="footer-column"><h3>KHÁM PHÁ</h3><a href="#featured-courses">Tất cả khóa học</a><a href="#learning-path">Lộ trình học</a><a href="#category-title">Danh mục</a><a href="#testimonials">Câu chuyện học viên</a></div><div className="footer-column"><h3>VỀ CHÚNG TÔI</h3><a href="#learning-path">Câu chuyện</a><a href="#faq">Người sáng lập</a><a href="#faq">Câu hỏi thường gặp</a>{supportEmail && <a href={`mailto:${supportEmail}`}>Liên hệ</a>}</div><div className="footer-column"><h3>HỖ TRỢ</h3><a href="#faq">Hướng dẫn đăng ký</a><a href="#faq">Hướng dẫn học</a>{supportEmail && <a href={`mailto:${supportEmail}`}>Trung tâm hỗ trợ</a>}<a href="#footer-legal">Chính sách & điều khoản</a></div><div className="footer-newsletter"><h3>THƯ TỪ STUDIO</h3><p>Nhận gợi ý học tập và thông tin chương trình mới.</p><MockNewsletter /></div></div><div className="footer-legal" id="footer-legal"><span>© 2026 STUDY STUDIO</span><span>TIỀN TỆ: VND · MÚI GIỜ: ASIA/HO_CHI_MINH</span></div></div></footer>
+    <SiteFooter />
   </main>;
 }

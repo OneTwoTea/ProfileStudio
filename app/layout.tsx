@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Be_Vietnam_Pro, Cormorant_Garamond } from "next/font/google";
+import { ThemePreference } from "@/components/sections/theme-preference";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -17,13 +18,13 @@ const beVietnam = Be_Vietnam_Pro({
 });
 
 export const metadata: Metadata = {
-  title: "Học điều bạn quan tâm | Bản xem trước",
+  title: "Portfolio Studio",
   description:
     "Khám phá lớp học thực tiễn, học từ người làm nghề và biến kiến thức thành điều bạn có thể làm được.",
   metadataBase: new URL("https://www.profilestudio.me/"),
   openGraph: {
-    title: "Học điều bạn quan tâm | Bản xem trước",
-    description: "Một giao diện xem trước cho nền tảng khóa học trực tuyến.",
+    title: "Portfolio Studio",
+    description: "Design, lập trình, marketing, kinh doanh, và nhiều hơn nữa. Học từ người làm nghề và biến kiến thức thành điều bạn có thể làm được.",
     locale: "vi_VN",
     type: "website",
   },
@@ -33,6 +34,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="vi" className={`${cormorant.variable} ${beVietnam.variable}`}>
       <body>
+        <ThemePreference />
         <a href="#main-content" className="skip-link">Bỏ qua điều hướng</a>
         <div id="top" />
         <div id="main-content">{children}</div>
