@@ -314,7 +314,7 @@ button, input, select, textarea {
   justify-self: end;
   justify-content: flex-end;
   align-items: center;
-  gap: clamp(10px,1.25vw,18px);
+  gap: clamp(10px,1.25vw,20px);
   min-width: 0;
 }
 
@@ -552,13 +552,6 @@ button, input, select, textarea {
 
 .store-hero h1 > span:nth-of-type(3) {
   animation-delay: 170ms;
-}
-
-.hero-italic {
-  color: var(--forest);
-  font: 500 1.06em/.86 var(--font-editorial);
-  font-style: italic;
-  letter-spacing: -.04em;
 }
 
 .store-hero h1 > span:nth-of-type(3) {
