@@ -7,7 +7,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import type { Category, Course } from "@/lib/types";
 
 const money = new Intl.NumberFormat("vi-VN", { maximumFractionDigits: 0 });
-const tabLabels = ["Tất cả", "Mới bắt đầu", "Sáng tạo", "Kinh doanh"];
+const tabLabels = ["Tất cả", "Mới bắt đầu", "Sáng tạo"];
 
 function formatDuration(seconds: number) {
   const hours = Math.floor(seconds / 3600);
@@ -99,7 +99,6 @@ export function CourseExplorer() {
     const matchesTab = selectedTab === "Tất cả"
       || (selectedTab === "Mới bắt đầu" && course.level === "beginner")
       || (selectedTab === "Sáng tạo" && /sáng tạo|nhiếp ảnh|hình ảnh|tư duy/i.test(course.category?.name ?? ""))
-      || (selectedTab === "Kinh doanh" && /kinh doanh|thương hiệu/i.test(course.category?.name ?? ""))
       || selectedTab === course.category?.name
       || selectedTab === course.category?.slug;
     return matchesQuery && matchesTab;

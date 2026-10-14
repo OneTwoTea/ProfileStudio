@@ -12,7 +12,6 @@ const categories = [
   { slug: "nhiep-anh-hinh-anh", name: "Nhiếp ảnh", icon: "◉" },
   { slug: "thuong-hieu-ca-nhan", name: "Thương hiệu cá nhân", icon: "◇" },
   { slug: "ke-chuyen-noi-dung", name: "Kể chuyện & nội dung", icon: "⌁" },
-  { slug: "kinh-doanh", name: "Kinh doanh", icon: "↗" },
 ];
 
 const faqItems = [
@@ -64,7 +63,7 @@ export default async function Home() {
             <br />
             <span aria-hidden="true">tạo portfolio</span>
             <br />
-            <span aria-hidden="true"> của riêng bạn.</span>
+            <span aria-hidden="true">của riêng bạn.</span>
           </h1>
           <p className="store-hero-description">
             Khám phá lớp học thực tiễn, học từ người làm nghề và biến ý tưởng thành điều bạn có thể làm được.
@@ -305,31 +304,6 @@ export default async function Home() {
           ))}
         </div>
       </section>
-
-      <section className="closing-banner">
-        <div className="shell closing-banner-inner">
-          <div>
-            <span className="section-kicker section-kicker-light">
-              BẮT ĐẦU TỪ MỘT ĐIỀU BẠN TÒ MÒ
-            </span>
-            <h2>
-              Điều gì bạn muốn
-              <br />
-              <em>học tiếp hôm nay?</em>
-            </h2>
-          </div>
-          <MagneticLink
-            href="#featured-courses"
-            className="button button-light"
-          >
-            Tìm lớp học phù hợp <span>→</span>
-          </MagneticLink>
-          <span className="closing-spark" aria-hidden="true">
-            ✳
-          </span>
-        </div>
-      </section>
-
       <SiteFooter />
     </main>
   );

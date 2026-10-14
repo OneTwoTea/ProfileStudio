@@ -18,13 +18,13 @@ const beVietnam = Be_Vietnam_Pro({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio Studio",
+  title: "Profile Studio",
   description:
     "Khám phá lớp học thực tiễn, học từ người làm nghề và biến kiến thức thành điều bạn có thể làm được.",
   metadataBase: new URL("https://www.profilestudio.me/"),
   openGraph: {
-    title: "Portfolio Studio",
-    description: "Design, lập trình, marketing, kinh doanh, và nhiều hơn nữa. Học từ người làm nghề và biến kiến thức thành điều bạn có thể làm được.",
+    title: "Profile Studio",
+    description: "Design, lập trình, marketing và nhiều hơn nữa. Học từ người làm nghề và biến kiến thức thành điều bạn có thể làm được.",
     locale: "vi_VN",
     type: "website",
   },

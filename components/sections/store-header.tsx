@@ -44,9 +44,6 @@ export function StoreHeader() {
 
   return (
     <>
-      <div className="market-banner">
-        <span className="market-banner-dot" /> PORTFOLIO MC · CHUYÊN NGHIỆP · HIỆN ĐẠI · XU HƯỚNG{" "}
-      </div>
       <header className="market-header">
         <div className="market-header-inner">
           <Link
@@ -54,9 +51,9 @@ export function StoreHeader() {
             href="/"
             aria-label="PORTFOLIO STUDIO"
           >
-            <span className="market-logo-mark">MS</span>
+            <span className="market-logo-mark">PS</span>
             <span>
-              MC STUDIO
+              PROFILE STUDIO
               <span className="market-logo-sub">PORTFOLIO & LEARNING</span>
             </span>
           </Link>

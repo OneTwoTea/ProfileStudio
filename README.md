@@ -18,6 +18,10 @@ Open `http://localhost:3000/`.
 
 The project uses the Next.js server runtime, so Vercel can serve optimized `next/image` images. No `vercel.json` is required.
 
+## Thêm ảnh landing page vào carousel
+
+Khung quảng bá ở hero dùng ảnh chữ nhật nằm ngang tỉ lệ 16:10. Xem [hướng dẫn thêm ảnh landing page](docs/ADDING_HERO_IMAGES.md) để biết kích thước đề xuất, vị trí lưu ảnh và cách gắn từng ảnh vào carousel.
+
 ## Data and API
 
 - The default `NEXT_PUBLIC_API_MODE=mock` (also the fallback when unset) uses sample data from `mocks/` through `lib/api`.

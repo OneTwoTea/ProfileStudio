@@ -4,9 +4,18 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const slides = [
-  { title: "Landing page quảng bá", image: "", alt: "Ảnh landing page quảng bá sẽ được thêm vào đây", tone: "blue" },
-  { title: "Chiến dịch nổi bật", image: "", alt: "Ảnh chiến dịch nổi bật sẽ được thêm vào đây", tone: "gold" },
-  { title: "Sản phẩm mới", image: "", alt: "Ảnh landing page sản phẩm mới sẽ được thêm vào đây", tone: "sage" },
+  {
+    image: "/images/hero/anh3.png",
+    alt: "Landing page giới thiệu khóa học sáng tạo",
+  },
+  {
+    image: "/images/hero/anh2.png",
+    alt: "Trang chiến dịch giới thiệu chương trình mới",
+  },
+  {
+    image: "/images/hero/anh1.png",
+    alt: "Landing page giới thiệu sản phẩm mới",
+  },
 ];
 
 export function HeroCarousel() {
@@ -44,36 +53,26 @@ export function HeroCarousel() {
       data-paused={isPaused}
     >
       <div className="hero-carousel-frame" aria-live="polite">
-        {activeSlide.image ? (
-          <Image
-            className="hero-carousel-image"
-            src={activeSlide.image}
-            alt={activeSlide.alt}
-            fill
-            priority={activeIndex === 0}
-            sizes="(max-width: 760px) 90vw, 45vw"
-          />
-        ) : (
-          <div className={`hero-carousel-placeholder hero-carousel-placeholder-${activeSlide.tone}`}>
-            <span>ẢNH LANDING PAGE</span>
-            <small>THAY BẰNG HÌNH ẢNH CỦA BẠN</small>
-          </div>
-        )}
-        <span className="hero-carousel-count">{String(activeIndex + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}</span>
+        <Image
+          className="hero-carousel-image"
+          src={activeSlide.image}
+          alt={activeSlide.alt}
+          fill
+          priority={activeIndex === 0}
+          sizes="(max-width: 760px) 90vw, 45vw"
+        />
       </div>
 
       <div className="hero-carousel-footer">
-        <p className="hero-carousel-caption">{activeSlide.title}</p>
         <div className="hero-carousel-controls" aria-label="Điều khiển carousel">
           <button type="button" onClick={() => showSlide(activeIndex - 1)} aria-label="Ảnh trước">←</button>
           <div className="hero-carousel-dots" aria-label="Chọn ảnh">
             {slides.map((slide, index) => (
               <button
-                key={slide.title}
+                key={slide.image}
                 type="button"
                 className={index === activeIndex ? "is-active" : ""}
                 onClick={() => showSlide(index)}
-                aria-label={`Ảnh ${index + 1}: ${slide.title}`}
                 aria-current={index === activeIndex ? "true" : undefined}
               />
             ))}

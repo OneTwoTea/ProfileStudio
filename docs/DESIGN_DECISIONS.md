@@ -48,6 +48,8 @@ These are token-pair measurements. They do not establish that every rendered com
 - Hero with the primary course search, popular search chips, readable trust cue, and a landing-page image carousel.
 - Hero typography uses a 1.14 line-height, reduced display size, and explicit spacing between the italic “tò mò” phrase and “thành” to protect Vietnamese diacritics and prevent word collisions. Hero top padding and minimum height are reduced so search and trust information remain visible sooner.
 - Supporting hero labels and category chips use at least 12px text on mobile and 13px on desktop, with stronger foreground contrast.
+- Supporting labels, captions, role labels and footer legal text are sized at least 12px on mobile and 13px on desktop; compact section typography is raised by 2px where it does not affect decorative marks.
+- Vertical section spacing uses a shared compact and regular scale (`--space-section-compact` and `--space-section`); the hero keeps a dedicated responsive inset to give its search and trust content room without creating oversized gaps between sections.
 - Category chips, educational bento promotion, preview stats, featured catalog with tabs/search, one pinned learning-path panel, testimonials with portrait placeholders, native details/summary FAQ, CTA and multi-column footer.
 - Course card fields: cover placeholder, availability badge, category, title, instructor, duration, sample learner count, rating/review count, and VND price. Values are mock data and visibly disclosed as preview material.
 - The page is a frontend preview. No online payment, real enrollment submission, login UI, protected course access, or video playback is represented as working.
