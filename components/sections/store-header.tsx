@@ -138,9 +138,9 @@ export function StoreHeader() {
             </a>
             <button
               type="button"
-              onClick={() => chooseCategory("tu-duy-sang-tao")}
+              onClick={() => chooseCategory("thiet-ke-landing-page")}
             >
-              Tư duy sáng tạo <span>→</span>
+              Thiết kế landing page <span>→</span>
             </button>
           </nav>
           <div className="mobile-utilities">

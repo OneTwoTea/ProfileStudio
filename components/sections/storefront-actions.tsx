@@ -25,9 +25,9 @@ export function HeroSearch() {
 
   return <>
     <form className="hero-search" role="search" onSubmit={submit}>
-      <label className="visually-hidden" htmlFor="hero-course-search">Bạn muốn học điều gì?</label><span aria-hidden="true">⌕</span><input id="hero-course-search" name="q" placeholder="Bạn muốn học điều gì hôm nay?" /><button type="submit" aria-label="Tìm lớp học">Tìm lớp học <span>→</span></button>
+      <label className="visually-hidden" htmlFor="hero-course-search">Tìm khóa học cho MC</label><span aria-hidden="true">⌕</span><input id="hero-course-search" name="q" placeholder="VD: landing page, showreel, thương hiệu..." /><button type="submit" aria-label="Tìm khóa học">Tìm khóa học <span>→</span></button>
     </form>
-    <div className="hero-popular"><span>ĐƯỢC QUAN TÂM:</span>{["Thiết kế", "AI sáng tạo", "Nhiếp ảnh"].map((label) => <button key={label} type="button" onClick={() => popularSearch(label)}>{label}</button>)}</div>
+    <div className="hero-popular"><span>ĐƯỢC QUAN TÂM:</span>{["Landing page", "Showreel", "Thương hiệu"].map((label) => <button key={label} type="button" onClick={() => popularSearch(label)}>{label}</button>)}</div>
   </>;
 }
 

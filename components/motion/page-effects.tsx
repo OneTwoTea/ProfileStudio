@@ -62,10 +62,10 @@ export function MotionEnhancements() {
 }
 
 const steps = [
-  { number: "01", title: "Chọn hướng đi", detail: "Bắt đầu với chủ đề bạn muốn hiểu sâu hơn.", tone: "path-blue" },
-  { number: "02", title: "Học qua thực hành", detail: "Bài học ngắn, ví dụ cụ thể, có thể quay lại.", tone: "path-gold" },
-  { number: "03", title: "Tạo sản phẩm của bạn", detail: "Kết nối kiến thức vào một dự án thật.", tone: "path-lilac" },
-  { number: "04", title: "Tiếp tục phát triển", detail: "Xây lộ trình tiếp theo theo mục tiêu riêng.", tone: "path-green" },
+  { number: "01", title: "Định vị bản thân", detail: "Xác định phong cách dẫn, tệp khách và thông điệp riêng.", tone: "path-blue" },
+  { number: "02", title: "Chuẩn bị tư liệu", detail: "Chọn ảnh sân khấu, dựng showreel, liệt kê sự kiện tiêu biểu.", tone: "path-gold" },
+  { number: "03", title: "Dựng landing page", detail: "Lắp ráp trang portfolio từ template, không cần viết code.", tone: "path-lilac" },
+  { number: "04", title: "Xuất bản & nhận show", detail: "Gắn tên miền, form đặt lịch và gửi link cho khách hàng.", tone: "path-green" },
 ];
 
 export function PinnedLearningPath() {
@@ -99,5 +99,5 @@ export function PinnedLearningPath() {
     return () => { cancelAnimationFrame(frame); window.removeEventListener("scroll", update); window.removeEventListener("resize", update); document.removeEventListener("visibilitychange", update); media.removeEventListener("change", update); };
   }, []);
 
-  return <section ref={section} className="pinned-path" id="learning-path"><div className="pinned-stage"><div className="pinned-heading shell"><span className="section-kicker">LỘ TRÌNH HỌC · MẪU</span><h2>Một bước nhỏ.<br /><em>Một năng lực mới.</em></h2><p>Gợi ý trải nghiệm học tập theo từng chặng. Nội dung dưới đây là mẫu giao diện.</p></div><div className="pinned-viewport"><div className="pinned-track" ref={track}>{steps.map((step) => <article className={`path-card ${step.tone}`} key={step.number}><span className="path-card-number">{step.number}</span><div className="path-card-illustration"><span>{step.number}</span><i /></div><h3>{step.title}</h3><p>{step.detail}</p><span className="path-card-foot">LỘ TRÌNH HỌC TẬP</span></article>)}</div></div><div className="pinned-foot shell"><span>KÉO CUỘN ĐỂ KHÁM PHÁ</span><span aria-hidden="true">→</span></div></div></section>;
+  return <section ref={section} className="pinned-path" id="learning-path"><div className="pinned-stage"><div className="pinned-heading shell"><span className="section-kicker">LỘ TRÌNH 4 BƯỚC</span><h2>Từ MC trên sân khấu<br /><em>đến portfolio trên mạng.</em></h2><p>Mỗi chặng đều có bài tập thực hành, kết thúc khóa học bạn có trang portfolio của riêng mình.</p></div><div className="pinned-viewport"><div className="pinned-track" ref={track}>{steps.map((step) => <article className={`path-card ${step.tone}`} key={step.number}><span className="path-card-number">{step.number}</span><div className="path-card-illustration"><span>{step.number}</span><i /></div><h3>{step.title}</h3><p>{step.detail}</p><span className="path-card-foot">LỘ TRÌNH HỌC TẬP</span></article>)}</div></div><div className="pinned-foot shell"><span>KÉO CUỘN ĐỂ KHÁM PHÁ</span><span aria-hidden="true">→</span></div></div></section>;
 }
