@@ -19,7 +19,7 @@ export async function SiteFooter({ mode = "home" }: SiteFooterProps) {
       <span>{isMc ? "PROFILE STUDIO" : "PROFILE STUDIO"}<span className="market-logo-sub">{isMc ? "PORTFOLIO & LEARNING" : "PORTFOLIO & LEARNING"}
         </span>
         </span>
-        </Link><p>{isMc ? <>Thiết kế portfolio landing page<br />dành riêng cho người dẫn chương trình.</> : <>Không gian học tập trực tuyến<br />đang trong quá trình hoàn thiện.</>}</p>{supportEmail && <a href={`mailto:${supportEmail}`}>{supportEmail}</a>}
+        </Link><p>{isMc ? <>Thiết kế portfolio landing page<br />dành riêng cho người dẫn chương trình.</> : <>Khóa học tạo landing page portfolio<br />dành cho MC dẫn chương trình.</>}</p>{supportEmail && <a href={`mailto:${supportEmail}`}>{supportEmail}</a>}
         </div>
     <div className="footer-column">
       <h3>{isMc ? "PORTFOLIO" : "KHÁM PHÁ"}
@@ -35,7 +35,7 @@ export async function SiteFooter({ mode = "home" }: SiteFooterProps) {
      <Link href="/#faq">Hướng dẫn học</Link>{supportEmail && <a href={`mailto:${supportEmail}`}>Trung tâm hỗ trợ</a>}
       <Link href="/#footer-legal">Chính sách & điều khoản</Link></div>
     <div className="footer-newsletter"><h3>THƯ TỪ STUDIO</h3>
-      <p>{isMc ? "Nhận tin mới về mẫu portfolio và dịch vụ thiết kế." : "Nhận gợi ý học tập và thông tin chương trình mới."}</p>
+      <p>{isMc ? "Nhận tin mới về mẫu portfolio và dịch vụ thiết kế." : "Nhận mẹo xây portfolio MC và ưu đãi khóa học mới."}</p>
     <MockNewsletter /></div>
     </div>
   <div className="footer-legal" id="footer-legal"><span>© 2026 {isMc ? "PROFILE STUDIO" : "PROFILE STUDIO"}</span><span>TIỀN TỆ: VND · MÚI GIỜ: ASIA/HO_CHI_MINH</span>

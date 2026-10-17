@@ -8,32 +8,37 @@ import { apiClient } from "@/lib/api";
 import { CategoryChips, HeroSearch, TestimonialControls } from "@/components/sections/storefront-actions";
 
 const categories = [
-  { slug: "tu-duy-sang-tao", name: "Tư duy sáng tạo", icon: "✳" },
-  { slug: "nhiep-anh-hinh-anh", name: "Nhiếp ảnh", icon: "◉" },
-  { slug: "thuong-hieu-ca-nhan", name: "Thương hiệu cá nhân", icon: "◇" },
-  { slug: "ke-chuyen-noi-dung", name: "Kể chuyện & nội dung", icon: "⌁" },
+  { slug: "dinh-vi-thuong-hieu-mc", name: "Định vị thương hiệu MC", icon: "◇" },
+  { slug: "thiet-ke-landing-page", name: "Thiết kế landing page", icon: "✳" },
+  { slug: "showreel-hinh-anh", name: "Showreel & hình ảnh", icon: "◉" },
+  { slug: "noi-dung-chot-show", name: "Nội dung chốt show", icon: "⌁" },
 ];
 
 const faqItems = [
   {
-    question: "Tôi có thể xem nội dung khóa học trước khi đăng ký không?",
+    question: "Tôi không biết thiết kế hay lập trình, có học được không?",
     answer:
-      "Trang chi tiết khóa học sẽ trình bày mục tiêu, đề cương, thời lượng và bài học xem trước (nếu khóa học hỗ trợ). Nội dung cụ thể hiện là mẫu preview.",
+      "Được. Khóa học hướng dẫn từng bước bằng công cụ kéo thả và template có sẵn, không cần viết code. Bạn chỉ cần máy tính, ảnh và video các chương trình mình đã dẫn.",
   },
   {
-    question: "Tôi đăng ký và nhận hướng dẫn chuyển khoản như thế nào?",
+    question: "Học xong tôi sẽ có sản phẩm gì?",
     answer:
-      "Khi backend được kết nối, bạn gửi yêu cầu đăng ký và nhận mã tham chiếu cùng hướng dẫn chuyển khoản do hệ thống trả về. Website không thu tiền trực tuyến.",
+      "Một landing page portfolio hoàn chỉnh mang tên bạn: giới thiệu bản thân, showreel, danh sách sự kiện đã dẫn, cảm nhận khách hàng và nút liên hệ đặt lịch — sẵn sàng gửi cho agency, nhãn hàng hay cô dâu chú rể.",
   },
   {
-    question: "Sau khi gửi yêu cầu, khi nào tôi có thể học?",
+    question: "Khóa học phù hợp với MC ở mảng nào?",
     answer:
-      "Chủ khóa học sẽ xác nhận yêu cầu và cấp quyền học sau khi đối soát. Thời gian xử lý thực tế sẽ được công bố trong hướng dẫn chính thức.",
+      "MC đám cưới, sự kiện doanh nghiệp, gala, hội nghị, livestream bán hàng hay MC song ngữ đều áp dụng được. Phần định vị sẽ giúp bạn chọn cách trình bày phù hợp với tệp khách của mình.",
   },
   {
-    question: "Tôi có thể học trên điện thoại không?",
+    question: "Tôi đăng ký và thanh toán như thế nào?",
     answer:
-      "Giao diện được thiết kế thích ứng với điện thoại, máy tính bảng và máy tính. Khả năng phát video và tải tài liệu sẽ phụ thuộc cấu hình backend.",
+      "Bạn gửi yêu cầu đăng ký, nhận mã tham chiếu và hướng dẫn chuyển khoản. Quyền truy cập khóa học được cấp sau khi đội ngũ xác nhận thanh toán. Website không thu tiền trực tuyến.",
+  },
+  {
+    question: "Nếu không có thời gian tự làm, tôi có thể thuê thiết kế không?",
+    answer:
+      "Có. Profile Studio nhận thiết kế trọn gói landing page portfolio cho MC. Xem thêm tại mục Dịch vụ thiết kế hoặc Thư viện mẫu portfolio.",
   },
 ];
 
@@ -53,20 +58,20 @@ export default async function Home() {
       <section className="store-hero shell" aria-labelledby="hero-title">
         <div className="store-hero-copy reveal">
           <span className="hero-eyebrow">
-            <i /> HỌC THIẾT KẾ · XÂY DỰNG PORTFOLIO
+            <i /> KHÓA HỌC DÀNH CHO MC · DẪN CHƯƠNG TRÌNH
           </span>
           <h1
             id="hero-title"
-            aria-label="Học thiết kế từ người làm nghề, tạo portfolio của riêng bạn."
+            aria-label="Tự tạo landing page portfolio MC chuyên nghiệp."
           >
-            <span aria-hidden="true">Học thiết kế</span>
+            <span aria-hidden="true">Tự tạo</span>
             <br />
-            <span aria-hidden="true">tạo portfolio</span>
+            <span aria-hidden="true">portfolio MC</span>
             <br />
-            <span aria-hidden="true">của riêng bạn.</span>
+            <span aria-hidden="true">chuyên nghiệp.</span>
           </h1>
           <p className="store-hero-description">
-            Khám phá lớp học thực tiễn, học từ người làm nghề và biến ý tưởng thành điều bạn có thể làm được.
+            Học cách xây landing page giới thiệu bản thân, showreel và sự kiện đã dẫn — để khách hàng tin chọn bạn ngay từ lần đầu xem hồ sơ.
           </p>
           <HeroSearch />
           <div className="hero-proof">
@@ -76,9 +81,9 @@ export default async function Home() {
               <i>V</i>
             </span>
             <span>
-              Kiến thức dễ áp dụng.
+              Không cần biết code.
               <br />
-              <strong>Tiến bộ theo nhịp riêng.</strong>
+              <strong>Có portfolio sau khóa học.</strong>
             </span>
             <span className="proof-divider" />
             <span className="proof-rating">
@@ -96,25 +101,25 @@ export default async function Home() {
       <section className="category-band" aria-labelledby="category-title">
         <div className="shell category-band-inner">
           <div>
-            <h2 id="category-title">Tìm lĩnh vực của bạn</h2>
+            <h2 id="category-title">Bạn muốn bắt đầu từ đâu?</h2>
           </div>
           <CategoryChips categories={categories} />
         </div>
       </section>
 
-      <section className="bento-section shell" aria-label="Gợi ý học tập">
+      <section className="bento-section shell" aria-label="Lợi ích khóa học">
         <article className="bento-feature reveal">
           <div className="bento-feature-copy">
             <span className="section-kicker section-kicker-light">
-              BỘ SƯU TẬP HỌC TẬP · MẪU
+              DÀNH CHO NGƯỜI DẪN CHƯƠNG TRÌNH
             </span>
             <h2>
-              Một kỹ năng mới
+              Bạn dẫn hay trên sân khấu,
               <br />
-              mở ra <em>góc nhìn mới.</em>
+              hãy để <em>hồ sơ nói thay bạn.</em>
             </h2>
             <p>
-              Chọn một chủ đề, bắt đầu bằng bài học đầu tiên và xây tiếp từ điều bạn đã biết.
+              Thay vì gửi file PDF hay link Facebook rời rạc, hãy có một trang portfolio gọn gàng để khách hàng xem giọng dẫn, phong cách và kinh nghiệm của bạn chỉ trong một phút.
             </p>
             <MagneticLink
               href="#featured-courses"
@@ -127,9 +132,9 @@ export default async function Home() {
             <div className="bento-art-circle" />
             <div className="bento-art-arc" />
             <div className="bento-art-card">
-              <span>STUDY NOTE</span>
+              <span>MC PORTFOLIO</span>
               <b>01</b>
-              <i>curiosity → practice</i>
+              <i>showreel → booking</i>
             </div>
             <div className="bento-art-spark">✳</div>
           </div>
@@ -137,24 +142,24 @@ export default async function Home() {
 
         <article className="bento-stat reveal">
           <span className="bento-stat-icon">↗</span>
-          <span className="section-kicker">TÀI LIỆU</span>
+          <span className="section-kicker">TEMPLATE</span>
           <strong>
-            <span data-count="20">20</span>
+            <span data-count="10">10</span>
             <sup>+</sup>
           </strong>
           <p>
-            chủ đề và bài học mẫu
+            mẫu landing page cho MC
             <br />
-            đang được biên soạn
+            cưới, sự kiện, livestream
           </p>
         </article>
 
         <article className="bento-path reveal">
-          <span className="section-kicker">LỘ TRÌNH LINH HOẠT</span>
+          <span className="section-kicker">4 BƯỚC HOÀN THIỆN</span>
           <h3>
-           Tiết kiệm thời gian.
+            Từ con số 0
             <br />
-            <em>Tăng năng suất, hiệu quả làm việc.</em>
+            <em>đến trang portfolio nhận show.</em>
           </h3>
           <div className="mini-path">
             <i>01</i>
@@ -166,7 +171,7 @@ export default async function Home() {
             <i>04</i>
           </div>
           <a href="#learning-path">
-            Xem cách học <span>→</span>
+            Xem lộ trình <span>→</span>
           </a>
         </article>
       </section>
@@ -174,35 +179,34 @@ export default async function Home() {
       <section className="trust-band">
         <div className="shell trust-band-inner">
           <div className="trust-intro">
-            <span className="section-kicker">VÌ SAO HỌC Ở ĐÂY?</span>
+            <span className="section-kicker">VÌ SAO MC CẦN PORTFOLIO?</span>
             <h2>
-              Học để làm
+              Hồ sơ chuyên nghiệp,
               <br />
-              <em>được nhiều hơn.</em>
+              <em>cát-xê xứng đáng.</em>
             </h2>
           </div>
           <div className="trust-metric">
             <strong>
-              <span data-count="18">18</span>
-              <sup>+</sup>
+              <span data-count="1">1</span>
             </strong>
-            <span>chương trình mẫu</span>
-            <small>ĐANG ĐƯỢC BIÊN SOẠN</small>
+            <span>đường link duy nhất</span>
+            <small>GỬI KHÁCH TRONG MỌI TIN NHẮN</small>
           </div>
           <div className="trust-metric">
             <strong>
-              <span data-count="2400">2.400</span>
-              <sup>+</sup>
+              <span data-count="24">24</span>
+              <sup>/7</sup>
             </strong>
-            <span>lượt học minh họa</span>
-            <small>DỮ LIỆU PREVIEW</small>
+            <span>giới thiệu bạn thay bạn</span>
+            <small>CẢ KHI BẠN ĐANG CẦM MIC</small>
           </div>
           <div className="trust-metric">
             <strong>
-              4.9<span className="metric-star">★</span>
+              0<span className="metric-star">₫</span>
             </strong>
-            <span>điểm đánh giá mẫu</span>
-            <small>CHƯA PHẢI ĐÁNH GIÁ THẬT</small>
+            <span>chi phí code website</span>
+            <small>TỰ LÀM BẰNG CÔNG CỤ KÉO THẢ</small>
           </div>
         </div>
       </section>
@@ -214,9 +218,9 @@ export default async function Home() {
       >
         <div className="section-heading-row">
           <div>
-            <span className="section-kicker">CHỌN ĐIỀU BẠN MUỐN HỌC</span>
-            <h2 id="featured-title">Lớp học nổi bật</h2>
-            <p>Những chương trình được tuyển chọn để bạn bắt đầu.</p>
+            <span className="section-kicker">KHÓA HỌC CHO MC</span>
+            <h2 id="featured-title">Chọn khóa học phù hợp</h2>
+            <p>Từ định vị hình ảnh đến tự tay dựng trang portfolio nhận booking.</p>
           </div>
           <Link className="section-more" href="#featured-courses">
             Xem tất cả <span>→</span>
@@ -231,8 +235,8 @@ export default async function Home() {
         <div className="shell">
           <div className="section-heading-row">
             <div>
-              <span className="section-kicker">GÓC NHÌN HỌC VIÊN</span>
-              <h2>Điều họ mang theo.</h2>
+              <span className="section-kicker">MC ĐÃ HỌC NÓI GÌ</span>
+              <h2>Từ sân khấu đến trang portfolio.</h2>
               <p>Phản hồi dưới đây là nội dung mẫu cho bản xem trước.</p>
             </div>
             <TestimonialControls />
@@ -277,11 +281,11 @@ export default async function Home() {
         <div className="faq-intro">
           <span className="section-kicker">CÂU HỎI THƯỜNG GẶP</span>
           <h2>
-            Điều bạn muốn
+            Trước khi bạn
             <br />
-            <em>biết trước khi bắt đầu.</em>
+            <em>bắt đầu dựng portfolio.</em>
           </h2>
-          <p>Thông tin cụ thể sẽ được hoàn thiện theo từng chương trình.</p>
+          <p>Những thắc mắc phổ biến của các MC trước khi đăng ký khóa học.</p>
           {supportEmail && (
             <a href={`mailto:${supportEmail}`} className="section-more">
               Cần hỗ trợ thêm? <span>→</span>
