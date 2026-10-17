@@ -2459,18 +2459,17 @@ html[data-theme="dark"] .market-home .store-course-content h3, html[data-theme="
     gap: 12px;
   }
 
-  .store-course-card {
-    display: grid;
-    grid-template-columns: 38% 1fr;
+  .store-course-link {
+    display: flex;
+    flex-direction: column;
   }
 
   .store-course-image {
-    height: 100%;
-    min-height: 206px;
+    height: 150px;
   }
 
   .store-course-content {
-    padding: 12px;
+    padding: 14px;
   }
 
   .store-course-content h3 {
