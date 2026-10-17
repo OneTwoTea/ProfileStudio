@@ -6,6 +6,7 @@ import { MagneticLink, StoreHeader } from "@/components/sections/store-header";
 import { MotionEnhancements, PinnedLearningPath, ScrollProgress } from "@/components/motion/page-effects";
 import { apiClient } from "@/lib/api";
 import { CategoryChips, HeroSearch, TestimonialControls } from "@/components/sections/storefront-actions";
+import { HeroRibbonBackground } from "@/components/sections/hero-ribbon-background";
 
 const categories = [
   { slug: "dinh-vi-thuong-hieu-mc", name: "Định vị thương hiệu MC", icon: "◇" },
@@ -55,8 +56,10 @@ export default async function Home() {
       <MotionEnhancements />
       <StoreHeader />
 
-      <section className="store-hero shell" aria-labelledby="hero-title">
-        <div className="store-hero-copy reveal">
+      <section className="store-hero" aria-labelledby="hero-title">
+        <HeroRibbonBackground />
+        <div className="store-hero-inner shell">
+          <div className="store-hero-copy reveal">
           <span className="hero-eyebrow">
             <i /> KHÓA HỌC DÀNH CHO MC · DẪN CHƯƠNG TRÌNH
           </span>
@@ -91,10 +94,11 @@ export default async function Home() {
               <small>ĐIỂM ĐÁNH GIÁ MẪU</small>
             </span>
           </div>
-        </div>
+          </div>
 
-        <div className="store-hero-visual reveal">
-          <HeroCarousel />
+          <div className="store-hero-visual reveal">
+            <HeroCarousel />
+          </div>
         </div>
       </section>
 

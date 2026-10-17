@@ -76,34 +76,65 @@ const steps = [
 
 export function PinnedLearningPath() {
   const section = useRef<HTMLElement>(null);
+  const stage = useRef<HTMLDivElement>(null);
   const track = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const target = section.current;
+    const pinnedStage = stage.current;
     const rail = track.current;
-    if (!target || !rail) return;
-    const media = window.matchMedia("(max-width: 760px), (prefers-reduced-motion: reduce)");
+    if (!target || !pinnedStage || !rail) return;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     let frame = 0;
+    let resizeTimer = 0;
+    let distance = 0;
+
     const update = () => {
       cancelAnimationFrame(frame);
       frame = requestAnimationFrame(() => {
-        if (media.matches || document.hidden) {
+        if (!target.classList.contains("is-pinned") || document.hidden) {
           rail.style.transform = "";
           return;
         }
         const rect = target.getBoundingClientRect();
-        const available = target.offsetHeight - window.innerHeight;
-        const amount = Math.min(1, Math.max(0, -rect.top / Math.max(1, available)));
-        const distance = Math.max(0, rail.scrollWidth - window.innerWidth + 80);
+        const available = target.offsetHeight - pinnedStage.offsetHeight - 78;
+        const amount = Math.min(1, Math.max(0, (78 - rect.top) / Math.max(1, available)));
         rail.style.transform = `translate3d(${-distance * amount}px, 0, 0)`;
       });
     };
+
+    const measure = () => {
+      const canPin =
+        window.innerWidth > 760 &&
+        window.innerHeight <= 1100 &&
+        !reducedMotion.matches;
+      target.classList.toggle("is-pinned", canPin);
+      distance = Math.max(0, rail.scrollWidth - target.clientWidth);
+      const shouldPin = canPin && distance > 0;
+      target.classList.toggle("is-pinned", shouldPin);
+      if (!shouldPin) rail.style.transform = "";
+      update();
+    };
+
+    const onResize = () => {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(measure, 140);
+    };
+
     window.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", update, { passive: true });
+    window.addEventListener("resize", onResize, { passive: true });
     document.addEventListener("visibilitychange", update);
-    media.addEventListener("change", update);
-    update();
-    return () => { cancelAnimationFrame(frame); window.removeEventListener("scroll", update); window.removeEventListener("resize", update); document.removeEventListener("visibilitychange", update); media.removeEventListener("change", update); };
+    reducedMotion.addEventListener("change", measure);
+    measure();
+    return () => {
+      cancelAnimationFrame(frame);
+      window.clearTimeout(resizeTimer);
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", onResize);
+      document.removeEventListener("visibilitychange", update);
+      reducedMotion.removeEventListener("change", measure);
+      target.classList.remove("is-pinned");
+    };
   }, []);
 
-  return <section ref={section} className="pinned-path" id="learning-path"><div className="pinned-stage"><div className="pinned-heading shell"><span className="section-kicker">LỘ TRÌNH 4 BƯỚC</span><h2>Từ MC trên sân khấu<br /><em>đến portfolio trên mạng.</em></h2><p>Mỗi chặng đều có bài tập thực hành, kết thúc khóa học bạn có trang portfolio của riêng mình.</p></div><div className="pinned-viewport"><div className="pinned-track" ref={track}>{steps.map((step) => <article className={`path-card ${step.tone}`} key={step.number}><span className="path-card-number">{step.number}</span><div className="path-card-illustration"><span>{step.number}</span><i /></div><h3>{step.title}</h3><p>{step.detail}</p><span className="path-card-foot">LỘ TRÌNH HỌC TẬP</span></article>)}</div></div><div className="pinned-foot shell"><span>KÉO CUỘN ĐỂ KHÁM PHÁ</span><span aria-hidden="true">→</span></div></div></section>;
+  return <section ref={section} className="pinned-path" id="learning-path"><div className="pinned-stage" ref={stage}><div className="pinned-heading shell"><span className="section-kicker">LỘ TRÌNH 4 BƯỚC</span><h2>Từ MC trên sân khấu<br /><em>đến portfolio trên mạng.</em></h2><p>Mỗi chặng đều có bài tập thực hành, kết thúc khóa học bạn có trang portfolio của riêng mình.</p></div><div className="pinned-viewport"><div className="pinned-track" ref={track}>{steps.map((step) => <article className={`path-card ${step.tone}`} key={step.number}><span className="path-card-number">{step.number}</span><div className="path-card-illustration"><span>{step.number}</span><i /></div><h3>{step.title}</h3><p>{step.detail}</p><span className="path-card-foot">LỘ TRÌNH HỌC TẬP</span></article>)}</div></div><div className="pinned-foot shell"><span>KÉO CUỘN ĐỂ KHÁM PHÁ</span><span aria-hidden="true">→</span></div></div></section>;
 }

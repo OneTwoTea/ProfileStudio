@@ -19,8 +19,6 @@ export default function PortfolioLibraryPage() {
     <section className="portfolio-library shell" id="portfolio-library"><div className="portfolio-section-heading"><div><span className="section-kicker">THƯ VIỆN THAM KHẢO</span><h2>Chọn phong cách của bạn</h2><p>Các mẫu dưới đây là concept minh họa cho những hướng portfolio khác nhau.</p></div><span className="portfolio-count">03 CONCEPT</span></div>
       <div className="portfolio-grid">{samples.map((sample) => <article className="portfolio-card" key={sample.number}><div className={`portfolio-preview ${sample.style}`}><div className="portfolio-preview-top"><span>MC STUDIO</span><span>PORTFOLIO / {sample.number}</span></div><div className="portfolio-preview-body"><div><small>{sample.role}</small><h3>{sample.title}</h3><span className="portfolio-preview-link">CÙNG TẠO DẤU ẤN <b>↗</b></span></div><div className="portfolio-preview-person">{sample.initials}</div></div><span className="portfolio-preview-bottom">HOSTING · STORYTELLING · CONNECTION</span></div><div className="portfolio-card-info"><div><span>{sample.number} / PORTFOLIO CONCEPT</span><h3>{sample.name}</h3></div><a href="/dich-vu-thiet-ke" aria-label={`Thuê thiết kế theo mẫu ${sample.name}`}>Tùy chỉnh mẫu <b>→</b></a></div></article>)}</div>
     </section>
-
-    <section className="portfolio-cta"><div className="shell portfolio-cta-inner"><div><span className="section-kicker section-kicker-light">BIẾN Ý TƯỞNG THÀNH TRANG CỦA RIÊNG BẠN</span><h2>Bạn đã có phong cách.<br /><em>Hãy để portfolio kể điều đó.</em></h2></div><Link href="/dich-vu-thiet-ke" className="button button-light">Xem dịch vụ thiết kế <span>→</span></Link></div></section>
-    <SiteFooter mode="mc" />
+    <SiteFooter />
   </main>;
 }

@@ -59,17 +59,17 @@ export function StoreHeader() {
           </Link>
           <nav className="market-nav" aria-label="Điều hướng chính">
             <div className="course-nav-group">
-              <a className="course-nav-trigger" href="/#featured-courses">
+              <Link className="course-nav-trigger" href="/#featured-courses">
                 Khóa học <span aria-hidden="true"></span>
-              </a>
+              </Link>
               <div className="course-nav-dropdown">
-                <a href="/#featured-courses">Tất cả khóa học</a>
-                <a href="/#learning-path">Lộ trình học</a>
-                <a href="/#testimonials">Học viên nói gì</a>
+                <Link href="/#featured-courses">Tất cả khóa học</Link>
+                <Link href="/#learning-path">Lộ trình học</Link>
+                <Link href="/#testimonials">Học viên nói gì</Link>
               </div>
             </div>
-            <a href="/mau-portfolio">Mẫu Portfolio</a>
-            <a href="/#footer-legal">Về chúng tôi</a>
+            <Link href="/mau-portfolio">Mẫu Portfolio</Link>
+            <Link href="/ve-chung-toi">Về chúng tôi</Link>
           </nav>
           <div className="header-actions">
             <div className="header-tools">
@@ -106,36 +106,36 @@ export function StoreHeader() {
           inert={!menuOpen}
         >
           <nav aria-label="Điều hướng trên thiết bị di động">
-            <a href="/#featured-courses" onClick={() => setMenuOpen(false)}>
+            <Link href="/#featured-courses" onClick={() => setMenuOpen(false)}>
               Khóa học <span>→</span>
-            </a>
-            <a
+            </Link>
+            <Link
               className="mobile-subnav"
               href="/#featured-courses"
               onClick={() => setMenuOpen(false)}
             >
               Tất cả khóa học <span>↗</span>
-            </a>
-            <a
+            </Link>
+            <Link
               className="mobile-subnav"
               href="/#learning-path"
               onClick={() => setMenuOpen(false)}
             >
               Lộ trình học <span>↗</span>
-            </a>
-            <a
+            </Link>
+            <Link
               className="mobile-subnav"
               href="/#testimonials"
               onClick={() => setMenuOpen(false)}
             >
               Học viên nói gì <span>↗</span>
-            </a>
-            <a href="/mau-portfolio" onClick={() => setMenuOpen(false)}>
+            </Link>
+            <Link href="/mau-portfolio" onClick={() => setMenuOpen(false)}>
               Mẫu Portfolio <span>→</span>
-            </a>
-            <a href="/#footer-legal" onClick={() => setMenuOpen(false)}>
+            </Link>
+            <Link href="/ve-chung-toi" onClick={() => setMenuOpen(false)}>
               Về chúng tôi <span>→</span>
-            </a>
+            </Link>
             <button
               type="button"
               onClick={() => chooseCategory("thiet-ke-landing-page")}

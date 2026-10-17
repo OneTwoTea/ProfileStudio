@@ -20,6 +20,6 @@ export default async function DesignServicePage() {
     <section className="service-benefits"><div className="shell"><div className="portfolio-section-heading"><div><span className="section-kicker">TỪ Ý TƯỞNG ĐẾN TRANG HOÀN CHỈNH</span><h2>Một quy trình rõ ràng</h2><p>Thiết kế được xây dựng quanh hình ảnh và mục tiêu nghề nghiệp của bạn.</p></div></div><div className="service-steps">{deliverables.map((step) => <article className="service-step" key={step.number}><span>{step.number}</span><h3>{step.title}</h3><p>{step.description}</p></article>)}</div></div></section>
 
     <section className="service-contact shell" id="contact-note"><div><span className="section-kicker">SẴN SÀNG BẮT ĐẦU?</span><h2>Kể chúng tôi nghe<br />về <em>trang portfolio bạn cần.</em></h2><p>{email ? `Liên hệ trực tiếp qua ${email} để trao đổi mong muốn và phạm vi thiết kế.` : "Kênh liên hệ dịch vụ sẽ được cập nhật sớm. Hiện trang này giới thiệu gói dịch vụ, chưa gửi yêu cầu tự động."}</p></div><div className="service-contact-actions">{email ? <a className="button portfolio-primary" href={contactHref}>Gửi email tư vấn <span>→</span></a> : <span className="service-contact-pending">ĐANG CẬP NHẬT THÔNG TIN LIÊN HỆ</span>}<a className="service-sample-link" href="/mau-portfolio">Xem thư viện mẫu <b>↗</b></a></div></section>
-    <SiteFooter mode="mc" />
+    <SiteFooter />
   </main>;
 }
