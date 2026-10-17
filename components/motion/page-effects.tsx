@@ -13,6 +13,7 @@ export function ScrollProgress() {
         const range = root.scrollHeight - window.innerHeight;
         const progress = range > 0 ? window.scrollY / range : 0;
         bar.current?.style.setProperty("transform", `scaleX(${Math.min(1, Math.max(0, progress))})`);
+        root.toggleAttribute("data-scrolled", window.scrollY > 12);
       });
     };
     window.addEventListener("scroll", update, { passive: true });
@@ -25,7 +26,12 @@ export function ScrollProgress() {
 
 export function MotionEnhancements() {
   useEffect(() => {
-    const nodes = Array.from(document.querySelectorAll<HTMLElement>(".reveal, [data-count]"));
+    document.querySelectorAll<HTMLElement>(".testimonial-card, .faq-item, .category-chip, .trust-band li, .portfolio-card, .service-step").forEach((node) => {
+      const index = node.parentElement ? Array.prototype.indexOf.call(node.parentElement.children, node) : 0;
+      node.classList.add("reveal-item");
+      node.style.setProperty("--reveal-delay", `${Math.min(index, 6) * 80}ms`);
+    });
+    const nodes = Array.from(document.querySelectorAll<HTMLElement>(".reveal, .reveal-item, [data-count]"));
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduced || !("IntersectionObserver" in window)) {
       nodes.forEach((node) => { node.classList.add("is-visible"); if (node.dataset.count) node.textContent = Number(node.dataset.count).toLocaleString("vi-VN"); });
