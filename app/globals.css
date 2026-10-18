@@ -1639,8 +1639,26 @@ button, input, select, textarea {
 }
 
 .pinned-path:not(.is-pinned) .path-card {
-  width: auto;
+  flex: 0 0 clamp(245px, 27vw, 320px);
+  width: clamp(245px, 27vw, 320px);
   min-width: 0;
+}
+
+.pinned-path:not(.is-pinned) .pinned-track {
+  width: max-content;
+  display: flex;
+  gap: 13px;
+  margin: 0;
+  padding: 0 max(32px, calc((100vw - 1192px) / 2)) 8px;
+}
+
+.pinned-path:not(.is-pinned) .pinned-viewport {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+.pinned-path:not(.is-pinned) .path-card {
+  scroll-snap-align: start;
 }
 
 .pinned-path:not(.is-pinned) .pinned-foot {
@@ -1804,12 +1822,6 @@ button, input, select, textarea {
   color: var(--muted);
   font-size: 9px;
   letter-spacing: .12em;
-}
-
-@media (max-width: 1100px) {
-  .pinned-path:not(.is-pinned) .pinned-track {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
 }
 
 .testimonials-section {

@@ -78,11 +78,6 @@ export default async function Home() {
           </p>
           <HeroSearch />
           <div className="hero-proof">
-            <span className="proof-avatars" aria-hidden="true">
-              <i>M</i>
-              <i>A</i>
-              <i>V</i>
-            </span>
             <span>
               Không cần biết code.
               <br />

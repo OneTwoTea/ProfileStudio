@@ -103,13 +103,14 @@ export function PinnedLearningPath() {
     };
 
     const measure = () => {
-      const canPin =
-        window.innerWidth > 760 &&
-        window.innerHeight <= 1100 &&
-        !reducedMotion.matches;
+      const canPin = window.innerWidth > 760 && !reducedMotion.matches;
       target.classList.toggle("is-pinned", canPin);
       distance = Math.max(0, rail.scrollWidth - target.clientWidth);
-      const shouldPin = canPin && distance > 0;
+      // Keep the path in normal flow when the pinned stage cannot fit in the
+      // viewport. Browser zoom changes the CSS viewport dimensions too.
+      const stageFits = pinnedStage.scrollHeight <= window.innerHeight - 78;
+      const viewportFits = pinnedStage.clientWidth >= rail.scrollWidth;
+      const shouldPin = canPin && distance > 0 && stageFits && viewportFits;
       target.classList.toggle("is-pinned", shouldPin);
       if (!shouldPin) rail.style.transform = "";
       update();
