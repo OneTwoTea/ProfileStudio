@@ -1,6 +1,5 @@
 ﻿import Link from "next/link";
 import { apiClient } from "@/lib/api";
-import { MockNewsletter } from "@/components/sections/storefront-actions";
 
 export async function SiteFooter() {
   const settings = await apiClient.getPublicSettings().catch(() => null);
@@ -31,11 +30,8 @@ export async function SiteFooter() {
       <Link href="/#faq">Hướng dẫn đăng ký</Link>
      <Link href="/#faq">Hướng dẫn học</Link>{supportEmail && <a href={`mailto:${supportEmail}`}>Trung tâm hỗ trợ</a>}
       <Link href="/#footer-legal">Chính sách & điều khoản</Link></div>
-    <div className="footer-newsletter"><h3>THƯ TỪ STUDIO</h3>
-      <p>Nhận mẹo xây portfolio MC và ưu đãi khóa học mới.</p>
-    <MockNewsletter /></div>
     </div>
-  <div className="footer-legal" id="footer-legal"><span>© 2026 PROFILE STUDIO</span><span>TIỀN TỆ: VND · MÚI GIỜ: ASIA/HO_CHI_MINH</span>
+<div className="footer-legal" id="footer-legal"><span>© 2026 PROFILE STUDIO</span><span>TIỀN TỆ: VND · MÚI GIỜ: ASIA/HA NOI</span>
   </div>
   </div>
   </footer>;

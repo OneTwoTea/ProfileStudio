@@ -7,10 +7,10 @@ import type {
 
 // Preview-only sample content. Replace this module through the ApiClient adapter when a backend is available.
 export const mockCategories: Category[] = [
-  { id: "cat-brand", name: "Định vị thương hiệu MC", slug: "dinh-vi-thuong-hieu-mc", courseCount: 1 },
+//  { id: "cat-brand", name: "Định vị thương hiệu MC", slug: "dinh-vi-thuong-hieu-mc", courseCount: 1 },
   { id: "cat-landing", name: "Thiết kế landing page", slug: "thiet-ke-landing-page", courseCount: 1 },
-  { id: "cat-showreel", name: "Showreel & hình ảnh", slug: "showreel-hinh-anh", courseCount: 1 },
-  { id: "cat-content", name: "Nội dung chốt show", slug: "noi-dung-chot-show", courseCount: 0 },
+ // { id: "cat-showreel", name: "Showreel & hình ảnh", slug: "showreel-hinh-anh", courseCount: 1 },
+ // { id: "cat-content", name: "Nội dung chốt show", slug: "noi-dung-chot-show", courseCount: 0 },
 ];
 
 const founder = {
@@ -22,30 +22,35 @@ const founder = {
 
 export const mockCourses: Course[] = [
   {
-    id: "course-looking",
-    slug: "landing-page-portfolio-mc",
+    id: "course-landing-page",
+    slug: "thiet-ke-landing-page",
     title: "Tự tạo landing page portfolio MC từ A đến Z",
     subtitle: "Dựng trang giới thiệu chuyên nghiệp bằng công cụ kéo thả, không cần code.",
     description: "Thiết kế landing page portfolio cho MC: bố cục, showreel, sự kiện đã dẫn, cảm nhận khách hàng và nút đặt lịch.",
     status: "published",
     level: "beginner",
-    price: 1490000,
+    price: 149000,
     currency: "VND",
-    cover: null,
-    category: mockCategories[1],
+    cover: {
+      url: "/images/courses/course-landing-page.webp",
+      alt: "Khóa học tự tạo landing page portfolio MC",
+      width: 1600,
+      height: 1000,
+    },
+    category: mockCategories.find((category) => category.id === "cat-landing")!,
     instructor: founder,
     learningOutcomes: ["Dựng landing page portfolio hoàn chỉnh", "Gắn tên miền riêng và form đặt lịch"],
     requirements: ["Không yêu cầu kinh nghiệm thiết kế hay lập trình"],
     chapters: [],
     rating: 4.9,
-    reviewCount: 24,
-    studentCount: 1280,
-    totalLessons: 8,
+    reviewCount: 4,
+    studentCount: 12,
+    totalLessons: 5,
     totalDurationSeconds: 12000,
     createdAt: "2026-10-01T00:00:00Z",
     updatedAt: "2026-10-01T00:00:00Z",
   },
-  {
+ /** {
     id: "course-frame",
     slug: "showreel-hinh-anh-mc",
     title: "Showreel & hình ảnh MC thu hút khách hàng",
@@ -56,7 +61,7 @@ export const mockCourses: Course[] = [
     price: 1890000,
     currency: "VND",
     cover: null,
-    category: mockCategories[2],
+    category: mockCategories.find((category) => category.id === "cat-showreel")!,
     instructor: founder,
     learningOutcomes: ["Dựng showreel 60–90 giây ấn tượng", "Chọn ảnh sự kiện đúng phong cách"],
     requirements: ["Có sẵn video hoặc ảnh các chương trình đã dẫn"],
@@ -80,7 +85,7 @@ export const mockCourses: Course[] = [
     price: 1690000,
     currency: "VND",
     cover: null,
-    category: mockCategories[0],
+    category: mockCategories.find((category) => category.id === "cat-brand")!,
     instructor: founder,
     learningOutcomes: ["Xác định thế mạnh và tệp khách mục tiêu", "Viết lời giới thiệu bản thân thuyết phục"],
     requirements: ["Đang hoặc muốn hành nghề MC dẫn chương trình"],
@@ -93,6 +98,7 @@ export const mockCourses: Course[] = [
     createdAt: "2026-10-01T00:00:00Z",
     updatedAt: "2026-10-01T00:00:00Z",
   },
+  /**/
 ];
 
 export const mockTestimonials = [
@@ -105,10 +111,10 @@ export const mockSiteSettings: SiteSettings = {
   brandName: "Profile Studio",
   tagline: "Portfolio chuyên nghiệp cho người dẫn chương trình.",
   support: {
-    email: "support@example.invalid",
+    email: "",
     phone: null,
     chatUrl: null,
-    workingHours: "Chưa cấu hình (dữ liệu preview)",
+    workingHours: "Thứ 2–6, 9:00–17:00",
   },
   payment: null,
 };

@@ -9,10 +9,10 @@ import { CategoryChips, HeroSearch, TestimonialControls } from "@/components/sec
 import { HeroRibbonBackground } from "@/components/sections/hero-ribbon-background";
 
 const categories = [
-  { slug: "dinh-vi-thuong-hieu-mc", name: "Định vị thương hiệu MC", icon: "◇" },
+ // { slug: "dinh-vi-thuong-hieu-mc", name: "Định vị thương hiệu MC", icon: "◇" },
   { slug: "thiet-ke-landing-page", name: "Thiết kế landing page", icon: "✳" },
-  { slug: "showreel-hinh-anh", name: "Showreel & hình ảnh", icon: "◉" },
-  { slug: "noi-dung-chot-show", name: "Nội dung chốt show", icon: "⌁" },
+//{ slug: "showreel-hinh-anh", name: "Showreel & hình ảnh", icon: "◉" },
+//  { slug: "noi-dung-chot-show", name: "Nội dung chốt show", icon: "⌁" },
 ];
 
 const faqItems = [
@@ -61,16 +61,16 @@ export default async function Home() {
         <div className="store-hero-inner shell">
           <div className="store-hero-copy reveal">
           <span className="hero-eyebrow">
-            <i /> KHÓA HỌC DÀNH CHO MC · DẪN CHƯƠNG TRÌNH
+            <i /> KHÔNG GIAN SÁNG TẠO · HỌC TẬP
           </span>
           <h1
             id="hero-title"
             aria-label="Tự tạo landing page portfolio MC chuyên nghiệp."
           >
             <span aria-hidden="true">Tự tạo</span>
-            <br />
+            <br/>
             <span aria-hidden="true">portfolio MC</span>
-            <br />
+            <br/>
             <span aria-hidden="true">chuyên nghiệp.</span>
           </h1>
           <p className="store-hero-description">
@@ -94,15 +94,6 @@ export default async function Home() {
           <div className="store-hero-visual reveal">
             <HeroCarousel />
           </div>
-        </div>
-      </section>
-
-      <section className="category-band" aria-labelledby="category-title">
-        <div className="shell category-band-inner">
-          <div>
-            <h2 id="category-title">Bạn muốn bắt đầu từ đâu?</h2>
-          </div>
-          <CategoryChips categories={categories} />
         </div>
       </section>
 
@@ -205,7 +196,6 @@ export default async function Home() {
               0<span className="metric-star">₫</span>
             </strong>
             <span>chi phí code website</span>
-            <small>TỰ LÀM BẰNG CÔNG CỤ KÉO THẢ</small>
           </div>
         </div>
       </section>
@@ -235,8 +225,6 @@ export default async function Home() {
           <div className="section-heading-row">
             <div>
               <span className="section-kicker">MC ĐÃ HỌC NÓI GÌ</span>
-              <h2>Từ sân khấu đến trang portfolio.</h2>
-              <p>Phản hồi dưới đây là nội dung mẫu cho bản xem trước.</p>
             </div>
             <TestimonialControls />
           </div>

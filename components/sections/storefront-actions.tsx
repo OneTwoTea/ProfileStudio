@@ -46,7 +46,7 @@ export function MockNewsletter() {
     event.preventDefault();
     setSubmitted(true);
   }
-  return <><form onSubmit={submit}><label className="visually-hidden" htmlFor="newsletter-email">Email nhận tin</label><input id="newsletter-email" type="email" placeholder="Địa chỉ email" required /><button type="submit" aria-label="Đăng ký nhận tin">→</button></form><small aria-live="polite">{submitted ? "Bản xem trước: chưa gửi dữ liệu." : "Form minh họa · không gửi dữ liệu"}</small></>;
+  return <><form onSubmit={submit}><label className="visually-hidden" htmlFor="newsletter-email">Email nhận tin</label><input id="newsletter-email" type="email" placeholder="Địa chỉ email" required /><button type="submit" aria-label="Đăng ký nhận tin">→</button></form></>;
 }
 
 export function TestimonialControls() {

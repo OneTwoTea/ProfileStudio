@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState, type PointerEvent } from "react";
+import Image from "next/image";
 import { apiClient } from "@/lib/api";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -36,8 +37,20 @@ function CourseCard({ course, index }: { course: Course; index: number }) {
     <article id={`course-${course.id}`} className={`store-course-card card-tone-${index % 3}`} onPointerMove={handlePointerMove} onPointerLeave={resetPointer}>
       <a className="store-course-link" href="#faq" aria-label={`Xem thông tin khóa học ${course.title}`}>
         <div className="store-course-image">
-          <span className="course-image-note">ẢNH KHÓA HỌC · SẼ CẬP NHẬT</span>
-          <span className="course-image-monogram" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+          {course.cover?.url ? (
+            <Image
+              src={course.cover.url}
+              alt={course.cover.alt ?? course.title}
+              fill
+              sizes="(max-width: 768px) 100vw, 33vw"
+              style={{ objectFit: "cover" }}
+            />
+          ) : (
+            <>
+              <span className="course-image-note" aria-hidden="true">ẢNH KHÓA HỌC · SẼ CẬP NHẬT</span>
+              <span className="course-image-monogram" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+            </>
+          )}
           <Badge tone={course.status === "published" ? "green" : "neutral"}>{status}</Badge>
           <span className="course-image-arrow" aria-hidden="true">↗</span>
         </div>
@@ -50,7 +63,7 @@ function CourseCard({ course, index }: { course: Course; index: number }) {
             <span>{money.format(course.studentCount ?? 0)} học viên</span>
           </div>
           <div className="store-course-rating"><span aria-label={`Đánh giá ${course.rating} trên 5`}>★ {course.rating.toFixed(1)}</span><span>({course.reviewCount} đánh giá)</span></div>
-          <div className="store-course-price"><strong>{money.format(course.price)} ₫</strong><span>học trọn đời*</span></div>
+          <div className="store-course-price"><strong>{money.format(course.price)} ₫</strong><span>học trọn đời</span></div>
         </div>
       </a>
     </article>
@@ -115,7 +128,6 @@ export function CourseExplorer() {
       {state === "error" && <div className="store-empty" role="alert"><strong>Chưa tải được danh sách khóa học.</strong><p>Kiểm tra kết nối rồi thử lại.</p><button type="button" className="button button-outline" onClick={() => { setState("loading"); apiClient.listCourses({ page: 1, pageSize: 100 }).then((page) => { setCourses(page.data); setState("ready"); }).catch(() => setState("error")); }}>Thử lại</button></div>}
       {state === "ready" && visibleCourses.length > 0 && <div className="store-course-grid">{visibleCourses.map((course, index) => <CourseCard key={course.id} course={course} index={index} />)}</div>}
       {state === "ready" && visibleCourses.length === 0 && <div className="store-empty"><strong>Chưa tìm thấy khóa học phù hợp.</strong><p>Thử chủ đề hoặc từ khóa khác.</p><button type="button" className="button button-outline" onClick={() => { setQuery(""); setSelectedTab("Tất cả"); }}>Xem tất cả khóa học</button></div>}
-      <p className="mock-disclosure">* Dữ liệu khóa học, học viên, đánh giá và giá hiện là mẫu preview. Thời hạn truy cập thật cần xác nhận.</p>
     </div>
   );
 }

@@ -70,6 +70,7 @@ export function StoreHeader() {
             </div>
             <Link href="/mau-portfolio">Mẫu Portfolio</Link>
             <Link href="/ve-chung-toi">Về chúng tôi</Link>
+            <Link href="/dich-vu-thiet-ke">Thuê thiết kế</Link>
           </nav>
           <div className="header-actions">
             <div className="header-tools">
@@ -83,8 +84,8 @@ export function StoreHeader() {
                 {dark ? "☾" : "☼"}
               </button>
             </div>
-            <a className="header-join" href="/dich-vu-thiet-ke">
-              Thuê thiết kế <span>→</span>
+            <a className="header-join" href="https://forms.gle/gd3vppCtePBSB2vh6">
+              Đăng ký ngay <span>→</span>
             </a>
           </div>
           <button
@@ -153,9 +154,6 @@ export function StoreHeader() {
               {dark ? "☾" : "☼"} Giao diện sáng/tối
             </button>
           </div>
-          <p className="mobile-menu-note">
-            Nội dung hiện tại là bản xem trước với dữ liệu minh họa.
-          </p>
         </div>
       </header>
     </>
