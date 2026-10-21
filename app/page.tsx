@@ -10,7 +10,7 @@ import { HeroRibbonBackground } from "@/components/sections/hero-ribbon-backgrou
 
 const categories = [
  // { slug: "dinh-vi-thuong-hieu-mc", name: "Định vị thương hiệu MC", icon: "◇" },
-  { slug: "thiet-ke-landing-page", name: "Thiết kế landing page", icon: "✳" },
+  //{ slug: "thiet-ke-landing-page", name: "Thiết kế landing page", icon: "✳" },
 //{ slug: "showreel-hinh-anh", name: "Showreel & hình ảnh", icon: "◉" },
 //  { slug: "noi-dung-chot-show", name: "Nội dung chốt show", icon: "⌁" },
 ];
@@ -19,7 +19,7 @@ const faqItems = [
   {
     question: "Tôi không biết thiết kế hay lập trình, có học được không?",
     answer:
-      "Được. Khóa học hướng dẫn từng bước bằng công cụ kéo thả và template có sẵn, không cần viết code. Bạn chỉ cần máy tính, ảnh và video các chương trình mình đã dẫn.",
+      "Được. Khóa học hướng dẫn từng bước với template có sẵn, không cần viết code. Bạn chỉ cần máy tính, ảnh và video các chương trình mình đã dẫn.",
   },
   {
     question: "Học xong tôi sẽ có sản phẩm gì?",
@@ -86,7 +86,7 @@ export default async function Home() {
             <span className="proof-divider" />
             <span className="proof-rating">
               <b>★ 4.9</b>
-              <small>ĐIỂM ĐÁNH GIÁ MẪU</small>
+              <small>ĐIỂM ĐÁNH GIÁ</small>
             </span>
           </div>
           </div>
@@ -97,78 +97,100 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="bento-section shell" aria-label="Lợi ích khóa học">
-        <article className="bento-feature reveal">
-          <div className="bento-feature-copy">
-            <span className="section-kicker section-kicker-light">
-              DÀNH CHO NGƯỜI DẪN CHƯƠNG TRÌNH
-            </span>
+            <section className="bento-section shell" aria-label="Lợi ích khóa học">
+        <div className="bento-header reveal">
+          <div className="bento-header-left">
+            <span className="section-kicker">DÀNH CHO NGƯỜI DẪN CHƯƠNG TRÌNH</span>
             <h2>
               Bạn dẫn hay trên sân khấu,
               <br />
               hãy để <em>hồ sơ nói thay bạn.</em>
             </h2>
+          </div>
+          <div className="bento-header-right">
             <p>
               Thay vì gửi file PDF hay link Facebook rời rạc, hãy có một trang portfolio gọn gàng để khách hàng xem giọng dẫn, phong cách và kinh nghiệm của bạn chỉ trong một phút.
             </p>
-            <MagneticLink
-              href="#featured-courses"
-              className="button button-light"
-            >
-              Khám phá khóa học <span>→</span>
-            </MagneticLink>
           </div>
-          <div className="bento-feature-art" aria-hidden="true">
-            <div className="bento-art-circle" />
-            <div className="bento-art-arc" />
-            <div className="bento-art-card">
-              <span>MC PORTFOLIO</span>
-              <b>01</b>
-              <i>showreel → booking</i>
+        </div>
+
+        <div className="bento-grid">
+          <article className="bento-card reveal">
+            <div className="bento-card-top">
+              <span className="bento-card-num">01</span>
+              <span className="bento-card-icon" aria-hidden="true">✳</span>
             </div>
-            <div className="bento-art-spark">✳</div>
-          </div>
-        </article>
+            <div className="bento-card-heading">
+              <span className="section-kicker">MC PORTFOLIO</span>
+              <h3>Showreel &amp; Hồ sơ số</h3>
+            </div>
+            <p className="bento-card-desc">
+              Gói gọn hình ảnh sân khấu, video showreel và thông tin liên hệ trong một trang chuyên nghiệp để khách hàng tin chọn bạn ngay từ lần đầu.
+            </p>
+            <div className="bento-card-action">
+              <MagneticLink
+                href="#featured-courses"
+                className="bento-card-link"
+              >
+                Khám phá khóa học <span>→</span>
+              </MagneticLink>
+            </div>
+          </article>
 
-        <article className="bento-stat reveal">
-          <span className="bento-stat-icon">↗</span>
-          <span className="section-kicker">TEMPLATE</span>
-          <strong>
-            <span data-count="10">10</span>
-            <sup>+</sup>
-          </strong>
-          <p>
-            mẫu landing page cho MC
-            <br />
-            cưới, sự kiện, livestream
-          </p>
-        </article>
+          <article className="bento-card reveal">
+            <div className="bento-card-top">
+              <span className="bento-card-num">02</span>
+              <span className="bento-card-icon" aria-hidden="true">↗</span>
+            </div>
+            <div className="bento-card-heading">
+              <span className="section-kicker">TEMPLATE</span>
+              <h3><span data-count="10">10</span><sup>+</sup> Mẫu landing page</h3>
+            </div>
+            <p className="bento-card-desc">
+              mẫu landing page cho MC cưới, sự kiện, livestream được thiết kế sẵn, tối ưu hiển thị mượt mà trên mọi thiết bị.
+            </p>
+            <div className="bento-card-action">
+              <Link href="/mau-portfolio" className="bento-card-link">
+                Xem thư viện mẫu <span>→</span>
+              </Link>
+            </div>
+          </article>
 
-        <article className="bento-path reveal">
-          <span className="section-kicker">4 BƯỚC HOÀN THIỆN</span>
-          <h3>
-            Từ con số 0
-            <br />
-            <em>đến trang portfolio nhận show.</em>
-          </h3>
-          <div className="mini-path">
-            <i>01</i>
-            <span />
-            <i>02</i>
-            <span />
-            <i>03</i>
-            <span />
-            <i>04</i>
-          </div>
-          <a href="#learning-path">
-            Xem lộ trình <span>→</span>
-          </a>
-        </article>
+          <article className="bento-card reveal">
+            <div className="bento-card-top">
+              <span className="bento-card-num">03</span>
+              <span className="bento-card-icon" aria-hidden="true">✦</span>
+            </div>
+            <div className="bento-card-heading">
+              <span className="section-kicker">4 BƯỚC HOÀN THIỆN</span>
+              <h3>Từ con số 0 đến trang portfolio nhận show</h3>
+            </div>
+            <div className="bento-card-desc">
+              <p>
+                Lộ trình tinh gọn từng bước, thực hành trực quan và có ngay sản phẩm hoàn chỉnh mà không cần biết viết code.
+              </p>
+              <div className="mini-path" aria-hidden="true">
+                <i>01</i>
+                <span />
+                <i>02</i>
+                <span />
+                <i>03</i>
+                <span />
+                <i>04</i>
+              </div>
+            </div>
+            <div className="bento-card-action">
+              <a href="#learning-path" className="bento-card-link">
+                Xem lộ trình <span>→</span>
+              </a>
+            </div>
+          </article>
+        </div>
       </section>
 
       <section className="trust-band">
         <div className="shell trust-band-inner">
-          <div className="trust-intro">
+          <div className="trust-band-header reveal">
             <span className="section-kicker">VÌ SAO MC CẦN PORTFOLIO?</span>
             <h2>
               Hồ sơ chuyên nghiệp,
@@ -176,26 +198,58 @@ export default async function Home() {
               <em>cát-xê xứng đáng.</em>
             </h2>
           </div>
-          <div className="trust-metric">
-            <strong>
-              <span data-count="1">1</span>
-            </strong>
-            <span>đường link duy nhất</span>
-            <small>GỬI KHÁCH TRONG MỌI TIN NHẮN</small>
-          </div>
-          <div className="trust-metric">
-            <strong>
-              <span data-count="24">24</span>
-              <sup>/7</sup>
-            </strong>
-            <span>giới thiệu bạn thay bạn</span>
-            <small>CẢ KHI BẠN ĐANG CẦM MIC</small>
-          </div>
-          <div className="trust-metric">
-            <strong>
-              0<span className="metric-star">₫</span>
-            </strong>
-            <span>chi phí code website</span>
+
+          <div className="trust-band-grid">
+            <article className="trust-metric-block reveal">
+              <div className="trust-circle-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+                  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+                </svg>
+              </div>
+              <strong className="trust-metric-huge">
+                <span data-count="1">1</span>
+              </strong>
+              <h3 className="trust-metric-title">đường link duy nhất</h3>
+              <p className="trust-metric-desc">
+                Gói trọn toàn bộ hình ảnh, showreel và kinh nghiệm dẫn trong một đường dẫn chuyên nghiệp gửi cho đối tác.
+              </p>
+              <span className="trust-metric-tag">GỬI KHÁCH TRONG MỌI TIN NHẮN</span>
+            </article>
+
+            <article className="trust-metric-block reveal">
+              <div className="trust-circle-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="10" />
+                  <polyline points="12 6 12 12 16 14" />
+                </svg>
+              </div>
+              <strong className="trust-metric-huge">
+                <span data-count="24">24</span>
+                <sup>/7</sup>
+              </strong>
+              <h3 className="trust-metric-title">giới thiệu bạn thay bạn</h3>
+              <p className="trust-metric-desc">
+                Trang web hoạt động liên tục 24/7, giúp agency và khách hàng tìm hiểu phong cách và đặt lịch bất cứ lúc nào.
+              </p>
+              <span className="trust-metric-tag">CẢ KHI BẠN ĐANG CẦM MIC</span>
+            </article>
+
+            <article className="trust-metric-block reveal">
+              <div className="trust-circle-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                </svg>
+              </div>
+              <strong className="trust-metric-huge">
+                0<span className="metric-star">₫</span>
+              </strong>
+              <h3 className="trust-metric-title">chi phí code website</h3>
+              <p className="trust-metric-desc">
+                Tự tay làm chủ trang cá nhân với công cụ kéo thả trực quan và template có sẵn, không phụ thuộc lập trình viên.
+              </p>
+              <span className="trust-metric-tag">TỰ LÀM VỚI TEMPLATE CÓ SẴN</span>
+            </article>
           </div>
         </div>
       </section>
@@ -234,11 +288,10 @@ export default async function Home() {
                 <article className="testimonial-card" key={review.id}>
                   <div
                     className={`testimonial-avatar avatar-${index % 3}`}
-                    aria-label={`Ảnh học viên ${review.name} đang giữ chỗ`}
+                    aria-label={`Ảnh học viên ${review.name}`}
                     role="img"
                   >
                     <span>{review.name.slice(0, 1)}</span>
-                    <small>ẢNH GIỮ CHỖ</small>
                   </div>
                   <div
                     className="testimonial-stars"
@@ -248,16 +301,13 @@ export default async function Home() {
                   </div>
                   <blockquote>“{review.quote}”</blockquote>
                   <div className="testimonial-name">{review.name}</div>
-                  <div className="testimonial-role">{review.role} · TÊN MẪU</div>
+                  <div className="testimonial-role">{review.role}</div>
                 </article>
               ))
             ) : (
               <article className="testimonial-card testimonial-empty">
                 <span className="section-kicker">LỜI CHỨNG THỰC</span>
-                <p>
-                  Lời chia sẻ của học viên sẽ xuất hiện ở đây sau khi được cung cấp.
-                </p>
-                <span>CHƯA CÓ DỮ LIỆU THẬT</span>
+                <span>ĐANG CẬP NHẬT</span>
               </article>
             )}
           </div>

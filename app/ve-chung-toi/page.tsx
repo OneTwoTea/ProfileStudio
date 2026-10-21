@@ -48,14 +48,6 @@ export default function AboutPage() {
               chuyên nghiệp trên môi trường số — qua khóa học tự làm, dịch vụ
               thiết kế và những mẫu portfolio dành riêng cho MC.
             </p>
-            <div className="about-hero-actions">
-              <Link className="button portfolio-primary" href="/dich-vu-thiet-ke">
-                Khám phá dịch vụ <span>→</span>
-              </Link>
-              <Link className="about-text-link" href="/mau-portfolio">
-                Xem thư viện mẫu <span>↗</span>
-              </Link>
-            </div>
           </div>
           <div className="about-hero-art" aria-hidden="true">
             <span className="about-orbit about-orbit-one" />
@@ -109,20 +101,20 @@ export default function AboutPage() {
           </div>
           <div className="about-creator-copy" id="hanh-trinh">
             <span className="section-kicker">
-              NGƯỜI SÁNG TẠO · THÔNG TIN MINH HỌA
+              NGƯỜI SÁNG TẠO
             </span>
-            <h2 id="about-creator-title">Nguyễn Minh Anh</h2>
+            <h2 id="about-creator-title">Phạm Hồng Thái</h2>
             <span className="about-creator-role">
               Nhà sáng lập &amp; người phát triển Profile Studio
             </span>
             <p>
-              Minh Anh xây dựng Profile Studio với mong muốn giúp người dẫn
+              Hồng Thái xây dựng Profile Studio với mong muốn giúp người dẫn
               chương trình kể câu chuyện nghề nghiệp của mình rõ ràng và chuyên
               nghiệp hơn. Dự án kết hợp hướng dẫn tự làm portfolio với dịch vụ
               thiết kế, để mỗi MC có thể chọn cách phù hợp với mình.
             </p>
             <p>
-              Minh Anh tin rằng một hồ sơ tốt nên thể hiện được phong cách dẫn,
+              Hồng Thái tin rằng một hồ sơ tốt nên thể hiện được phong cách dẫn,
               kinh nghiệm, showreel và cách liên hệ — để khách hàng dễ hình dung
               người đứng trên sân khấu trước khi gửi lời mời.
             </p>
