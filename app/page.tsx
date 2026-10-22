@@ -93,7 +93,6 @@ export default async function Home() {
           </div>
         </div>
       </section>
-
             <section className="bento-section shell" aria-label="Lợi ích khóa học">
         <div className="bento-header reveal">
           <div className="bento-header-left">
