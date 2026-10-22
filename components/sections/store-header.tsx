@@ -69,7 +69,6 @@ export function StoreHeader() {
             </div>
             <Link href="/mau-portfolio">Mẫu Portfolio</Link>
             <Link href="/ve-chung-toi">Về chúng tôi</Link>
-            <Link href="/dich-vu-thiet-ke">Thuê thiết kế</Link>
           </nav>
           <div className="header-actions">
             <div className="header-tools">

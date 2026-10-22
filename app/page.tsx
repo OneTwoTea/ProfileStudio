@@ -17,6 +17,11 @@ const categories = [
 
 const faqItems = [
   {
+    question: "Tôi đăng ký và thanh toán như thế nào?",
+    answer:
+      "Bạn gửi yêu cầu đăng ký, nhận mã tham chiếu và hướng dẫn chuyển khoản. Quyền truy cập khóa học được cấp sau khi đội ngũ xác nhận thanh toán. Website không thu tiền trực tuyến.",
+  },
+  {
     question: "Tôi không biết thiết kế hay lập trình, có học được không?",
     answer:
       "Được. Khóa học hướng dẫn từng bước với template có sẵn, không cần viết code. Bạn chỉ cần máy tính, ảnh và video các chương trình mình đã dẫn.",
@@ -24,17 +29,12 @@ const faqItems = [
   {
     question: "Học xong tôi sẽ có sản phẩm gì?",
     answer:
-      "Một landing page portfolio hoàn chỉnh mang tên bạn: giới thiệu bản thân, showreel, danh sách sự kiện đã dẫn, cảm nhận khách hàng và nút liên hệ đặt lịch — sẵn sàng gửi cho agency, nhãn hàng hay cô dâu chú rể.",
+      "Một landing page portfolio hoàn chỉnh mang tên bạn: giới thiệu bản thân, showreel, danh sách sự kiện đã dẫn, cảm nhận khách hàng và nút liên hệ đặt lịch - sẵn sàng gửi cho agency, nhãn hàng hay cô dâu chú rể.",
   },
   {
     question: "Khóa học phù hợp với MC ở mảng nào?",
     answer:
       "MC đám cưới, sự kiện doanh nghiệp, gala, hội nghị, livestream bán hàng hay MC song ngữ đều áp dụng được. Phần định vị sẽ giúp bạn chọn cách trình bày phù hợp với tệp khách của mình.",
-  },
-  {
-    question: "Tôi đăng ký và thanh toán như thế nào?",
-    answer:
-      "Bạn gửi yêu cầu đăng ký, nhận mã tham chiếu và hướng dẫn chuyển khoản. Quyền truy cập khóa học được cấp sau khi đội ngũ xác nhận thanh toán. Website không thu tiền trực tuyến.",
   },
   {
     question: "Nếu không có thời gian tự làm, tôi có thể thuê thiết kế không?",
@@ -60,9 +60,6 @@ export default async function Home() {
         <HeroRibbonBackground />
         <div className="store-hero-inner shell">
           <div className="store-hero-copy reveal">
-          <span className="hero-eyebrow">
-            <i /> KHÔNG GIAN SÁNG TẠO · HỌC TẬP
-          </span>
           <h1
             id="hero-title"
             aria-label="Tự tạo landing page portfolio MC chuyên nghiệp."
@@ -74,7 +71,7 @@ export default async function Home() {
             <span aria-hidden="true">chuyên nghiệp.</span>
           </h1>
           <p className="store-hero-description">
-            Học cách xây landing page giới thiệu bản thân, showreel và sự kiện đã dẫn — để khách hàng tin chọn bạn ngay từ lần đầu xem hồ sơ.
+            Học cách xây landing page giới thiệu bản thân, showreel và sự kiện đã dẫn - để khách hàng tin chọn bạn ngay từ lần đầu xem hồ sơ.
           </p>
           <HeroSearch />
           <div className="hero-proof">
@@ -104,7 +101,7 @@ export default async function Home() {
             <h2>
               Bạn dẫn hay trên sân khấu,
               <br />
-              hãy để <em>hồ sơ nói thay bạn.</em>
+              hãy để hồ sơ nói thay bạn.
             </h2>
           </div>
           <div className="bento-header-right">
@@ -132,7 +129,7 @@ export default async function Home() {
                 href="#featured-courses"
                 className="bento-card-link"
               >
-                Khám phá khóa học <span>→</span>
+                Khám phá khóa học
               </MagneticLink>
             </div>
           </article>
@@ -151,7 +148,7 @@ export default async function Home() {
             </p>
             <div className="bento-card-action">
               <Link href="/mau-portfolio" className="bento-card-link">
-                Xem thư viện mẫu <span>→</span>
+                Xem thư viện mẫu
               </Link>
             </div>
           </article>
@@ -180,23 +177,30 @@ export default async function Home() {
               </div>
             </div>
             <div className="bento-card-action">
-              <a href="#learning-path" className="bento-card-link">
-                Xem lộ trình <span>→</span>
-              </a>
+              <a href="#learning-path" className="bento-card-link">Xem lộ trình</a>
             </div>
           </article>
         </div>
       </section>
 
-      <section className="trust-band">
+      <section
+        className="featured-section shell"
+        id="featured-courses"
+        aria-labelledby="featured-title"
+      >
+        <div className="section-heading-row">
+          <div>
+            <span className="section-kicker">KHÓA HỌC CHO MC</span>
+            <h3 id="featured-title">Chọn khóa học phù hợp</h3>
+          </div>
+        </div>
+        <CourseExplorer />
+      </section>
+
+<section className="trust-band">
         <div className="shell trust-band-inner">
           <div className="trust-band-header reveal">
             <span className="section-kicker">VÌ SAO MC CẦN PORTFOLIO?</span>
-            <h2>
-              Hồ sơ chuyên nghiệp,
-              <br />
-              <em>cát-xê xứng đáng.</em>
-            </h2>
           </div>
 
           <div className="trust-band-grid">
@@ -254,23 +258,6 @@ export default async function Home() {
         </div>
       </section>
 
-      <section
-        className="featured-section shell"
-        id="featured-courses"
-        aria-labelledby="featured-title"
-      >
-        <div className="section-heading-row">
-          <div>
-            <span className="section-kicker">KHÓA HỌC CHO MC</span>
-            <h2 id="featured-title">Chọn khóa học phù hợp</h2>
-            <p>Từ định vị hình ảnh đến tự tay dựng trang portfolio nhận booking.</p>
-          </div>
-          <Link className="section-more" href="#featured-courses">
-            Xem tất cả <span>→</span>
-          </Link>
-        </div>
-        <CourseExplorer />
-      </section>
 
       <PinnedLearningPath />
 
@@ -320,12 +307,12 @@ export default async function Home() {
           <h2>
             Trước khi bạn
             <br />
-            <em>bắt đầu dựng portfolio.</em>
+            bắt đầu dựng portfolio.
           </h2>
           <p>Những thắc mắc phổ biến của các MC trước khi đăng ký khóa học.</p>
           {supportEmail && (
             <a href={`mailto:${supportEmail}`} className="section-more">
-              Cần hỗ trợ thêm? <span>→</span>
+              Cần hỗ trợ thêm?
             </a>
           )}
         </div>

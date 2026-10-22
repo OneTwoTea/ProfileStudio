@@ -1,6 +1,7 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 
 export function ScrollProgress() {
   const bar = useRef<HTMLSpanElement>(null);
@@ -70,72 +71,37 @@ export function MotionEnhancements() {
 const steps = [
   { number: "01", title: "Định vị bản thân", detail: "Xác định phong cách dẫn, tệp khách và thông điệp riêng.", tone: "path-blue" },
   { number: "02", title: "Chuẩn bị tư liệu", detail: "Chọn ảnh sân khấu, dựng showreel, liệt kê sự kiện tiêu biểu.", tone: "path-gold" },
-  { number: "03", title: "Dựng landing page", detail: "Lắp ráp trang portfolio từ template, không cần viết code.", tone: "path-lilac" },
+  { number: "03", title: "Dựng landing page", detail: "Dựng trang portfolio từ template, thay đổi nội dung, thêm hình ảnh và văn bản theo ý muốn.", tone: "path-lilac" },
   { number: "04", title: "Xuất bản & nhận show", detail: "Gắn tên miền, form đặt lịch và gửi link cho khách hàng.", tone: "path-green" },
 ];
 
 export function PinnedLearningPath() {
-  const section = useRef<HTMLElement>(null);
-  const stage = useRef<HTMLDivElement>(null);
-  const track = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const target = section.current;
-    const pinnedStage = stage.current;
-    const rail = track.current;
-    if (!target || !pinnedStage || !rail) return;
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    let frame = 0;
-    let resizeTimer = 0;
-    let distance = 0;
-
-    const update = () => {
-      cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(() => {
-        if (!target.classList.contains("is-pinned") || document.hidden) {
-          rail.style.transform = "";
-          return;
-        }
-        const rect = target.getBoundingClientRect();
-        const available = target.offsetHeight - pinnedStage.offsetHeight - 78;
-        const amount = Math.min(1, Math.max(0, (78 - rect.top) / Math.max(1, available)));
-        rail.style.transform = `translate3d(${-distance * amount}px, 0, 0)`;
-      });
-    };
-
-    const measure = () => {
-      const canPin = window.innerWidth > 760 && !reducedMotion.matches;
-      target.classList.toggle("is-pinned", canPin);
-      distance = Math.max(0, rail.scrollWidth - target.clientWidth);
-      // Keep the path in normal flow when the pinned stage cannot fit in the
-      // viewport. Browser zoom changes the CSS viewport dimensions too.
-      const stageFits = pinnedStage.scrollHeight <= window.innerHeight - 78;
-      const viewportFits = pinnedStage.clientWidth >= rail.scrollWidth;
-      const shouldPin = canPin && distance > 0 && stageFits && viewportFits;
-      target.classList.toggle("is-pinned", shouldPin);
-      if (!shouldPin) rail.style.transform = "";
-      update();
-    };
-
-    const onResize = () => {
-      window.clearTimeout(resizeTimer);
-      resizeTimer = window.setTimeout(measure, 140);
-    };
-
-    window.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", onResize, { passive: true });
-    document.addEventListener("visibilitychange", update);
-    reducedMotion.addEventListener("change", measure);
-    measure();
-    return () => {
-      cancelAnimationFrame(frame);
-      window.clearTimeout(resizeTimer);
-      window.removeEventListener("scroll", update);
-      window.removeEventListener("resize", onResize);
-      document.removeEventListener("visibilitychange", update);
-      reducedMotion.removeEventListener("change", measure);
-      target.classList.remove("is-pinned");
-    };
-  }, []);
-
-  return <section ref={section} className="pinned-path" id="learning-path"><div className="pinned-stage" ref={stage}><div className="pinned-heading shell"><span className="section-kicker">LỘ TRÌNH 4 BƯỚC</span><h2>Từ MC trên sân khấu<br /><em>đến portfolio trên mạng.</em></h2><p>Mỗi chặng đều có bài tập thực hành, kết thúc khóa học bạn có trang portfolio của riêng mình.</p></div><div className="pinned-viewport"><div className="pinned-track" ref={track}>{steps.map((step) => <article className={`path-card ${step.tone}`} key={step.number}><span className="path-card-number">{step.number}</span><div className="path-card-illustration"><span>{step.number}</span><i /></div><h3>{step.title}</h3><p>{step.detail}</p><span className="path-card-foot">LỘ TRÌNH HỌC TẬP</span></article>)}</div></div><div className="pinned-foot shell"><span>KÉO CUỘN ĐỂ KHÁM PHÁ</span><span aria-hidden="true">→</span></div></div></section>;
+  return <section className="pinned-path" id="learning-path">
+    <div className="pinned-layout shell">
+      <div className="pinned-heading">
+        <span className="section-kicker">LỘ TRÌNH 4 BƯỚC</span>
+        <h2>Từ ý tưởng đến lịch show đầu tiên</h2>
+      </div>
+      <figure className="pinned-image">
+        <Image
+          src="/images/effect/lotrinh.png"
+          alt="Portfolio MC hiển thị trên laptop"
+          fill
+          sizes="(max-width: 760px) 100vw, 42vw"
+          priority
+        />
+      </figure>
+      <div className="pinned-content">
+        <div className="pinned-track">
+          {steps.map((step) => <article className="path-card" key={step.number}>
+            <span className="path-card-number">{step.number}</span>
+            <div className="path-card-copy">
+              <h3>{step.title}</h3>
+              <p>{step.detail}</p>
+            </div>
+          </article>)}
+        </div>
+      </div>
+    </div>
+  </section>;
 }

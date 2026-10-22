@@ -19,7 +19,6 @@ export async function SiteFooter() {
       <h3>KHÁM PHÁ</h3>
       <Link href="/#featured-courses">Tất cả khóa học</Link>
       <Link href="/#learning-path">Lộ trình học</Link>
-      <Link href="/#category-title">Danh mục</Link>
       <Link href="/#testimonials">Câu chuyện học viên</Link>
     </div>
     <div className="footer-column"><h3>VỀ CHÚNG TÔI</h3>

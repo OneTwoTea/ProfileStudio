@@ -62,7 +62,6 @@ export function HeroCarousel() {
           sizes="(max-width: 760px) 90vw, 45vw"
         />
       </div>
-
       <div className="hero-carousel-footer">
         <div className="hero-carousel-controls" aria-label="Điều khiển carousel">
           <button type="button" onClick={() => showSlide(activeIndex - 1)} aria-label="Ảnh trước">←</button>

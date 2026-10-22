@@ -8,7 +8,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import type { Category, Course } from "@/lib/types";
 
 const money = new Intl.NumberFormat("vi-VN", { maximumFractionDigits: 0 });
-const tabLabels = ["Tất cả", "Mới bắt đầu", "Thiết kế"];
+const tabLabels = ["Tất cả", "Người mới", "Thiết kế"];
 
 function formatDuration(seconds: number) {
   const hours = Math.floor(seconds / 3600);
@@ -18,7 +18,10 @@ function formatDuration(seconds: number) {
 
 function CourseCard({ course, index }: { course: Course; index: number }) {
   function handlePointerMove(event: PointerEvent<HTMLElement>) {
-    if (event.pointerType !== "mouse" || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (event.pointerType !== "mouse" || window.innerWidth < 768 || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      resetPointer();
+      return;
+    }
     const rect = event.currentTarget.getBoundingClientRect();
     const x = (event.clientX - rect.left) / rect.width - .5;
     const y = (event.clientY - rect.top) / rect.height - .5;
@@ -32,6 +35,8 @@ function CourseCard({ course, index }: { course: Course; index: number }) {
 
   const name = course.instructor?.name || "Giảng viên đang cập nhật";
   const status = course.status === "published" ? "Đang mở" : course.status === "draft" ? "Sắp ra mắt" : "Khóa học";
+  const originalPrice = course.originalPrice
+    ?? (course.slug === "thiet-ke-landing-page" && course.price === 149000 ? 299000 : undefined);
 
   return (
     <article id={`course-${course.id}`} className={`store-course-card card-tone-${index % 3}`} onPointerMove={handlePointerMove} onPointerLeave={resetPointer}>
@@ -47,12 +52,11 @@ function CourseCard({ course, index }: { course: Course; index: number }) {
             />
           ) : (
             <>
-              <span className="course-image-note" aria-hidden="true">ẢNH KHÓA HỌC · SẼ CẬP NHẬT</span>
               <span className="course-image-monogram" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
             </>
           )}
           <Badge tone={course.status === "published" ? "green" : "neutral"}>{status}</Badge>
-          <span className="course-image-arrow" aria-hidden="true">↗</span>
+          <span className="course-image-arrow" aria-hidden="true"></span>
         </div>
         <div className="store-course-content">
           <span className="store-course-category">{course.category?.name ?? "Chủ đề"}</span>
@@ -63,9 +67,22 @@ function CourseCard({ course, index }: { course: Course; index: number }) {
             <span>{money.format(course.studentCount ?? 0)} học viên</span>
           </div>
           <div className="store-course-rating"><span aria-label={`Đánh giá ${course.rating} trên 5`}>★ {course.rating.toFixed(1)}</span><span>({course.reviewCount} đánh giá)</span></div>
-          <div className="store-course-price"><strong>{money.format(course.price)} ₫</strong><span>học trọn đời</span></div>
         </div>
       </a>
+      <div className={`store-course-offer-row${course.status === "published" ? "" : " is-not-enrollable"}`}>
+        <div className="store-course-price">
+          <div className="store-course-price-values">
+            {originalPrice != null && originalPrice > course.price && (
+              <s className="store-course-original-price">{money.format(originalPrice)} ₫</s>
+            )}
+            <strong>{money.format(course.price)} ₫</strong>
+          </div>
+          <span>học trọn đời</span>
+        </div>
+        {course.status === "published" && <a className="store-course-enroll" href="https://forms.gle/gd3vppCtePBSB2vh6">
+          Đăng ký <span aria-hidden="true"></span>
+        </a>}
+      </div>
     </article>
   );
 }
@@ -110,7 +127,7 @@ export function CourseExplorer() {
     const normalizedQuery = query.trim().toLocaleLowerCase("vi");
     const matchesQuery = !normalizedQuery || `${course.title} ${course.subtitle} ${course.category?.name ?? ""} ${course.instructor?.name ?? ""}`.toLocaleLowerCase("vi").includes(normalizedQuery);
     const matchesTab = selectedTab === "Tất cả"
-      || (selectedTab === "Mới bắt đầu" && course.level === "beginner")
+      || (selectedTab === "Người mới" && course.level === "beginner")
       || (selectedTab === "Thiết kế" && /landing page|showreel|hình ảnh/i.test(course.category?.name ?? ""))
       || selectedTab === course.category?.name
       || selectedTab === course.category?.slug;

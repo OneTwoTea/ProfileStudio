@@ -65,6 +65,7 @@ export interface Course {
   status: CourseStatus | (string & {});
   level: CourseLevel | (string & {});
   price: VndAmount;
+  originalPrice?: VndAmount;
   currency: "VND" | (string & {});
   cover: ImageAsset | null;
   category: Category;

@@ -25,7 +25,7 @@ export function HeroSearch() {
 
   return <>
     <form className="hero-search" role="search" onSubmit={submit}>
-      <label className="visually-hidden" htmlFor="hero-course-search">Tìm khóa học cho MC</label><span aria-hidden="true">⌕</span><input id="hero-course-search" name="q" placeholder="VD: landing page, showreel, thương hiệu..." /><button type="submit" aria-label="Tìm khóa học">Tìm khóa học <span>→</span></button>
+      <label className="visually-hidden" htmlFor="hero-course-search">Tìm khóa học cho MC</label><span aria-hidden="true">⌕</span><input id="hero-course-search" name="q" placeholder="VD: landing page, showreel, thương hiệu..." /><button type="submit" aria-label="Tìm khóa học">Tìm khóa học</button>
     </form>
     <div className="hero-popular"><span>ĐƯỢC QUAN TÂM:</span>{["Landing page", "Showreel", "Thương hiệu"].map((label) => <button key={label} type="button" onClick={() => popularSearch(label)}>{label}</button>)}</div>
   </>;
@@ -46,7 +46,7 @@ export function MockNewsletter() {
     event.preventDefault();
     setSubmitted(true);
   }
-  return <><form onSubmit={submit}><label className="visually-hidden" htmlFor="newsletter-email">Email nhận tin</label><input id="newsletter-email" type="email" placeholder="Địa chỉ email" required /><button type="submit" aria-label="Đăng ký nhận tin">→</button></form></>;
+  return <><form onSubmit={submit}><label className="visually-hidden" htmlFor="newsletter-email">Email nhận tin</label><input id="newsletter-email" type="email" placeholder="Địa chỉ email" required /><button type="submit" aria-label="Đăng ký nhận tin"></button></form></>;
 }
 
 export function TestimonialControls() {
