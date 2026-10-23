@@ -27,16 +27,19 @@ export function ScrollProgress() {
 
 export function MotionEnhancements() {
   useEffect(() => {
-    document.querySelectorAll<HTMLElement>(".testimonial-card, .faq-item, .category-chip, .trust-band li, .portfolio-card, .service-step").forEach((node) => {
+    document.querySelectorAll<HTMLElement>(".testimonial-card, .faq-item, .category-chip, .trust-band li, .portfolio-card, .service-step, .pinned-path .path-card").forEach((node) => {
       const index = node.parentElement ? Array.prototype.indexOf.call(node.parentElement.children, node) : 0;
       node.classList.add("reveal-item");
       node.style.setProperty("--reveal-delay", `${Math.min(index, 6) * 80}ms`);
     });
+    // iOS Safari only applies :active (used for the touch zoom on cards) when a touch listener exists.
+    const noopTouch = () => {};
+    document.addEventListener("touchstart", noopTouch, { passive: true });
     const nodes = Array.from(document.querySelectorAll<HTMLElement>(".reveal, .reveal-item, [data-count]"));
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduced || !("IntersectionObserver" in window)) {
       nodes.forEach((node) => { node.classList.add("is-visible"); if (node.dataset.count) node.textContent = Number(node.dataset.count).toLocaleString("vi-VN"); });
-      return;
+      return () => document.removeEventListener("touchstart", noopTouch);
     }
 
     const observer = new IntersectionObserver((entries) => {
@@ -62,17 +65,24 @@ export function MotionEnhancements() {
     }, { threshold: .16, rootMargin: "0px 0px -6% 0px" });
 
     nodes.forEach((node) => observer.observe(node));
-    return () => observer.disconnect();
+    return () => { observer.disconnect(); document.removeEventListener("touchstart", noopTouch); };
   }, []);
 
   return null;
 }
 
+const stepIcons = {
+  target: <><circle cx="12" cy="12" r="8" /><circle cx="12" cy="12" r="4" /><circle cx="12" cy="12" r=".6" fill="currentColor" /></>,
+  media: <><rect x="3.5" y="5" width="17" height="14" rx="2.5" /><circle cx="9" cy="10" r="1.6" /><path d="m4 17 5-4.5 4 3.5 3-2.5 4 3.5" /></>,
+  layout: <><rect x="3.5" y="4.5" width="17" height="15" rx="2.5" /><path d="M3.5 9h17M9.5 9v10.5" /></>,
+  launch: <><path d="M5 19c1-3 2.5-4.5 4-5" /><path d="M14.5 4.5c3 0 5 2 5 5-1.5 3.5-5 6.5-8 7.5L7 12.5c1-3 4-6.5 7.5-8Z" /><circle cx="14.5" cy="9.5" r="1.4" /></>,
+};
+
 const steps = [
-  { number: "01", title: "Định vị bản thân", detail: "Xác định phong cách dẫn, tệp khách và thông điệp riêng.", tone: "path-blue" },
-  { number: "02", title: "Chuẩn bị tư liệu", detail: "Chọn ảnh sân khấu, dựng showreel, liệt kê sự kiện tiêu biểu.", tone: "path-gold" },
-  { number: "03", title: "Dựng landing page", detail: "Dựng trang portfolio từ template, thay đổi nội dung, thêm hình ảnh và văn bản theo ý muốn.", tone: "path-lilac" },
-  { number: "04", title: "Xuất bản & nhận show", detail: "Gắn tên miền, form đặt lịch và gửi link cho khách hàng.", tone: "path-green" },
+  { number: "01", title: "Định vị bản thân", detail: "Xác định phong cách dẫn, tệp khách và thông điệp riêng.", tag: "Chiến lược", tone: "path-blue", icon: stepIcons.target },
+  { number: "02", title: "Chuẩn bị tư liệu", detail: "Chọn ảnh sân khấu, dựng showreel, liệt kê sự kiện tiêu biểu.", tag: "Nội dung", tone: "path-gold", icon: stepIcons.media },
+  { number: "03", title: "Dựng landing page", detail: "Dựng trang portfolio từ template, thay đổi nội dung, thêm hình ảnh và văn bản theo ý muốn.", tag: "Thiết kế", tone: "path-lilac", icon: stepIcons.layout },
+  { number: "04", title: "Xuất bản & nhận show", detail: "Gắn tên miền, form đặt lịch và gửi link cho khách hàng.", tag: "Ra mắt", tone: "path-green", icon: stepIcons.launch },
 ];
 
 export function PinnedLearningPath() {
@@ -80,27 +90,35 @@ export function PinnedLearningPath() {
     <div className="pinned-layout shell">
       <div className="pinned-heading">
         <span className="section-kicker">LỘ TRÌNH 4 BƯỚC</span>
-        <h2>Từ ý tưởng đến lịch show đầu tiên</h2>
+        <h2>Từ ý tưởng đến <em>lịch show đầu tiên</em></h2>
       </div>
       <figure className="pinned-image">
-        <Image
-          src="/images/effect/lotrinh.png"
-          alt="Portfolio MC hiển thị trên laptop"
-          fill
-          sizes="(max-width: 760px) 100vw, 42vw"
-          priority
-        />
+        <div className="pinned-image-frame">
+          <Image
+            src="/images/effect/lotrinh.png"
+            alt="Portfolio MC hiển thị trên laptop"
+            fill
+            sizes="(max-width: 760px) 100vw, 42vw"
+            priority
+          />
+        </div>
       </figure>
       <div className="pinned-content">
-        <div className="pinned-track">
-          {steps.map((step) => <article className="path-card" key={step.number}>
-            <span className="path-card-number">{step.number}</span>
+        <ol className="pinned-track">
+          {steps.map((step) => <li className={`path-card ${step.tone}`} key={step.number}>
+            <span className="path-card-node" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">{step.icon}</svg>
+            </span>
             <div className="path-card-copy">
+              <div className="path-card-meta">
+                <span className="path-card-number">Bước {step.number}</span>
+                <span className="path-card-tag">{step.tag}</span>
+              </div>
               <h3>{step.title}</h3>
               <p>{step.detail}</p>
             </div>
-          </article>)}
-        </div>
+          </li>)}
+        </ol>
       </div>
     </div>
   </section>;

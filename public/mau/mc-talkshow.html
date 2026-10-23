@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quốc Bảo — MC truyền hình &amp; talkshow (mẫu portfolio)</title>
+  <meta name="description" content="Mẫu landing page portfolio cho MC truyền hình và talkshow do Profile Studio thiết kế. Nội dung chỉ mang tính minh họa.">
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Noto+Serif+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root { --black: #0d0d0d; --paper: #f4f1ea; --ink: #141414; --muted: #6b6b6b; --line: #d9d4c8; --red: #d4402c; --serif: "Noto Serif Display", Georgia, serif; --sans: "Be Vietnam Pro", Arial, sans-serif; --wrap: min(1160px, calc(100% - 40px)); }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font: 15px/1.7 var(--sans); -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: var(--wrap); margin-inline: auto; }
+    .demo-ribbon { background: var(--black); color: #bdbdbd; font-size: 12px; text-align: center; padding: 7px 16px; }
+    .label { font-size: 11px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; }
+    .label.red { color: var(--red); }
+
+    .nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 72px; border-bottom: 1px solid var(--line); }
+    .brand { font-weight: 700; letter-spacing: .14em; font-size: 13px; }
+    .nav ul { display: flex; gap: 28px; margin: 0; padding: 0; list-style: none; font-size: 13px; }
+    .nav a.contact { padding: 8px 16px; border: 1px solid var(--ink); border-radius: 999px; font-size: 12px; font-weight: 600; }
+
+    .hero .wrap { padding-block: 56px 48px; }
+    .hero h1 { margin: 18px 0 0; font: 400 clamp(48px, 9vw, 136px)/.95 var(--serif); letter-spacing: -.03em; }
+    .hero h1 em { color: var(--red); }
+    .hero-row { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: end; margin-top: 36px; padding-top: 28px; border-top: 1px solid var(--line); }
+    .hero-row p { margin: 0; max-width: 460px; color: var(--muted); font-size: 16px; }
+    .hero-row ul { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 10px; margin: 0; padding: 0; list-style: none; }
+    .hero-row li { padding: 8px 14px; border: 1px solid var(--line); border-radius: 999px; font-size: 12px; font-weight: 600; }
+
+    .studio { margin-top: 8px; aspect-ratio: 21 / 9; border-radius: 4px; background: radial-gradient(ellipse 40% 60% at 50% 40%, rgba(255, 255, 255, .14), transparent 70%), linear-gradient(180deg, #1c1c1c, #070707); display: flex; align-items: flex-end; justify-content: space-between; padding: 22px 26px; color: #fff; }
+    .studio b { font: italic 400 clamp(28px, 4vw, 52px)/1 var(--serif); }
+    .studio span { font-size: 11px; letter-spacing: .2em; opacity: .7; }
+    .onair { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 4px; background: var(--red); font-size: 11px; font-weight: 700; letter-spacing: .14em; }
+
+    .section { padding-block: 96px; }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 36px; padding-bottom: 18px; border-bottom: 1px solid var(--ink); }
+    .section-head h2 { margin: 0; font: 400 clamp(40px, 6vw, 80px)/.95 var(--serif); }
+
+    .episodes { display: grid; }
+    .ep { display: grid; grid-template-columns: 80px 1fr auto; gap: 24px; align-items: center; padding: 22px 0; border-bottom: 1px solid var(--line); transition: padding .3s ease; }
+    .ep:hover { padding-left: 10px; }
+    .ep b { font: 400 34px/1 var(--serif); color: var(--muted); }
+    .ep h3 { margin: 0 0 2px; font-size: 18px; font-weight: 600; }
+    .ep p { margin: 0; color: var(--muted); font-size: 13px; }
+    .ep span { font-size: 12px; font-weight: 600; white-space: nowrap; }
+
+    .dark { background: var(--black); color: #fff; }
+    .dark .section-head { border-color: #fff; }
+    .about { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
+    .about p { margin: 0 0 16px; color: #bdbdbd; font-size: 16px; }
+    .about p:first-child { color: #fff; font: italic 400 clamp(26px, 3vw, 36px)/1.3 var(--serif); }
+    .facts { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: #2a2a2a; }
+    .facts div { padding: 26px; background: var(--black); }
+    .facts strong { display: block; font: 400 52px/1 var(--serif); }
+    .facts span { color: #9a9a9a; font-size: 12px; }
+
+    .press { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .press blockquote { margin: 0; padding-top: 20px; border-top: 3px solid var(--ink); font: italic 400 24px/1.35 var(--serif); }
+    .press cite { display: block; margin-top: 14px; font: normal 600 11px var(--sans); letter-spacing: .14em; color: var(--muted); }
+
+    .contact-band { text-align: center; }
+    .contact-band h2 { margin: 0 0 24px; font: 400 clamp(44px, 8vw, 120px)/.95 var(--serif); }
+    .contact-band h2 em { color: var(--red); }
+    form { display: grid; grid-template-columns: 1fr 1fr auto; gap: 12px; max-width: 820px; margin: 0 auto; text-align: left; }
+    input { width: 100%; padding: 15px 16px; border: 1px solid var(--ink); border-radius: 999px; background: transparent; font: inherit; font-size: 14px; color: var(--ink); }
+    input:focus { outline: 2px solid var(--red); outline-offset: 1px; }
+    button { padding: 0 28px; min-height: 52px; border: 0; border-radius: 999px; background: var(--ink); color: #fff; font: 600 14px var(--sans); cursor: pointer; transition: background .25s; }
+    button:hover { background: var(--red); }
+    .note { grid-column: 1 / -1; margin: 4px 0 0; color: var(--muted); font-size: 12px; text-align: center; }
+    .status { grid-column: 1 / -1; margin: 0; color: #16794b; font-size: 13px; text-align: center; }
+    .foot .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding-block: 26px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; }
+    .foot a { color: var(--red); }
+
+    @media (max-width: 900px) {
+      .hero-row, .about { grid-template-columns: 1fr; }
+      .hero-row ul { justify-content: flex-start; }
+      .press { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .nav ul { display: none; }
+      .section { padding-block: 64px; }
+      .studio { aspect-ratio: 4 / 3; }
+      .ep { grid-template-columns: 48px 1fr; gap: 14px; }
+      .ep span { grid-column: 2; }
+      .section-head { flex-direction: column; align-items: flex-start; }
+      form { grid-template-columns: 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .ep { transition: none; } .ep:hover { padding-left: 0; } }
+  </style>
+</head>
+<body>
+  <div class="demo-ribbon">Mẫu landing page do Profile Studio thiết kế. Tên, chương trình và trích dẫn chỉ mang tính minh họa.</div>
+
+  <nav class="nav" aria-label="Điều hướng">
+    <div class="wrap">
+      <a class="brand" href="#top">QUỐC BẢO</a>
+      <ul>
+        <li><a href="#chuong-trinh">Chương trình</a></li>
+        <li><a href="#gioi-thieu">Giới thiệu</a></li>
+        <li><a href="#bao-chi">Báo chí</a></li>
+      </ul>
+      <a class="contact" href="#lien-he">Liên hệ</a>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="wrap">
+      <span class="label red">MC truyền hình · Talkshow · Podcast</span>
+      <h1>Đặt câu hỏi <em>đúng</em>,<br>để câu chuyện tự kể.</h1>
+      <div class="hero-row">
+        <p>Tôi là Quốc Bảo — người dẫn talkshow và bản tin truyền hình. Tôi tìm ra góc nhìn khiến khách mời muốn chia sẻ, và khán giả muốn xem đến phút cuối.</p>
+        <ul><li>Truyền hình</li><li>Talkshow</li><li>Podcast</li><li>Sự kiện</li></ul>
+      </div>
+      <div class="studio" role="img" aria-label="Khung ảnh trường quay (minh họa)">
+        <div><span class="onair">● ON AIR</span><br><br><b>“Người trong cuộc”</b></div>
+        <span>STUDIO 3 · 20:00</span>
+      </div>
+    </div>
+  </header>
+
+  <section class="section" id="chuong-trinh">
+    <div class="wrap">
+      <div class="section-head"><h2>Chương trình</h2><span class="label">2019 — nay</span></div>
+      <div class="episodes">
+        <div class="ep"><b>01</b><div><h3>Người trong cuộc</h3><p>Talkshow phỏng vấn chân dung, phát sóng hằng tuần.</p></div><span>120+ số</span></div>
+        <div class="ep"><b>02</b><div><h3>Bản tin Kinh tế tối</h3><p>Dẫn bản tin và điều phối khách mời chuyên gia.</p></div><span>2021 – 2024</span></div>
+        <div class="ep"><b>03</b><div><h3>Podcast “Chậm lại”</h3><p>Trò chuyện về nghề nghiệp và lựa chọn sống.</p></div><span>60 tập</span></div>
+        <div class="ep"><b>04</b><div><h3>Diễn đàn doanh nhân trẻ</h3><p>Dẫn chương trình và điều phối tọa đàm trực tiếp.</p></div><span>Sự kiện</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark" id="gioi-thieu">
+    <div class="wrap">
+      <div class="section-head"><h2>Giới thiệu</h2><span class="label">Hồ sơ</span></div>
+      <div class="about">
+        <div>
+          <p>“Một cuộc trò chuyện hay bắt đầu từ việc lắng nghe nhiều hơn nói.”</p>
+          <p>Tốt nghiệp ngành báo chí, tôi bắt đầu từ vị trí phóng viên hiện trường trước khi ngồi vào ghế dẫn. Kinh nghiệm đó giúp tôi chuẩn bị kỹ, hỏi sâu và giữ nhịp chương trình.</p>
+        </div>
+        <div class="facts">
+          <div><strong>10</strong><span>năm làm truyền hình</span></div>
+          <div><strong>400+</strong><span>khách mời đã phỏng vấn</span></div>
+          <div><strong>3</strong><span>chương trình dẫn chính</span></div>
+          <div><strong>1</strong><span>podcast riêng</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="bao-chi">
+    <div class="wrap">
+      <div class="section-head"><h2>Họ nói gì</h2><span class="label">Trích dẫn mẫu</span></div>
+      <div class="press">
+        <blockquote>“Lối dẫn điềm đạm nhưng sắc sảo, không bao giờ lấn át khách mời.”<cite>TẠP CHÍ MẪU A</cite></blockquote>
+        <blockquote>“Một trong những gương mặt talkshow được chờ đợi mỗi tối.”<cite>BÁO MẪU B</cite></blockquote>
+        <blockquote>“Anh ấy khiến những người kiệm lời nhất cũng mở lòng.”<cite>NHÀ SẢN XUẤT MẪU C</cite></blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section class="section contact-band" id="lien-he" style="padding-top:0">
+    <div class="wrap">
+      <span class="label red">Hợp tác</span>
+      <h2>Cùng làm một <em>câu chuyện</em>.</h2>
+      <form class="demo-form">
+        <input aria-label="Họ tên" placeholder="Họ tên" required autocomplete="name">
+        <input aria-label="Email" type="email" placeholder="Email" required autocomplete="email">
+        <button type="submit">Gửi lời mời</button>
+        <p class="note">Biểu mẫu minh họa: thông tin không được gửi đi.</p>
+        <p class="status" role="status"></p>
+      </form>
+    </div>
+  </section>
+
+  <footer class="foot"><div class="wrap"><span>© 2026 Quốc Bảo (mẫu minh họa)</span><span>Thiết kế bởi <a href="/" target="_top">Profile Studio</a></span></div></footer>
+
+  <script>
+    document.querySelector(".demo-form").addEventListener("submit", function (event) {
+      event.preventDefault();
+      event.target.querySelector(".status").textContent = "Đây là bản mẫu nên lời mời chưa được gửi.";
+    });
+  </script>
+</body>
+</html>

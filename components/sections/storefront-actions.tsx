@@ -24,10 +24,16 @@ export function HeroSearch() {
   }
 
   return <>
-    <form className="hero-search" role="search" onSubmit={submit}>
-      <label className="visually-hidden" htmlFor="hero-course-search">Tìm khóa học cho MC</label><span aria-hidden="true">⌕</span><input id="hero-course-search" name="q" placeholder="VD: landing page, showreel, thương hiệu..." /><button type="submit" aria-label="Tìm khóa học">Tìm khóa học</button>
+    <form className="ps-search" role="search" onSubmit={submit}>
+      <label className="visually-hidden" htmlFor="hero-course-search">Tìm khóa học cho MC</label>
+      <svg className="ps-search-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" /></svg>
+      <input id="hero-course-search" name="q" placeholder="VD: landing page, showreel, thương hiệu..." />
+      <button type="submit">Tìm khóa học</button>
     </form>
-    <div className="hero-popular"><span>ĐƯỢC QUAN TÂM:</span>{["Landing page", "Showreel", "Thương hiệu"].map((label) => <button key={label} type="button" onClick={() => popularSearch(label)}>{label}</button>)}</div>
+    <div className="ps-popular">
+      <span>ĐƯỢC QUAN TÂM</span>
+      {["Landing page", "Showreel", "Thương hiệu"].map((label) => <button key={label} type="button" onClick={() => popularSearch(label)}>{label}</button>)}
+    </div>
   </>;
 }
 

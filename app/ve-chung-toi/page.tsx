@@ -3,6 +3,18 @@ import { StoreHeader } from "@/components/sections/store-header";
 import { SiteFooter } from "@/components/sections/site-footer";
 import Image from "next/image";
 
+// Logos from Devicon; mono icons are black and get inverted in dark mode.
+const skills = [
+  { name: "Next.js", icon: "/images/skills/nextjs.svg", mono: true },
+  { name: "Tailwind CSS", icon: "/images/skills/tailwindcss.svg" },
+  { name: "HTML", icon: "/images/skills/html5.svg" },
+  { name: "CSS", icon: "/images/skills/css3.svg" },
+  { name: "GitHub", icon: "/images/skills/github.svg", mono: true },
+  { name: "VS Code", icon: "/images/skills/vscode.svg" },
+  { name: "Vercel", icon: "/images/skills/vercel.svg", mono: true },
+  { name: "Node.js", icon: "/images/skills/nodejs.svg" },
+];
+
 export default function AboutPage() {
   return (
     <main className="market-home about-page">
@@ -20,6 +32,26 @@ export default function AboutPage() {
               Profile Studio giúp người dẫn chương trình xây dựng hình ảnh chuyên nghiệp trên môi trường số - qua khóa học tự làm, dịch vụ thiết kế và những mẫu portfolio dành riêng cho MC.
             </p>
           </div>
+          <aside className="about-skills" aria-labelledby="about-skills-title">
+            <span className="section-kicker" id="about-skills-title">
+              CÔNG NGHỆ CHÚNG TÔI SỬ DỤNG
+            </span>
+            <ul>
+              {skills.map((skill) => (
+                <li key={skill.name}>
+                  <Image
+                    src={skill.icon}
+                    alt=""
+                    width={22}
+                    height={22}
+                    unoptimized
+                    className={skill.mono ? "about-skill-mono" : undefined}
+                  />
+                  {skill.name}
+                </li>
+              ))}
+            </ul>
+          </aside>
         </div>
       </section>
       <section

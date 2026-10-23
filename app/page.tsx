@@ -1,12 +1,11 @@
 import Link from "next/link";
 import { CourseExplorer } from "@/components/sections/course-explorer";
-import { HeroCarousel } from "@/components/sections/hero-carousel";
+import { HeroVideo } from "@/components/sections/hero-video";
 import { SiteFooter } from "@/components/sections/site-footer";
 import { MagneticLink, StoreHeader } from "@/components/sections/store-header";
 import { MotionEnhancements, PinnedLearningPath, ScrollProgress } from "@/components/motion/page-effects";
 import { apiClient } from "@/lib/api";
 import { CategoryChips, HeroSearch, TestimonialControls } from "@/components/sections/storefront-actions";
-import { HeroRibbonBackground } from "@/components/sections/hero-ribbon-background";
 
 const categories = [
  // { slug: "dinh-vi-thuong-hieu-mc", name: "Định vị thương hiệu MC", icon: "◇" },
@@ -56,43 +55,52 @@ export default async function Home() {
       <MotionEnhancements />
       <StoreHeader />
 
-      <section className="store-hero" aria-labelledby="hero-title">
-        <HeroRibbonBackground />
-        <div className="store-hero-inner shell">
-          <div className="store-hero-copy reveal">
-          <h1
-            id="hero-title"
-            aria-label="Tự tạo landing page portfolio MC chuyên nghiệp."
-          >
-            <span aria-hidden="true">Tự tạo</span>
-            <br/>
-            <span aria-hidden="true">portfolio MC</span>
-            <br/>
-            <span aria-hidden="true">chuyên nghiệp.</span>
-          </h1>
-          <p className="store-hero-description">
-            Học cách xây landing page giới thiệu bản thân, showreel và sự kiện đã dẫn - để khách hàng tin chọn bạn ngay từ lần đầu xem hồ sơ.
-          </p>
-          <HeroSearch />
-          <div className="hero-proof">
-            <span>
-              Không cần biết code.
+      <section className="ps-hero" aria-labelledby="hero-title">
+        <div className="ps-hero-glow" aria-hidden="true" />
+        <div className="ps-hero-inner">
+          <div className="ps-hero-copy reveal">
+            <p className="ps-hero-badge">
+              <span>MỚI</span>
+              Khóa học dành riêng cho MC &amp; người dẫn chương trình
+            </p>
+            <h1 id="hero-title">
+              Tự tạo <span className="ps-hero-nowrap">portfolio <span className="ps-hero-mark">MC</span></span>
               <br />
-              <strong>Có portfolio sau khóa học.</strong>
-            </span>
-            <span className="proof-divider" />
-            <span className="proof-rating">
-              <b>★ 4.9</b>
-              <small>ĐIỂM ĐÁNH GIÁ</small>
-            </span>
-          </div>
+              <span className="ps-hero-accent">chuyên nghiệp.</span>
+            </h1>
+            <p className="ps-hero-description">
+              Học cách xây landing page giới thiệu bản thân, showreel và sự kiện đã dẫn - để khách hàng <strong>tin chọn bạn ngay từ lần đầu</strong> xem hồ sơ.
+            </p>
+            <HeroSearch />
+            <div className="ps-hero-proof">
+              <div className="ps-proof-item">
+                <span className="ps-proof-icon" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="m8 7-5 5 5 5M16 7l5 5-5 5" />
+                    <path d="m4 20 16-16" />
+                  </svg>
+                </span>
+                <span>
+                  Không cần biết code
+                  <strong>Có portfolio sau khóa học</strong>
+                </span>
+              </div>
+              <div className="ps-proof-rating">
+                <b>4.9</b>
+                <span>
+                  <span className="ps-proof-stars" role="img" aria-label="Đánh giá 4.9 trên 5 sao">★★★★★</span>
+                  <small>ĐIỂM ĐÁNH GIÁ</small>
+                </span>
+              </div>
+            </div>
           </div>
 
-          <div className="store-hero-visual reveal">
-            <HeroCarousel />
+          <div className="ps-hero-visual reveal">
+            <HeroVideo />
           </div>
         </div>
       </section>
+
             <section className="bento-section shell" aria-label="Lợi ích khóa học">
         <div className="bento-header reveal">
           <div className="bento-header-left">
@@ -100,7 +108,7 @@ export default async function Home() {
             <h2>
               Bạn dẫn hay trên sân khấu,
               <br />
-              hãy để hồ sơ nói thay bạn.
+              <em>hãy để hồ sơ nói thay bạn.</em>
             </h2>
           </div>
           <div className="bento-header-right">
@@ -112,10 +120,6 @@ export default async function Home() {
 
         <div className="bento-grid">
           <article className="bento-card reveal">
-            <div className="bento-card-top">
-              <span className="bento-card-num">01</span>
-              <span className="bento-card-icon" aria-hidden="true">✳</span>
-            </div>
             <div className="bento-card-heading">
               <span className="section-kicker">MC PORTFOLIO</span>
               <h3>Showreel &amp; Hồ sơ số</h3>
@@ -123,6 +127,11 @@ export default async function Home() {
             <p className="bento-card-desc">
               Gói gọn hình ảnh sân khấu, video showreel và thông tin liên hệ trong một trang chuyên nghiệp để khách hàng tin chọn bạn ngay từ lần đầu.
             </p>
+            <ul className="bento-tags" aria-label="Nội dung hồ sơ">
+              <li>Showreel</li>
+              <li>Ảnh sân khấu</li>
+              <li>Liên hệ nhanh</li>
+            </ul>
             <div className="bento-card-action">
               <MagneticLink
                 href="#featured-courses"
@@ -134,10 +143,6 @@ export default async function Home() {
           </article>
 
           <article className="bento-card reveal">
-            <div className="bento-card-top">
-              <span className="bento-card-num">02</span>
-              <span className="bento-card-icon" aria-hidden="true">↗</span>
-            </div>
             <div className="bento-card-heading">
               <span className="section-kicker">TEMPLATE</span>
               <h3><span data-count="10">10</span><sup>+</sup> Mẫu landing page</h3>
@@ -145,6 +150,11 @@ export default async function Home() {
             <p className="bento-card-desc">
               mẫu landing page cho MC cưới, sự kiện, livestream được thiết kế sẵn, tối ưu hiển thị mượt mà trên mọi thiết bị.
             </p>
+            <ul className="bento-tags" aria-label="Loại mẫu">
+              <li>MC cưới</li>
+              <li>Sự kiện</li>
+              <li>Livestream</li>
+            </ul>
             <div className="bento-card-action">
               <Link href="/mau-portfolio" className="bento-card-link">
                 Xem thư viện mẫu
@@ -153,10 +163,6 @@ export default async function Home() {
           </article>
 
           <article className="bento-card reveal">
-            <div className="bento-card-top">
-              <span className="bento-card-num">03</span>
-              <span className="bento-card-icon" aria-hidden="true">✦</span>
-            </div>
             <div className="bento-card-heading">
               <span className="section-kicker">4 BƯỚC HOÀN THIỆN</span>
               <h3>Từ con số 0 đến trang portfolio nhận show</h3>
@@ -195,68 +201,6 @@ export default async function Home() {
         </div>
         <CourseExplorer />
       </section>
-
-<section className="trust-band">
-        <div className="shell trust-band-inner">
-          <div className="trust-band-header reveal">
-            <span className="section-kicker">VÌ SAO MC CẦN PORTFOLIO?</span>
-          </div>
-
-          <div className="trust-band-grid">
-            <article className="trust-metric-block reveal">
-              <div className="trust-circle-icon" aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
-                  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
-                </svg>
-              </div>
-              <strong className="trust-metric-huge">
-                <span data-count="1">1</span>
-              </strong>
-              <h3 className="trust-metric-title">đường link duy nhất</h3>
-              <p className="trust-metric-desc">
-                Gói trọn toàn bộ hình ảnh, showreel và kinh nghiệm dẫn trong một đường dẫn chuyên nghiệp gửi cho đối tác.
-              </p>
-              <span className="trust-metric-tag">GỬI KHÁCH TRONG MỌI TIN NHẮN</span>
-            </article>
-
-            <article className="trust-metric-block reveal">
-              <div className="trust-circle-icon" aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="12" r="10" />
-                  <polyline points="12 6 12 12 16 14" />
-                </svg>
-              </div>
-              <strong className="trust-metric-huge">
-                <span data-count="24">24</span>
-                <sup>/7</sup>
-              </strong>
-              <h3 className="trust-metric-title">giới thiệu bạn thay bạn</h3>
-              <p className="trust-metric-desc">
-                Trang web hoạt động liên tục 24/7, giúp agency và khách hàng tìm hiểu phong cách và đặt lịch bất cứ lúc nào.
-              </p>
-              <span className="trust-metric-tag">CẢ KHI BẠN ĐANG CẦM MIC</span>
-            </article>
-
-            <article className="trust-metric-block reveal">
-              <div className="trust-circle-icon" aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-                </svg>
-              </div>
-              <strong className="trust-metric-huge">
-                0<span className="metric-star">₫</span>
-              </strong>
-              <h3 className="trust-metric-title">chi phí code website</h3>
-              <p className="trust-metric-desc">
-                Tự tay làm chủ trang cá nhân với công cụ kéo thả trực quan và template có sẵn, không phụ thuộc lập trình viên.
-              </p>
-              <span className="trust-metric-tag">TỰ LÀM VỚI TEMPLATE CÓ SẴN</span>
-            </article>
-          </div>
-        </div>
-      </section>
-
 
       <PinnedLearningPath />
 
@@ -303,17 +247,38 @@ export default async function Home() {
       <section className="faq-section shell" id="faq">
         <div className="faq-intro">
           <span className="section-kicker">CÂU HỎI THƯỜNG GẶP</span>
-          <h2>
-            Trước khi bạn
-            <br />
-            bắt đầu dựng portfolio.
-          </h2>
           <p>Những thắc mắc phổ biến của các MC trước khi đăng ký khóa học.</p>
           {supportEmail && (
             <a href={`mailto:${supportEmail}`} className="section-more">
               Cần hỗ trợ thêm?
             </a>
           )}
+          <div className="why-list">
+            <span className="section-kicker"><em>VÌ SAO MC CẦN PORTFOLIO?</em></span>
+            <ul>
+              <li className="reveal">
+                <strong className="why-list-metric"><span data-count="1">1</span></strong>
+                <div>
+                  <h3>đường link duy nhất</h3>
+                  <p>Gói trọn toàn bộ hình ảnh, showreel và kinh nghiệm dẫn trong một đường dẫn chuyên nghiệp gửi cho đối tác.</p>
+                </div>
+              </li>
+              <li className="reveal">
+                <strong className="why-list-metric"><span data-count="24">24</span><sup>/7</sup></strong>
+                <div>
+                  <h3>giới thiệu bạn thay bạn</h3>
+                  <p>Trang web hoạt động liên tục 24/7, giúp agency và khách hàng tìm hiểu phong cách và đặt lịch bất cứ lúc nào.</p>
+                </div>
+              </li>
+              <li className="reveal">
+                <strong className="why-list-metric">0<sup>₫</sup></strong>
+                <div>
+                  <h3>chi phí code website</h3>
+                  <p>Tự tay làm chủ trang cá nhân với công cụ kéo thả trực quan và template có sẵn, không phụ thuộc lập trình viên.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
         </div>
         <div className="faq-list">
           {faqItems.map((item, index) => (

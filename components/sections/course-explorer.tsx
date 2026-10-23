@@ -1,14 +1,13 @@
 "use client";
 
-import { useEffect, useMemo, useState, type PointerEvent } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import { apiClient } from "@/lib/api";
-import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
-import type { Category, Course } from "@/lib/types";
+import type { Course } from "@/lib/types";
 
 const money = new Intl.NumberFormat("vi-VN", { maximumFractionDigits: 0 });
-const tabLabels = ["Tất cả", "Người mới", "Thiết kế"];
+const enrollUrl = "https://forms.gle/gd3vppCtePBSB2vh6";
 
 function formatDuration(seconds: number) {
   const hours = Math.floor(seconds / 3600);
@@ -16,135 +15,129 @@ function formatDuration(seconds: number) {
   return hours ? `${hours} giờ ${minutes} phút` : `${minutes} phút`;
 }
 
-function CourseCard({ course, index }: { course: Course; index: number }) {
-  function handlePointerMove(event: PointerEvent<HTMLElement>) {
-    if (event.pointerType !== "mouse" || window.innerWidth < 768 || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      resetPointer();
-      return;
-    }
-    const rect = event.currentTarget.getBoundingClientRect();
-    const x = (event.clientX - rect.left) / rect.width - .5;
-    const y = (event.clientY - rect.top) / rect.height - .5;
-    event.currentTarget.style.transform = `perspective(900px) rotateX(${-y * 2.2}deg) rotateY(${x * 2.2}deg) translateY(-3px)`;
-  }
-
-  function resetPointer() {
-    const element = document.getElementById(`course-${course.id}`);
-    if (element) element.style.transform = "";
-  }
-
+function FeaturedCourse({ course }: { course: Course }) {
   const name = course.instructor?.name || "Giảng viên đang cập nhật";
-  const status = course.status === "published" ? "Đang mở" : course.status === "draft" ? "Sắp ra mắt" : "Khóa học";
-  const originalPrice = course.originalPrice
-    ?? (course.slug === "thiet-ke-landing-page" && course.price === 149000 ? 299000 : undefined);
 
   return (
-    <article id={`course-${course.id}`} className={`store-course-card card-tone-${index % 3}`} onPointerMove={handlePointerMove} onPointerLeave={resetPointer}>
-      <a className="store-course-link" href="#faq" aria-label={`Xem thông tin khóa học ${course.title}`}>
-        <div className="store-course-image">
-          {course.cover?.url ? (
-            <Image
-              src={course.cover.url}
-              alt={course.cover.alt ?? course.title}
-              fill
-              sizes="(max-width: 768px) 100vw, 33vw"
-              style={{ objectFit: "cover" }}
-            />
-          ) : (
-            <>
-              <span className="course-image-monogram" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
-            </>
-          )}
-          <Badge tone={course.status === "published" ? "green" : "neutral"}>{status}</Badge>
-          <span className="course-image-arrow" aria-hidden="true"></span>
-        </div>
-        <div className="store-course-content">
-          <span className="store-course-category">{course.category?.name ?? "Chủ đề"}</span>
-          <h3>{course.title}</h3>
-          <span className="store-course-instructor">{name} <span>·</span> Giảng viên</span>
-          <div className="store-course-facts">
-            <span>{formatDuration(course.totalDurationSeconds)}</span>
-            <span>{money.format(course.studentCount ?? 0)} học viên</span>
-          </div>
-          <div className="store-course-rating"><span aria-label={`Đánh giá ${course.rating} trên 5`}>★ {course.rating.toFixed(1)}</span><span>({course.reviewCount} đánh giá)</span></div>
-        </div>
+    <article className="course-spotlight">
+      <a className="course-spotlight-media" href="#faq" aria-label={`Xem thông tin khóa học ${course.title}`}>
+        {course.cover?.url ? (
+          <Image
+            src={course.cover.url}
+            alt={course.cover.alt ?? course.title}
+            fill
+            sizes="(max-width: 860px) 100vw, 58vw"
+            style={{ objectFit: "cover" }}
+          />
+        ) : (
+          <span className="course-image-monogram" aria-hidden="true">01</span>
+        )}
       </a>
-      <div className={`store-course-offer-row${course.status === "published" ? "" : " is-not-enrollable"}`}>
-        <div className="store-course-price">
-          <div className="store-course-price-values">
-            {originalPrice != null && originalPrice > course.price && (
-              <s className="store-course-original-price">{money.format(originalPrice)} ₫</s>
+      <div className="course-spotlight-body">
+        <div className="course-spotlight-tags">
+          <span className="course-spotlight-tag">{course.category?.name ?? "Khóa học"}</span>
+          <span className="course-spotlight-tag is-hot">Bán chạy</span>
+        </div>
+        <h3>{course.title}</h3>
+        <span className="course-spotlight-instructor">{name} <span>·</span> Giảng viên</span>
+        <div className="course-spotlight-facts">
+          <span aria-label={`Đánh giá ${course.rating} trên 5`}><b>★ {course.rating.toFixed(1)}</b> ({course.reviewCount} đánh giá)</span>
+          <span>{formatDuration(course.totalDurationSeconds)}</span>
+          <span>{money.format(course.studentCount ?? 0)} học viên</span>
+        </div>
+        <div className="course-spotlight-offer">
+          <div className="course-spotlight-price">
+            {course.originalPrice != null && course.originalPrice > course.price && (
+              <s>{money.format(course.originalPrice)} ₫</s>
             )}
             <strong>{money.format(course.price)} ₫</strong>
+            <span>Học trọn đời</span>
           </div>
-          <span>học trọn đời</span>
+          <a className="course-spotlight-enroll" href={enrollUrl}>Đăng ký ngay</a>
         </div>
-        {course.status === "published" && <a className="store-course-enroll" href="https://forms.gle/gd3vppCtePBSB2vh6">
-          Đăng ký <span aria-hidden="true"></span>
-        </a>}
       </div>
+    </article>
+  );
+}
+
+function UpcomingCourse({ course, index }: { course: Course; index: number }) {
+  return (
+    <article className={`course-upcoming card-tone-${(index + 1) % 3}`}>
+      <span className="course-upcoming-thumb" aria-hidden="true">
+        {course.cover?.url && <Image src={course.cover.url} alt="" fill sizes="72px" style={{ objectFit: "cover" }} />}
+      </span>
+      <div className="course-upcoming-body">
+        <span className="course-upcoming-category">{course.category?.name ?? "Chủ đề"}</span>
+        <h4>{course.title}</h4>
+        <span className="course-upcoming-instructor">{course.instructor?.name || "Giảng viên đang cập nhật"}</span>
+      </div>
+      <a className="course-upcoming-notify" href={enrollUrl}>Nhận thông báo</a>
     </article>
   );
 }
 
 export function CourseExplorer() {
   const [courses, setCourses] = useState<Course[]>([]);
-  const [categories, setCategories] = useState<Category[]>([]);
-  const [selectedTab, setSelectedTab] = useState("Tất cả");
+  const [category, setCategory] = useState("");
   const [query, setQuery] = useState("");
   const [state, setState] = useState<"loading" | "ready" | "error">("loading");
 
+  function load() {
+    setState("loading");
+    return apiClient.listCourses({ page: 1, pageSize: 100 }).then((page) => {
+      setCourses(page.data);
+      setState("ready");
+    }).catch(() => setState("error"));
+  }
+
   useEffect(() => {
     let active = true;
-    Promise.all([apiClient.listCourses({ page: 1, pageSize: 100 }), apiClient.listCategories()])
-      .then(([coursePage, categoryList]) => {
+    apiClient.listCourses({ page: 1, pageSize: 100 })
+      .then((page) => {
         if (!active) return;
-        setCourses(coursePage.data);
-        setCategories(categoryList);
+        setCourses(page.data);
         setState("ready");
       })
       .catch(() => { if (active) setState("error"); });
     const search = (event: Event) => {
-      const detail = (event as CustomEvent<string>).detail;
-      setQuery(detail ?? "");
-      setSelectedTab("Tất cả");
+      setQuery((event as CustomEvent<string>).detail ?? "");
+      setCategory("");
     };
-    const category = (event: Event) => {
-      const slug = (event as CustomEvent<string>).detail;
+    const pickCategory = (event: Event) => {
       setQuery("");
-      setSelectedTab(slug ?? "Tất cả");
+      setCategory((event as CustomEvent<string>).detail ?? "");
     };
     window.addEventListener("course-search", search);
-    window.addEventListener("course-category", category);
+    window.addEventListener("course-category", pickCategory);
     return () => {
       active = false;
       window.removeEventListener("course-search", search);
-      window.removeEventListener("course-category", category);
+      window.removeEventListener("course-category", pickCategory);
     };
   }, []);
 
   const visibleCourses = useMemo(() => courses.filter((course) => {
     const normalizedQuery = query.trim().toLocaleLowerCase("vi");
     const matchesQuery = !normalizedQuery || `${course.title} ${course.subtitle} ${course.category?.name ?? ""} ${course.instructor?.name ?? ""}`.toLocaleLowerCase("vi").includes(normalizedQuery);
-    const matchesTab = selectedTab === "Tất cả"
-      || (selectedTab === "Người mới" && course.level === "beginner")
-      || (selectedTab === "Thiết kế" && /landing page|showreel|hình ảnh/i.test(course.category?.name ?? ""))
-      || selectedTab === course.category?.name
-      || selectedTab === course.category?.slug;
-    return matchesQuery && matchesTab;
-  }), [courses, query, selectedTab]);
+    const matchesCategory = !category || category === course.category?.slug || category === course.category?.name;
+    return matchesQuery && matchesCategory;
+  }), [courses, query, category]);
+
+  const featured = visibleCourses.find((course) => course.status === "published");
+  const upcoming = visibleCourses.filter((course) => course !== featured);
+  const clearFilters = () => { setQuery(""); setCategory(""); };
 
   return (
     <div className="course-explorer">
-      <div className="course-tabs" role="tablist" aria-label="Lọc khóa học nổi bật">
-        {tabLabels.map((label) => <button key={label} type="button" role="tab" aria-selected={selectedTab === label} className={selectedTab === label ? "course-tab is-selected" : "course-tab"} onClick={() => { setSelectedTab(label); setQuery(""); }}>{label}</button>)}
-        {categories.slice(0, 2).map((category) => <button key={category.id} type="button" role="tab" aria-selected={selectedTab === category.name} className={selectedTab === category.name ? "course-tab is-selected" : "course-tab"} onClick={() => { setSelectedTab(category.name); setQuery(""); }}>{category.name}</button>)}
-      </div>
-      {query && <p className="search-result-note">Kết quả cho “{query}” <button type="button" onClick={() => setQuery("")}>Xóa tìm kiếm</button></p>}
-      {state === "loading" && <div className="store-course-grid" aria-label="Đang tải khóa học">{[0,1,2].map((item) => <div className="store-skeleton-card" key={item}><Skeleton height={190} /><Skeleton className="skeleton-line" /><Skeleton className="skeleton-line short" /></div>)}</div>}
-      {state === "error" && <div className="store-empty" role="alert"><strong>Chưa tải được danh sách khóa học.</strong><p>Kiểm tra kết nối rồi thử lại.</p><button type="button" className="button button-outline" onClick={() => { setState("loading"); apiClient.listCourses({ page: 1, pageSize: 100 }).then((page) => { setCourses(page.data); setState("ready"); }).catch(() => setState("error")); }}>Thử lại</button></div>}
-      {state === "ready" && visibleCourses.length > 0 && <div className="store-course-grid">{visibleCourses.map((course, index) => <CourseCard key={course.id} course={course} index={index} />)}</div>}
-      {state === "ready" && visibleCourses.length === 0 && <div className="store-empty"><strong>Chưa tìm thấy khóa học phù hợp.</strong><p>Thử chủ đề hoặc từ khóa khác.</p><button type="button" className="button button-outline" onClick={() => { setQuery(""); setSelectedTab("Tất cả"); }}>Xem tất cả khóa học</button></div>}
+      {(query || category) && <p className="search-result-note">Kết quả cho “{query || category}” <button type="button" onClick={clearFilters}>Xóa bộ lọc</button></p>}
+      {state === "loading" && <div className="course-spotlight is-loading" aria-label="Đang tải khóa học"><Skeleton height={280} /><div><Skeleton className="skeleton-line" /><Skeleton className="skeleton-line short" /></div></div>}
+      {state === "error" && <div className="store-empty" role="alert"><strong>Chưa tải được danh sách khóa học.</strong><p>Kiểm tra kết nối rồi thử lại.</p><button type="button" className="button button-outline" onClick={load}>Thử lại</button></div>}
+      {state === "ready" && featured && <FeaturedCourse course={featured} />}
+      {state === "ready" && upcoming.length > 0 && <div className="course-upcoming-section">
+        <span className="course-upcoming-label">Sắp ra mắt</span>
+        <div className="course-upcoming-grid">{upcoming.map((course, index) => <UpcomingCourse key={course.id} course={course} index={index} />)}</div>
+      </div>}
+      {state === "ready" && visibleCourses.length === 0 && <div className="store-empty"><strong>Chưa tìm thấy khóa học phù hợp.</strong><p>Thử chủ đề hoặc từ khóa khác.</p><button type="button" className="button button-outline" onClick={clearFilters}>Xem tất cả khóa học</button></div>}
     </div>
   );
 }

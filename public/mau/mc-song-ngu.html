@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Linh Nguyễn — MC song ngữ (mẫu portfolio)</title>
+  <meta name="description" content="Mẫu landing page portfolio cho MC song ngữ do Profile Studio thiết kế. Nội dung chỉ mang tính minh họa.">
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+  <style>
+    :root { --ink: #10213f; --muted: #56627a; --blue: #2457e6; --sky: #e8efff; --cream: #fbf8f2; --line: #e4e7ee; --serif: "Playfair Display", Georgia, serif; --sans: "Be Vietnam Pro", Arial, sans-serif; --wrap: min(1120px, calc(100% - 40px)); }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--cream); color: var(--ink); font: 15px/1.7 var(--sans); -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: var(--wrap); margin-inline: auto; }
+    .demo-ribbon { background: #10213f; color: #fff; font-size: 12px; text-align: center; padding: 7px 16px; opacity: .92; }
+    .kicker { color: var(--blue); font-size: 11px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 24px; border-radius: 10px; font-size: 13px; font-weight: 600; transition: transform .25s ease, background .25s ease; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-blue { background: var(--blue); color: #fff; }
+    .btn-blue:hover { background: #1b45bd; }
+    .btn-line { border: 1px solid var(--ink); }
+
+    .nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 76px; }
+    .brand { font: 600 22px/1 var(--serif); }
+    .nav ul { display: flex; gap: 26px; margin: 0; padding: 0; list-style: none; font-size: 13px; color: var(--muted); }
+    .lang { display: inline-flex; padding: 3px; border: 1px solid var(--line); border-radius: 999px; background: #fff; }
+    .lang button { padding: 6px 14px; border: 0; border-radius: 999px; background: none; font: 600 12px var(--sans); color: var(--muted); cursor: pointer; }
+    .lang button[aria-pressed="true"] { background: var(--ink); color: #fff; }
+
+    .hero .wrap { display: grid; grid-template-columns: 1.1fr .9fr; gap: 56px; align-items: center; padding-block: 56px 88px; }
+    .hero h1 { margin: 16px 0 20px; font: 500 clamp(42px, 6vw, 76px)/1.05 var(--serif); letter-spacing: -.02em; }
+    .hero h1 em { color: var(--blue); }
+    .hero p { max-width: 500px; margin: 0 0 30px; color: var(--muted); font-size: 16px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .photo { position: relative; aspect-ratio: 4 / 5; border-radius: 24px; background: linear-gradient(160deg, #cddcff, var(--sky) 55%, #fff); display: grid; place-items: center; font: 500 110px/1 var(--serif); color: rgba(16, 33, 63, .7); }
+    .photo span { position: absolute; padding: 10px 16px; border-radius: 12px; background: #fff; box-shadow: 0 14px 34px rgba(16, 33, 63, .12); font: 600 12px var(--sans); }
+    .photo .a { top: 28px; left: -18px; } .photo .b { bottom: 36px; right: -18px; }
+
+    .logos { border-block: 1px solid var(--line); background: #fff; }
+    .logos .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px 32px; padding-block: 26px; color: #9aa3b5; font: 600 15px var(--serif); letter-spacing: .06em; }
+    .logos small { color: var(--muted); font: 600 11px var(--sans); letter-spacing: .14em; }
+
+    .section { padding-block: 96px; }
+    .head { max-width: 620px; margin-bottom: 44px; }
+    .head h2 { margin: 10px 0 12px; font: 500 clamp(32px, 4.2vw, 50px)/1.12 var(--serif); }
+    .head p { margin: 0; color: var(--muted); }
+
+    .split { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .card { padding: 30px; border-radius: 20px; background: #fff; border: 1px solid var(--line); }
+    .card h3 { margin: 0 0 8px; font: 600 22px var(--serif); }
+    .card p { margin: 0; color: var(--muted); font-size: 14px; }
+    .card ul { margin: 16px 0 0; padding-left: 18px; color: var(--muted); font-size: 14px; }
+
+    .timeline { display: grid; gap: 0; border-left: 2px solid var(--sky); margin-left: 8px; }
+    .item { position: relative; padding: 0 0 30px 28px; }
+    .item::before { content: ""; position: absolute; left: -7px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--blue); }
+    .item b { display: block; color: var(--blue); font-size: 12px; letter-spacing: .1em; }
+    .item h3 { margin: 4px 0; font-size: 17px; }
+    .item p { margin: 0; color: var(--muted); font-size: 14px; }
+
+    .quote-band { background: var(--ink); color: #fff; }
+    .quote-band blockquote { margin: 0 auto; max-width: 820px; text-align: center; font: italic 500 clamp(24px, 3.4vw, 36px)/1.4 var(--serif); }
+    .quote-band cite { display: block; margin-top: 20px; font: normal 600 13px var(--sans); color: #b8c5e6; }
+
+    .contact .wrap { display: grid; grid-template-columns: .9fr 1.1fr; gap: 48px; }
+    form { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; padding: 30px; border-radius: 20px; background: #fff; border: 1px solid var(--line); }
+    form .full { grid-column: 1 / -1; }
+    label { font-size: 12px; font-weight: 600; }
+    input, select, textarea { width: 100%; margin-top: 6px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; font: inherit; font-size: 14px; background: #fff; color: var(--ink); }
+    input:focus, select:focus, textarea:focus { outline: 2px solid var(--blue); outline-offset: 1px; }
+    .note { margin: 0; color: var(--muted); font-size: 12px; }
+    .status { margin: 0; color: #16794b; font-size: 13px; }
+    .foot { padding: 28px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; }
+    .foot .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    .foot a { color: var(--blue); }
+
+    @media (max-width: 900px) {
+      .hero .wrap, .contact .wrap, .split { grid-template-columns: 1fr; }
+      .photo { max-width: 360px; width: 100%; justify-self: center; }
+    }
+    @media (max-width: 680px) {
+      .nav ul { display: none; }
+      .hero .wrap { padding-block: 36px 64px; gap: 40px; }
+      .section { padding-block: 64px; }
+      .photo .a { left: 8px; } .photo .b { right: 8px; }
+      form { grid-template-columns: 1fr; padding: 22px; }
+      .actions .btn { flex: 1 1 100%; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .btn { transition: none; } .btn:hover { transform: none; } }
+  </style>
+</head>
+<body>
+  <div class="demo-ribbon" data-vi="Mẫu landing page do Profile Studio thiết kế. Tên, số liệu và nhận xét chỉ mang tính minh họa." data-en="A sample landing page by Profile Studio. Names, figures and reviews are for illustration only.">Mẫu landing page do Profile Studio thiết kế. Tên, số liệu và nhận xét chỉ mang tính minh họa.</div>
+
+  <nav class="nav" aria-label="Điều hướng">
+    <div class="wrap">
+      <a class="brand" href="#top">Linh Nguyễn</a>
+      <ul>
+        <li><a href="#dich-vu" data-vi="Dịch vụ" data-en="Services">Dịch vụ</a></li>
+        <li><a href="#kinh-nghiem" data-vi="Kinh nghiệm" data-en="Experience">Kinh nghiệm</a></li>
+        <li><a href="#lien-he" data-vi="Liên hệ" data-en="Contact">Liên hệ</a></li>
+      </ul>
+      <div class="lang" role="group" aria-label="Ngôn ngữ / Language">
+        <button type="button" data-lang="vi" aria-pressed="true">VI</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="wrap">
+      <div>
+        <span class="kicker" data-vi="MC song ngữ · Việt – Anh" data-en="Bilingual host · Vietnamese – English">MC song ngữ · Việt – Anh</span>
+        <h1 data-vi="Câu chuyện của bạn, <em>trên mọi sân khấu.</em>" data-en="Your story, <em>on every stage.</em>">Câu chuyện của bạn, <em>trên mọi sân khấu.</em></h1>
+        <p data-vi="Tôi là Linh — MC song ngữ cho hội nghị quốc tế, sự kiện ngoại giao và lễ ra mắt thương hiệu. Chuyển ngữ mượt mà để mọi khách mời đều thấy mình thuộc về chương trình." data-en="I'm Linh — a bilingual host for international conferences, diplomatic events and brand launches. Seamless switching so every guest feels part of the show.">Tôi là Linh — MC song ngữ cho hội nghị quốc tế, sự kiện ngoại giao và lễ ra mắt thương hiệu. Chuyển ngữ mượt mà để mọi khách mời đều thấy mình thuộc về chương trình.</p>
+        <div class="actions">
+          <a class="btn btn-blue" href="#lien-he" data-vi="Đặt lịch tư vấn" data-en="Book a call">Đặt lịch tư vấn</a>
+          <a class="btn btn-line" href="#kinh-nghiem" data-vi="Xem kinh nghiệm" data-en="See experience">Xem kinh nghiệm</a>
+        </div>
+      </div>
+      <div class="photo" role="img" aria-label="Khung ảnh chân dung (minh họa)">LN
+        <span class="a">🇻🇳 Tiếng Việt</span>
+        <span class="b">🇬🇧 English · IELTS 8.5</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="logos">
+    <div class="wrap">
+      <small data-vi="ĐÃ ĐỒNG HÀNH CÙNG (MINH HỌA)" data-en="WORKED WITH (ILLUSTRATIVE)">ĐÃ ĐỒNG HÀNH CÙNG (MINH HỌA)</small>
+      <span>AURORA</span><span>NORTHWIND</span><span>LUMEN CO.</span><span>ASEAN FORUM</span><span>BLUEWAVE</span>
+    </div>
+  </div>
+
+  <section class="section" id="dich-vu">
+    <div class="wrap">
+      <div class="head">
+        <span class="kicker" data-vi="Dịch vụ" data-en="Services">Dịch vụ</span>
+        <h2 data-vi="Hai ngôn ngữ, một giọng dẫn nhất quán." data-en="Two languages, one consistent voice.">Hai ngôn ngữ, một giọng dẫn nhất quán.</h2>
+      </div>
+      <div class="split">
+        <article class="card">
+          <h3 data-vi="Hội nghị &amp; diễn đàn" data-en="Conferences &amp; forums">Hội nghị &amp; diễn đàn</h3>
+          <p data-vi="Điều phối phiên thảo luận, giới thiệu diễn giả và quản lý thời gian chặt chẽ." data-en="Moderating panels, introducing speakers and keeping the agenda on time.">Điều phối phiên thảo luận, giới thiệu diễn giả và quản lý thời gian chặt chẽ.</p>
+          <ul><li>Panel discussion</li><li>Q&amp;A</li><li>Opening &amp; closing</li></ul>
+        </article>
+        <article class="card">
+          <h3 data-vi="Ra mắt &amp; gala quốc tế" data-en="Launches &amp; international galas">Ra mắt &amp; gala quốc tế</h3>
+          <p data-vi="Dẫn dắt cảm xúc cho khách mời đa quốc tịch, kết hợp nghi thức trang trọng và giải trí." data-en="Guiding the mood for a multinational audience, blending formality and entertainment.">Dẫn dắt cảm xúc cho khách mời đa quốc tịch, kết hợp nghi thức trang trọng và giải trí.</p>
+          <ul><li>Product launch</li><li>Award night</li><li>Year-end gala</li></ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="kinh-nghiem" style="padding-top:0">
+    <div class="wrap">
+      <div class="head">
+        <span class="kicker" data-vi="Kinh nghiệm" data-en="Experience">Kinh nghiệm</span>
+        <h2 data-vi="Hành trình cầm mic." data-en="My hosting journey.">Hành trình cầm mic.</h2>
+      </div>
+      <div class="timeline">
+        <div class="item"><b>2025</b><h3 data-vi="Diễn đàn đầu tư khu vực" data-en="Regional investment forum">Diễn đàn đầu tư khu vực</h3><p data-vi="Dẫn song ngữ cho 1.200 đại biểu từ 14 quốc gia." data-en="Bilingual hosting for 1,200 delegates from 14 countries.">Dẫn song ngữ cho 1.200 đại biểu từ 14 quốc gia.</p></div>
+        <div class="item"><b>2023</b><h3 data-vi="Lễ ra mắt thương hiệu công nghệ" data-en="Tech brand launch">Lễ ra mắt thương hiệu công nghệ</h3><p data-vi="Phát trực tiếp trên ba nền tảng, kịch bản hai ngôn ngữ." data-en="Streamed live on three platforms with a bilingual script.">Phát trực tiếp trên ba nền tảng, kịch bản hai ngôn ngữ.</p></div>
+        <div class="item"><b>2020</b><h3 data-vi="Bắt đầu với sự kiện văn hóa" data-en="Started with cultural events">Bắt đầu với sự kiện văn hóa</h3><p data-vi="Giao lưu sinh viên quốc tế và lễ hội ẩm thực." data-en="International student exchanges and food festivals.">Giao lưu sinh viên quốc tế và lễ hội ẩm thực.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section quote-band">
+    <div class="wrap">
+      <blockquote data-vi="“Khách quốc tế và khách Việt đều cảm thấy được chào đón như nhau.”<cite>— Khách hàng mẫu, Ban tổ chức hội nghị</cite>" data-en="“International and local guests felt equally welcome.”<cite>— Sample client, conference organiser</cite>">“Khách quốc tế và khách Việt đều cảm thấy được chào đón như nhau.”<cite>— Khách hàng mẫu, Ban tổ chức hội nghị</cite></blockquote>
+    </div>
+  </section>
+
+  <section class="section contact" id="lien-he">
+    <div class="wrap">
+      <div class="head">
+        <span class="kicker" data-vi="Liên hệ" data-en="Contact">Liên hệ</span>
+        <h2 data-vi="Hãy kể tôi nghe về sự kiện của bạn." data-en="Tell me about your event.">Hãy kể tôi nghe về sự kiện của bạn.</h2>
+        <p data-vi="Phản hồi trong 24 giờ, bằng tiếng Việt hoặc tiếng Anh." data-en="Reply within 24 hours, in Vietnamese or English.">Phản hồi trong 24 giờ, bằng tiếng Việt hoặc tiếng Anh.</p>
+      </div>
+      <form class="demo-form">
+        <label><span data-vi="Họ tên" data-en="Name">Họ tên</span><input required autocomplete="name"></label>
+        <label>Email<input type="email" required autocomplete="email"></label>
+        <label><span data-vi="Ngôn ngữ chính" data-en="Main language">Ngôn ngữ chính</span><select><option>Tiếng Việt</option><option>English</option><option data-vi="Song ngữ" data-en="Bilingual">Song ngữ</option></select></label>
+        <label><span data-vi="Ngày sự kiện" data-en="Event date">Ngày sự kiện</span><input type="date"></label>
+        <label class="full"><span data-vi="Mô tả ngắn" data-en="Short description">Mô tả ngắn</span><textarea rows="3"></textarea></label>
+        <button class="btn btn-blue full" type="submit" data-vi="Gửi yêu cầu" data-en="Send request">Gửi yêu cầu</button>
+        <p class="note full" data-vi="Biểu mẫu minh họa: thông tin không được gửi đi." data-en="Demo form: nothing is sent.">Biểu mẫu minh họa: thông tin không được gửi đi.</p>
+        <p class="status full" role="status"></p>
+      </form>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div class="wrap"><span>© 2026 Linh Nguyễn (mẫu minh họa)</span><span>Thiết kế bởi <a href="/" target="_top">Profile Studio</a></span></div>
+  </footer>
+
+  <script>
+    var buttons = document.querySelectorAll(".lang button");
+    buttons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        var lang = button.dataset.lang;
+        document.documentElement.lang = lang;
+        buttons.forEach(function (b) { b.setAttribute("aria-pressed", String(b === button)); });
+        document.querySelectorAll("[data-" + lang + "]").forEach(function (node) { node.innerHTML = node.dataset[lang]; });
+      });
+    });
+    document.querySelector(".demo-form").addEventListener("submit", function (event) {
+      event.preventDefault();
+      event.target.querySelector(".status").textContent = document.documentElement.lang === "en" ? "This is a demo, so nothing was sent." : "Đây là bản mẫu nên yêu cầu chưa được gửi.";
+    });
+  </script>
+</body>
+</html>

@@ -1,43 +1,84 @@
-﻿import { apiClient } from "@/lib/api";
-import { StoreHeader } from "@/components/sections/store-header";
+﻿import { StoreHeader } from "@/components/sections/store-header";
 import { SiteFooter } from "@/components/sections/site-footer";
 
-const deliverables = [
-  { number: "01", title: "Định hình câu chuyện", description: "Cùng chọn điểm nổi bật, phong cách dẫn và nhóm khách hàng bạn muốn kết nối." },
-  { number: "02", title: "Thiết kế landing page", description: "Bố cục riêng cho MC với phần giới thiệu, kinh nghiệm, hình ảnh và dịch vụ." },
-  { number: "03", title: "Hoàn thiện & bàn giao", description: "Rà soát trên điện thoại và máy tính, sau đó bàn giao trang để bạn sẵn sàng chia sẻ." },
+const ZALO_PHONE = "0397.898.042";
+const zaloHref = `https://zalo.me/${ZALO_PHONE.replace(/\D/g, "")}`;
+
+const plans = [
+  {
+    name: "Gói Basic",
+    price: "299.000",
+    tagline: "Khởi đầu hoàn hảo cho MC mới",
+    features: [
+      "Landing page theo mẫu có sẵn",
+      "Chỉnh sửa nội dung theo thông tin của bạn",
+      "Deploy lên Vercel (đưa website lên mạng)",
+      "Cập nhật trang 1 lần mỗi tuần",
+    ],
+    cta: "Đăng ký ngay",
+  },
+  {
+    name: "Gói Plus",
+    price: "999.000",
+    tagline: "Lựa chọn tối ưu để quảng bá bản thân",
+    features: [
+      "Landing page theo mẫu có sẵn",
+      "Chỉnh giao diện trực tiếp: màu sắc, bố cục, phong cách",
+      "Deploy lên Vercel (đưa website lên mạng)",
+      { text: "Cập nhật nội dung, hình ảnh, video liên tục", strong: true },
+    ],
+    cta: "Chọn Gói Plus",
+    featured: true,
+  },
+  {
+    name: "Gói Pro",
+    price: "3.599.000",
+    tagline: "Đẳng cấp khác biệt, nâng tầm thương hiệu",
+    features: [
+      "Thiết kế landing page theo yêu cầu riêng",
+      "Hỗ trợ 1:1, cập nhật nội dung liên tục",
+      "Deploy gắn tên miền bạn chọn",
+      { text: "Hỗ trợ đăng ký tên miền theo mong muốn", strong: true },
+      "Hỗ trợ quảng cáo và tối ưu SEO chuẩn Google",
+    ],
+    cta: "Đăng ký ngay",
+  },
 ];
 
-export default async function DesignServicePage() {
-  const settings = await apiClient.getPublicSettings().catch(() => null);
-  const email = settings?.support.email;
-  const contactHref = email ? `mailto:${email}?subject=${encodeURIComponent("Tư vấn thiết kế portfolio MC")}` : "#contact-note";
+function CheckIcon() {
+  return <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>;
+}
 
-  return <main className="market-home service-page">
+export default function DesignServicePage() {
+  return <main className="market-home pricing-page">
     <StoreHeader />
-    <section className="service-hero shell"><div className="service-hero-copy">
-      <span className="section-kicker">DỊCH VỤ THIẾT KẾ TRỌN GÓI</span>
-      <h1>Portfolio mang<br />đúng <em>chất riêng.</em></h1>
-      <p>Dành cho MC muốn có một landing page chuyên nghiệp mà không phải tự lo từng khâu thiết kế. Bạn tập trung vào sân khấu, chúng tôi cùng bạn kể câu chuyện nghề nghiệp.</p>
-      <a className="button portfolio-primary" href={contactHref}>Trao đổi về dự án</a>
-      <span className="service-hero-caption">TƯ VẤN THEO NHU CẦU · THIẾT KẾ RIÊNG CHO MC</span>
-      </div>
-      </section>
+    <section className="pricing-hero shell" aria-labelledby="pricing-title">
+      <h1 id="pricing-title">Thiết Kế Landing Page Portfolio<br /><span>Chuyên Nghiệp Cho MC</span></h1>
+      <p>Xây dựng thương hiệu cá nhân ấn tượng, thu hút sự kiện và show diễn với website dành riêng cho người dẫn chương trình.</p>
+    </section>
 
-    <section className="service-benefits"><div className="shell">
-      <div className="portfolio-section-heading"><div><span className="section-kicker">TỪ Ý TƯỞNG ĐẾN TRANG HOÀN CHỈNH</span>
-      <h2>Một quy trình rõ ràng</h2><p>Thiết kế được xây dựng quanh hình ảnh và mục tiêu nghề nghiệp của bạn.</p></div></div>
-      <div className="service-steps">{deliverables.map((step) => <article className="service-step" key={step.number}><span>{step.number}</span><h3>{step.title}</h3><p>{step.description}</p></article>)}
-      </div>
-      </div>
-      </section>
+    <section className="pricing-plans shell" aria-label="Bảng giá dịch vụ">
+      {plans.map((plan) => <article className={plan.featured ? "pricing-card is-featured" : "pricing-card"} key={plan.name}>
+        {plan.featured && <span className="pricing-badge">PHỔ BIẾN NHẤT</span>}
+        <h2>{plan.name}</h2>
+        <p className="pricing-price">{plan.price}<small>đ</small></p>
+        <p className="pricing-tagline">{plan.tagline}</p>
+        <ul>{plan.features.map((feature) => {
+          const item = typeof feature === "string" ? { text: feature, strong: false } : feature;
+          return <li key={item.text} className={item.strong ? "is-strong" : undefined}><CheckIcon />{item.text}</li>;
+        })}</ul>
+        <a className="pricing-cta" href={zaloHref} target="_blank" rel="noopener noreferrer">{plan.cta}</a>
+      </article>)}
+    </section>
 
-    <section className="service-contact shell" id="contact-note">
-      <div><span className="section-kicker">SẴN SÀNG BẮT ĐẦU?</span><h2>Kể chúng tôi nghe<br />về <em>trang portfolio bạn cần.</em>
-      </h2>
-      <p>{email ? `Liên hệ trực tiếp qua ${email} để trao đổi mong muốn và phạm vi thiết kế.` : "Kênh liên hệ dịch vụ sẽ được cập nhật sớm. Hiện trang này giới thiệu gói dịch vụ, chưa gửi yêu cầu tự động."}</p>
-      </div><div className="service-contact-actions">{email ? <a className="button portfolio-primary" href={contactHref}>Gửi email tư vấn</a> : <span className="service-contact-pending">ĐANG CẬP NHẬT THÔNG TIN LIÊN HỆ</span>}
-      <a className="service-sample-link" href="/mau-portfolio">Xem thư viện mẫu <b>↗</b></a></div></section>
+    <section className="pricing-contact shell" aria-labelledby="pricing-contact-title">
+      <h2 id="pricing-contact-title">Cần tư vấn thêm để chọn gói phù hợp?</h2>
+      <p>Đừng ngần ngại liên hệ trực tiếp với chúng tôi để được giải đáp mọi thắc mắc và bắt đầu xây dựng Portfolio của bạn ngay hôm nay.</p>
+      <a className="pricing-zalo" href={zaloHref} target="_blank" rel="noopener noreferrer">
+        <span className="pricing-zalo-icon"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M6.6 10.8a15.2 15.2 0 006.6 6.6l2.2-2.2a1 1 0 011-.25 11.4 11.4 0 003.6.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1z" fill="currentColor" /></svg></span>
+        <span><small>Liên hệ tư vấn chi tiết qua ZALO</small><strong>{ZALO_PHONE}</strong></span>
+      </a>
+    </section>
     <SiteFooter />
   </main>;
 }

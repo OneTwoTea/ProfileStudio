@@ -1,17 +1,18 @@
 import type { Metadata } from "next";
-import { Be_Vietnam_Pro, Cormorant_Garamond } from "next/font/google";
+import { Inter, Lexend } from "next/font/google";
 import { ThemePreference } from "@/components/sections/theme-preference";
 import "./globals.css";
 
-const cormorant = Cormorant_Garamond({
-  variable: "--font-cormorant",
+// Exposed as --font-lexend / --font-inter; globals.css maps them to --font-display / --font-sans.
+const lexend = Lexend({
+  variable: "--font-lexend",
   subsets: ["latin", "vietnamese"],
   display: "swap",
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
-const beVietnam = Be_Vietnam_Pro({
-  variable: "--font-be-vietnam",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin", "vietnamese"],
   display: "swap",
   weight: ["400", "500", "600", "700"],
@@ -32,7 +33,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="vi" className={`${cormorant.variable} ${beVietnam.variable}`}>
+    <html lang="vi" className={`${lexend.variable} ${inter.variable}`}>
       <body>
         <ThemePreference />
         <a href="#main-content" className="skip-link">Bỏ qua điều hướng</a>

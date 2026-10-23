@@ -44,23 +44,19 @@ export function StoreHeader() {
 
   return (
     <>
-      <header className="market-header">
-        <div className="market-header-inner">
-          <Link
-            className="market-logo"
-            href="/"
-            aria-label="PORTFOLIO STUDIO"
-          >
-            <span className="market-logo-mark">PS</span>
-            <span>
-              PROFILE STUDIO
-              <span className="market-logo-sub">PORTFOLIO & LEARNING</span>
+      <header className="market-header ps-header">
+        <div className="ps-header-inner">
+          <Link className="ps-logo" href="/" aria-label="PROFILE STUDIO - Trang chủ">
+            <span className="ps-logo-mark" aria-hidden="true">PS</span>
+            <span className="ps-logo-text">
+              <span className="ps-logo-name">PROFILE STUDIO</span>
+              <span className="ps-logo-sub">PORTFOLIO & LEARNING</span>
             </span>
           </Link>
-          <nav className="market-nav" aria-label="Điều hướng chính">
+          <nav className="ps-nav" aria-label="Điều hướng chính">
             <div className="course-nav-group">
               <Link className="course-nav-trigger" href="/#featured-courses">
-                Khóa học <span aria-hidden="true"></span>
+                Khóa học
               </Link>
               <div className="course-nav-dropdown">
                 <Link href="/#learning-path">Lộ trình học</Link>
@@ -70,19 +66,17 @@ export function StoreHeader() {
             <Link href="/mau-portfolio">Mẫu Portfolio</Link>
             <Link href="/ve-chung-toi">Về chúng tôi</Link>
           </nav>
-          <div className="header-actions">
-            <div className="header-tools">
-              <button
-                className="utility-button theme-control"
-                type="button"
-                aria-pressed={dark}
-                onClick={toggleTheme}
-                title="Đổi giao diện sáng/tối"
-              >
-                {dark ? "☾" : "☼"}
-              </button>
-            </div>
-            <a className="header-join" href="https://forms.gle/gd3vppCtePBSB2vh6">
+          <div className="ps-header-actions">
+            <button
+              className="ps-theme-button"
+              type="button"
+              aria-pressed={dark}
+              aria-label={dark ? "Chuyển sang giao diện sáng" : "Chuyển sang giao diện tối"}
+              onClick={toggleTheme}
+            >
+              <ThemeIcon dark={dark} />
+            </button>
+            <a className="ps-header-join" href="https://forms.gle/gd3vppCtePBSB2vh6">
               Đăng ký ngay
             </a>
           </div>
@@ -149,12 +143,27 @@ export function StoreHeader() {
               aria-pressed={dark}
               onClick={toggleTheme}
             >
-              {dark ? "☾" : "☼"} Giao diện sáng/tối
+              <ThemeIcon dark={dark} /> Giao diện sáng/tối
             </button>
           </div>
         </div>
       </header>
     </>
+  );
+}
+
+function ThemeIcon({ dark }: { dark: boolean }) {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      {dark ? (
+        <>
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />
+        </>
+      ) : (
+        <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z" />
+      )}
+    </svg>
   );
 }
 
