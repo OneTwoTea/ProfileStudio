@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { CourseExplorer } from "@/components/sections/course-explorer";
-import { HeroVideo } from "@/components/sections/hero-video";
+import { HeroShowcase } from "@/components/sections/hero-showcase";
 import { SiteFooter } from "@/components/sections/site-footer";
 import { MagneticLink, StoreHeader } from "@/components/sections/store-header";
 import { MotionEnhancements, PinnedLearningPath, ScrollProgress } from "@/components/motion/page-effects";
@@ -59,10 +59,6 @@ export default async function Home() {
         <div className="ps-hero-glow" aria-hidden="true" />
         <div className="ps-hero-inner">
           <div className="ps-hero-copy reveal">
-            <p className="ps-hero-badge">
-              <span>MỚI</span>
-              Khóa học dành riêng cho MC &amp; người dẫn chương trình
-            </p>
             <h1 id="hero-title">
               Tự tạo <span className="ps-hero-nowrap">portfolio <span className="ps-hero-mark">MC</span></span>
               <br />
@@ -72,34 +68,11 @@ export default async function Home() {
               Học cách xây landing page giới thiệu bản thân, showreel và sự kiện đã dẫn - để khách hàng <strong>tin chọn bạn ngay từ lần đầu</strong> xem hồ sơ.
             </p>
             <HeroSearch />
-            <div className="ps-hero-proof">
-              <div className="ps-proof-item">
-                <span className="ps-proof-icon" aria-hidden="true">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="m8 7-5 5 5 5M16 7l5 5-5 5" />
-                    <path d="m4 20 16-16" />
-                  </svg>
-                </span>
-                <span>
-                  Không cần biết code
-                  <strong>Có portfolio sau khóa học</strong>
-                </span>
-              </div>
-              <div className="ps-proof-rating">
-                <b>4.9</b>
-                <span>
-                  <span className="ps-proof-stars" role="img" aria-label="Đánh giá 4.9 trên 5 sao">★★★★★</span>
-                  <small>ĐIỂM ĐÁNH GIÁ</small>
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <div className="ps-hero-visual reveal">
-            <HeroVideo />
           </div>
         </div>
       </section>
+
+      <HeroShowcase />
 
             <section className="bento-section shell" aria-label="Lợi ích khóa học">
         <div className="bento-header reveal">

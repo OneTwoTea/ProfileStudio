@@ -53,7 +53,6 @@ export default function PortfolioLibraryPage() {
             <div>
               <h2 id="portfolio-live-title">Chọn phong cách của bạn</h2>
             </div>
-            <p>Chọn một mẫu bên dưới, đổi kích thước màn hình để xem trang hiển thị thế nào trên từng thiết bị.</p>
           </div>
           <PortfolioViewer samples={samples} />
         </div>

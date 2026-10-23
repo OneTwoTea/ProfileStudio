@@ -3748,18 +3748,47 @@ html[data-theme="dark"] .ps-header {
 }
 
 /* Hero */
+/* The header is sticky (in flow), so the hero only needs its own breathing room on top.
+   z-index 0 keeps the hero and showcase stacking contexts below the header (z-index 40). */
 .ps-hero {
   position: relative;
+  z-index: 0;
   isolation: isolate;
   overflow: hidden;
-  padding: clamp(28px, 3vw, 48px) 24px clamp(56px, 6vw, 88px);
+  padding: 80px 24px 56px;
   color: var(--ps-ink);
   font-family: var(--font-sans);
+  text-align: center;
+}
+
+/* Two diagonal light streaks behind the copy. */
+.ps-hero::before,
+.ps-hero::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 520px;
+  height: 140px;
+  border-radius: 999px;
+  filter: blur(90px);
+  transform: rotate(-25deg);
+  pointer-events: none;
+}
+
+.ps-hero::before {
+  top: 12%;
+  left: calc(50% - 560px);
+  background: var(--ps-glow);
+}
+
+.ps-hero::after {
+  bottom: 8%;
+  right: calc(50% - 560px);
+  background: var(--ps-icon-bg);
 }
 
 /* Grid fades out at the bottom so the hero blends into the sections below. */
-.ps-hero::before {
-  content: "";
+.ps-hero-glow {
   position: absolute;
   inset: 0;
   z-index: -2;
@@ -3772,29 +3801,12 @@ html[data-theme="dark"] .ps-header {
   pointer-events: none;
 }
 
-.ps-hero-glow {
-  position: absolute;
-  z-index: -1;
-  top: -260px;
-  right: -240px;
-  width: 900px;
-  height: 900px;
-  border-radius: 50%;
-  background: radial-gradient(circle, var(--ps-glow) 0%, transparent 68%);
-  pointer-events: none;
-}
-
 .ps-hero-inner {
   max-width: 1280px;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 56px;
   margin: 0 auto;
 }
 
 .ps-hero-copy {
-  flex: 1.15 1 560px;
   min-width: 0;
 }
 
@@ -3830,10 +3842,11 @@ html[data-theme="dark"] .ps-header {
 }
 
 .ps-hero h1 {
-  margin: 0;
+  /* "Tự tạo portfolio MC" is ~632px at 64px; 640px keeps the heading on two lines. */
+  max-width: 640px;
+  margin: 0 auto;
   color: var(--ps-ink);
-  /* 10.5vh keeps the search box above the fold on short laptop screens */
-  font: 700 clamp(46px, min(6vw, 10.5vh), 84px)/1.08 var(--font-display);
+  font: 700 clamp(40px, 5.4vw, 64px)/1.15 var(--font-display);
   letter-spacing: -2px;
 }
 
@@ -3857,10 +3870,18 @@ html[data-theme="dark"] .ps-header {
 
 .ps-hero-description {
   max-width: 540px;
-  margin: 22px 0 28px;
+  margin: 28px auto 32px;
   color: var(--ps-ink-2);
-  font-size: 19px;
-  line-height: 1.65;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.ps-hero .ps-search {
+  margin-inline: auto;
+}
+
+.ps-hero .ps-popular {
+  justify-content: center;
 }
 
 .ps-hero-description strong {
@@ -4251,9 +4272,9 @@ html[data-theme="dark"] .ps-header {
     padding-inline: 16px;
   }
 
-  .ps-hero-glow {
-    top: -200px;
-    right: -420px;
+  .ps-hero::before,
+  .ps-hero::after {
+    width: 320px;
   }
 
   .ps-hero-badge {
@@ -4274,7 +4295,7 @@ html[data-theme="dark"] .ps-header {
   }
 
   .ps-hero-description {
-    font-size: 17px;
+    font-size: 16px;
   }
 
   .ps-search {
@@ -4342,6 +4363,147 @@ html[data-theme="dark"] .ps-header {
   .ps-video-caption a span,
   .ps-header-join {
     transition: none;
+  }
+}
+
+/* Hero showcase: auto-scrolling masonry strip under the hero. */
+.ps-showcase {
+  --ps-showcase-col: 360px;
+  --ps-showcase-gap: 28px;
+  position: relative;
+  z-index: 0;
+  isolation: isolate;
+  height: 620px;
+  overflow: hidden;
+  --ps-showcase-bg: #f0f9ff;
+  --ps-showcase-bg-2: #bae6fd;
+  --ps-showcase-silk-light: rgba(255, 255, 255, .9);
+  --ps-showcase-silk-dark: rgba(56, 189, 248, .35);
+  background: linear-gradient(160deg, var(--ps-showcase-bg), var(--ps-showcase-bg-2));
+}
+
+/* Dark mode: deep navy silk with soft sky highlights, matching --ps-bg. */
+html[data-theme="dark"] .ps-showcase {
+  --ps-showcase-bg: #0b1b3f;
+  --ps-showcase-bg-2: #0c3460;
+  --ps-showcase-silk-light: rgba(56, 189, 248, .28);
+  --ps-showcase-silk-dark: rgba(2, 6, 23, .6);
+}
+
+/* Silk / mesh look: two sets of light and dark diagonal bands crossing each other,
+   blurred heavily so they read as soft folds of fabric. Oversized so the blur has no hard edges. */
+.ps-showcase::before,
+.ps-showcase::after {
+  content: "";
+  position: absolute;
+  inset: -25%;
+  z-index: -1;
+  filter: blur(56px);
+  pointer-events: none;
+}
+
+.ps-showcase::before {
+  background: linear-gradient(115deg,
+    transparent 8%,
+    var(--ps-showcase-silk-light) 20%,
+    transparent 30%,
+    var(--ps-showcase-silk-dark) 42%,
+    transparent 52%,
+    var(--ps-showcase-silk-light) 64%,
+    transparent 74%,
+    var(--ps-showcase-silk-dark) 88%,
+    transparent 98%);
+}
+
+.ps-showcase::after {
+  opacity: .7;
+  background: linear-gradient(55deg,
+    transparent 12%,
+    var(--ps-showcase-silk-dark) 26%,
+    transparent 38%,
+    var(--ps-showcase-silk-light) 50%,
+    transparent 62%,
+    var(--ps-showcase-silk-dark) 78%,
+    transparent 90%);
+}
+
+/* Wider than the viewport and centred, so the two outer columns are cropped.
+   Pulled up so the downward parallax never reveals an empty strip at the top. */
+.ps-showcase-grid {
+  --ps-scroll: 0;
+  width: max-content;
+  display: flex;
+  gap: var(--ps-showcase-gap);
+  margin: -120px 0 0 50%;
+  transform: translateX(-50%);
+}
+
+.ps-showcase-column {
+  width: var(--ps-showcase-col);
+  flex: 0 0 auto;
+  transform: translateY(calc(var(--ps-scroll) * -.04px));
+  will-change: transform;
+}
+
+.ps-showcase-column:nth-child(even) {
+  transform: translateY(calc(var(--ps-scroll) * .06px));
+}
+
+.ps-showcase-track {
+  animation: ps-showcase-up 40s linear infinite;
+}
+
+.ps-showcase-column:nth-child(even) .ps-showcase-track {
+  animation: ps-showcase-down 50s linear infinite;
+}
+
+/* Margin instead of flex gap so the duplicated list is exactly twice as tall and -50% loops seamlessly. */
+.ps-showcase-card {
+  margin-bottom: var(--ps-showcase-gap);
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 12px 32px rgba(10, 16, 48, .18);
+}
+
+.ps-showcase-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@keyframes ps-showcase-up {
+  from { transform: translateY(0); }
+  to { transform: translateY(-50%); }
+}
+
+@keyframes ps-showcase-down {
+  from { transform: translateY(-50%); }
+  to { transform: translateY(0); }
+}
+
+@media (max-width: 1024px) {
+  .ps-showcase {
+    --ps-showcase-col: 300px;
+    height: 520px;
+  }
+}
+
+@media (max-width: 640px) {
+  .ps-showcase {
+    --ps-showcase-col: 220px;
+    height: 420px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ps-showcase-track,
+  .ps-showcase-column:nth-child(even) .ps-showcase-track {
+    animation: none;
+  }
+
+  .ps-showcase-column,
+  .ps-showcase-column:nth-child(even) {
+    transform: none;
   }
 }
 
