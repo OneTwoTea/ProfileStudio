@@ -21,8 +21,10 @@
   --error-soft: #fef0ee;
   --warning: #805d18;
   --warning-soft: #fff6df;
-  --font-display: var(--font-lexend), system-ui, sans-serif;
-  --font-sans: var(--font-inter), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-heading: var(--font-source-serif), "Times New Roman", serif;
+  --font-body: var(--font-inter), "Segoe UI", Roboto, sans-serif;
+  --font-display: var(--font-heading);
+  --font-sans: var(--font-body);
   --motion-fast: 180ms;
   --motion-normal: 320ms;
   --motion-slow: 700ms;
@@ -71,8 +73,8 @@ html[data-theme="dark"] {
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-inter), system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-display: var(--font-lexend), system-ui, sans-serif;
+  --font-sans: var(--font-body);
+  --font-display: var(--font-heading);
 }
 
 * {
@@ -110,7 +112,7 @@ h1, h2, h3, h4 {
 
 h1 {
   font-weight: 700;
-  letter-spacing: -.02em;
+  letter-spacing: -.01em;
   line-height: 1.08;
 }
 
@@ -594,7 +596,7 @@ h3, h4 {
 .bento-header-left h2 {
   margin: 10px 0 0;
   font: 700 clamp(28px, 3.4vw, 40px)/1.15 var(--font-display);
-  letter-spacing: -.05em;
+  letter-spacing: -.01em;
   color: var(--foreground);
 }
 
@@ -667,7 +669,7 @@ html[data-theme="dark"] .bento-card:hover {
 .bento-card-heading h3 {
   margin: 6px 0 0;
   font: 600 20px/1.2 var(--font-display);
-  letter-spacing: -.035em;
+  letter-spacing: -.01em;
   color: var(--foreground);
 }
 
@@ -776,7 +778,7 @@ html[data-theme="dark"] .bento-card-link {
 .section-heading-row h2 {
   margin: 8px 0 4px;
   font: 700 clamp(30px,4vw,43px)/1.15 var(--font-display);
-  letter-spacing: -.055em;
+  letter-spacing: -.01em;
 }
 
 .section-heading-row p {
@@ -874,7 +876,7 @@ html[data-theme="dark"] .bento-card-link {
 .pinned-heading h2 {
   margin: 8px 0 0;
   font: 700 clamp(25px, 3vw, 36px)/1.2 var(--font-display);
-  letter-spacing: -.045em;
+  letter-spacing: -.01em;
 }
 
 .pinned-track { display: grid; }
@@ -903,7 +905,7 @@ html[data-theme="dark"] .bento-card-link {
   margin: 0 0 4px;
   font-size: 16px;
   font-weight: 600;
-  letter-spacing: -.02em;
+  letter-spacing: -.01em;
 }
 .path-card-copy p {
   max-width: 430px;
@@ -1052,7 +1054,7 @@ html[data-theme="dark"] .bento-card-link {
 .faq-intro h2 {
   margin: 10px 0 11px;
   font: 700 clamp(30px,4vw,43px)/1.15 var(--font-display);
-  letter-spacing: -.055em;
+  letter-spacing: -.01em;
 }
 
 .faq-intro h2 em {
@@ -1563,7 +1565,7 @@ html[data-theme="dark"] .market-home {
 .portfolio-primary{min-height:48px;gap:24px;padding-inline:20px;background:var(--forest);color:white;font-size:12px}
 .portfolio-primary:hover{background:#173eaf}
 .portfolio-section-heading{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:32px}
-.portfolio-section-heading h2{margin:9px 0 5px;font-size:clamp(28px,3.4vw,40px);font-weight:500;letter-spacing:-.04em}
+.portfolio-section-heading h2{margin:9px 0 5px;font-size:clamp(28px,3.4vw,40px);font-weight:500;letter-spacing: -.01em}
 .portfolio-section-heading p{margin:0;color:var(--muted)}
 .service-step{padding:24px 25px 0 0}.service-step>span{color:var(--forest);font:500 25px var(--font-display)}.service-step h3{margin:13px 0 7px;font-size:17px;font-weight:600}.service-step p{max-width:310px;margin:0;color:var(--muted);font-size:12px;line-height:1.8}
 @media (prefers-color-scheme: dark) {
@@ -1713,7 +1715,7 @@ textarea {
 .about-hero { padding-block: 68px 32px; }
 .about-hero-inner { display: grid; grid-template-columns: minmax(0, 1fr); align-items: center; gap: 28px; }
 .about-hero-copy { width: min(100%, 900px); min-width: 0; }
-.about-hero h1 { margin: 17px 0 18px; font-size: clamp(42px, 5.5vw, 68px); font-weight: 500; line-height: 1.1; letter-spacing: -.055em; }
+.about-hero h1 { margin: 17px 0 18px; font-size: clamp(42px, 5.5vw, 68px); font-weight: 500; line-height: 1.1; letter-spacing: -.01em; }
 .about-hero h1 em, .about-creator h2 em { color: var(--forest); font-family: var(--font-display); font-style: normal; font-weight: 700; }
 .about-hero-copy > p, .about-creator-copy > p { max-width: 620px; color: var(--muted); font-size: 15px; line-height: 1.9; }
 .about-skills { min-width: 0; }
@@ -1740,13 +1742,13 @@ html[data-theme="dark"] .about-skill-mono { filter: invert(1); }
   .about-skills li { transition: none; }
   .about-skills li:hover { transform: none; }
 }
-.about-creator h2 { margin: 9px 0 7px; font-size: clamp(28px, 3.5vw, 42px); font-weight: 500; line-height: 1.2; letter-spacing: -.045em; }
+.about-creator h2 { margin: 9px 0 7px; font-size: clamp(28px, 3.5vw, 42px); font-weight: 500; line-height: 1.2; letter-spacing: -.01em; }
 
 .about-creator { padding-block: 32px 78px; }
 .about-creator-inner { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); align-items: stretch; gap: clamp(28px, 4vw, 56px); }
 .about-creator-mark { min-height: 100%; aspect-ratio: 4 / 5; position: relative; overflow: hidden; background: linear-gradient(145deg, #e4ecff, #f7f9ff 64%, #e8e4f5); }
 .about-creator-mark::before, .about-creator-mark::after { content: none; }
-.about-creator-mark > span { position: relative; z-index: 1; color: rgba(29, 78, 216, .78); font: 500 112px/.9 var(--font-display); letter-spacing: -.12em; }
+.about-creator-mark > span { position: relative; z-index: 1; color: rgba(29, 78, 216, .78); font: 500 112px/.9 var(--font-display); letter-spacing: -.06em; }
 .about-creator-mark > i { position: absolute; right: 18px; bottom: 17px; left: 18px; padding-top: 9px; border-top: 1px solid rgba(11, 27, 63, .14); color: var(--muted); font-size: 8px; font-style: normal; letter-spacing: .13em; }
 .about-creator h2 { margin-bottom: 16px; }
 .about-creator-role { display: block; margin: -9px 0 15px; color: var(--forest); font-size: 12px; font-weight: 600; }
@@ -2019,7 +2021,7 @@ html[data-theme="dark"] .portfolio-page { background: linear-gradient(180deg, #0
 .portfolio-live-info ul { display: grid; gap: 10px; margin: 14px 0 16px; padding: 0; list-style: none; font-size: 13px; }
 .portfolio-live-info li { display: flex; gap: 10px; }
 .portfolio-live-info li::before { content: "✓"; flex: none; color: var(--forest); font-weight: 700; }
-.portfolio-live-info h3 { margin: 12px 0 6px; font-size: 18px; font-weight: 600; letter-spacing: -.02em; }
+.portfolio-live-info h3 { margin: 12px 0 6px; font-size: 18px; font-weight: 600; letter-spacing: -.01em; }
 .portfolio-live-desc { margin: 0 0 18px; color: var(--muted); font-size: 13px; line-height: 1.7; }
 
 .portfolio-card-num { font: 500 30px/.9 var(--font-display); color: var(--forest); }
@@ -2028,7 +2030,7 @@ html[data-theme="dark"] .portfolio-sample-tabs button[aria-selected="true"] span
 
 .portfolio-cta { padding-block: 8px 88px; }
 .portfolio-cta-inner { display: flex; align-items: center; justify-content: space-between; gap: 32px; padding: clamp(28px, 4vw, 44px); border: 1px solid var(--line); border-radius: var(--radius-xl); background: var(--surface-light); box-shadow: var(--surface-highlight), 0 18px 40px rgba(11, 27, 63, .06); }
-.portfolio-cta h2 { margin: 9px 0 6px; font-size: clamp(26px, 3.2vw, 38px); font-weight: 500; letter-spacing: -.04em; }
+.portfolio-cta h2 { margin: 9px 0 6px; font-size: clamp(26px, 3.2vw, 38px); font-weight: 500; letter-spacing: -.01em; }
 .portfolio-cta p { margin: 0; color: var(--muted); font-size: 13px; }
 @media (max-width: 1000px) {
   .portfolio-live-layout { grid-template-columns: 1fr; }
@@ -2046,7 +2048,7 @@ html[data-theme="dark"] .portfolio-sample-tabs button[aria-selected="true"] span
 /* Design service pricing page */
 .pricing-page { background: linear-gradient(180deg, #f6f9ff 0%, #eef3fc 100%); }
 .pricing-hero { padding-block: 56px 32px; text-align: center; }
-.pricing-hero h1 { margin: 0; font-size: clamp(30px, 4.2vw, 46px); font-weight: 800; line-height: 1.15; letter-spacing: -.035em; color: var(--foreground); }
+.pricing-hero h1 { margin: 0; font-size: clamp(30px, 4.2vw, 46px); font-weight: 800; line-height: 1.15; letter-spacing: -.01em; color: var(--foreground); }
 .pricing-hero h1 span { color: var(--forest); }
 .pricing-hero p { max-width: 560px; margin: 16px auto 0; color: var(--muted); font-size: 15px; line-height: 1.7; }
 .pricing-plans { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: center; gap: 22px; max-width: 1040px; padding-block: 12px 72px; }
@@ -2180,7 +2182,7 @@ html[data-theme="dark"] .ps-header {
   border-radius: 12px;
   background: #2f5bff;
   color: #fff;
-  font: 700 16px/1 var(--font-display);
+  font: 700 16px/1 var(--font-body);
   letter-spacing: .5px;
 }
 
@@ -2191,7 +2193,7 @@ html[data-theme="dark"] .ps-header {
 }
 
 .ps-logo-name {
-  font: 700 15px/1.15 var(--font-display);
+  font: 700 15px/1.15 var(--font-body);
   letter-spacing: 2px;
 }
 
@@ -2379,12 +2381,12 @@ html[data-theme="dark"] .ps-header {
 }
 
 .ps-hero h1 {
-  /* "Tự tạo portfolio MC" is ~632px at 64px; 640px keeps the heading on two lines. */
+  /* "Tự tạo portfolio MC" is ~617px at 64px in Source Serif 4; 640px keeps the heading on two lines. */
   max-width: 640px;
   margin: 0 auto;
   color: var(--ps-ink);
   font: 700 clamp(40px, 5.4vw, 64px)/1.15 var(--font-display);
-  letter-spacing: -2px;
+  letter-spacing: -.01em;
 }
 
 .ps-hero-mark {
@@ -2744,7 +2746,7 @@ html[data-theme="dark"] .ps-header {
   }
 
   .ps-hero h1 {
-    letter-spacing: -1.5px;
+    letter-spacing: -.01em;
   }
 
   .ps-hero-accent {
@@ -3152,7 +3154,7 @@ html[data-theme="dark"] .ps-showcase {
 .pinned-path .path-card-copy h3 {
   margin: 0 0 6px;
   font: 700 18px/1.3 var(--font-display);
-  letter-spacing: -.02em;
+  letter-spacing: -.01em;
 }
 
 .pinned-path .path-card-copy p {
@@ -3568,7 +3570,7 @@ html:not([data-theme="dark"]) .bento-section .bento-card:nth-child(2) {
 .why-list-metric {
   color: var(--forest);
   font: 700 30px/1 var(--font-display);
-  letter-spacing: -.04em;
+  letter-spacing: -.01em;
   font-variant-numeric: tabular-nums;
 }
 

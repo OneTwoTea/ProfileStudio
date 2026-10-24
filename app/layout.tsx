@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Inter, Lexend } from "next/font/google";
+import { Inter, Source_Serif_4 } from "next/font/google";
 import { ThemePreference } from "@/components/sections/theme-preference";
 import "./globals.css";
 
-// Exposed as --font-lexend / --font-inter; globals.css maps them to --font-display / --font-sans.
-const lexend = Lexend({
-  variable: "--font-lexend",
+// Exposed as --font-source-serif / --font-inter; globals.css maps them to --font-heading / --font-body.
+const sourceSerif = Source_Serif_4({
+  variable: "--font-source-serif",
   subsets: ["latin", "vietnamese"],
   display: "swap",
   weight: ["400", "500", "600", "700", "800"],
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="vi" className={`${lexend.variable} ${inter.variable}`}>
+    <html lang="vi" className={`${sourceSerif.variable} ${inter.variable}`}>
       <body>
         <ThemePreference />
         <a href="#main-content" className="skip-link">Bỏ qua điều hướng</a>

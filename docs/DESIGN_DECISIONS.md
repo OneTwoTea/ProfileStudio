@@ -35,8 +35,11 @@ These are token-pair measurements. They do not establish that every rendered com
 
 ## Typography and assets
 
-- **UI/body:** Be Vietnam Pro. Loaded using `next/font/google` with `latin` and `vietnamese` subsets.
-- **Editorial accent:** Cormorant Garamond, restricted to selected hero emphasis. Loaded with the same subsets. The display system does not use it for dense content.
+- **Headings:** Source Serif 4 (400–800) for `h1–h4`, section numbers and metrics. Exposed as `--font-heading` (alias `--font-display`).
+- **UI/body:** Inter (400–700) for body copy, navigation, buttons, chips and inputs. Exposed as `--font-body` (alias `--font-sans`). The "PROFILE STUDIO" logo (`.ps-logo-mark`, `.ps-logo-name`) stays on Inter so the wordmark remains sans-serif.
+- Both are loaded in `app/layout.tsx` via `next/font/google` with `latin` and `vietnamese` subsets, `display: "swap"` and preload on. Stacks live only in the `:root` tokens of `app/globals.css`: `var(--font-source-serif), "Times New Roman", serif` and `var(--font-inter), "Segoe UI", Roboto, sans-serif`.
+- The same fonts render on every platform; Apple system fonts (SF Pro, New York) were evaluated and rejected because they produce different typography per browser and cannot be tested on non-Apple machines. Do not add Georgia to the heading stack: it breaks stacked Vietnamese marks such as "Ằ/ằ". Never commit Apple font files.
+- Headings use near-zero tracking (about `-.01em`); the tighter values tuned for the previous Lexend headings make the serif look cramped.
 - Both Google fonts are distributed under the SIL Open Font License. `next/font` downloads and self-hosts font assets at build time; the exported UI does not need to request Google Fonts at runtime.
 - The design system includes Vietnamese proof text: “Ánh sáng, ý tưởng, trải nghiệm. ă â đ ê ô ơ ư · Á à ả ã ạ · Ế ề ể ễ ệ”. This is a source-level glyph specimen; visual raster inspection at multiple sizes has not been completed.
 - The founder portrait is a bespoke SVG placeholder with an explicit “replace with real portrait” label. Course and testimonial imagery are labeled placeholders; no external stock asset or icon dependency is used.
