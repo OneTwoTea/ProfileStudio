@@ -7,13 +7,13 @@ export async function SiteFooter() {
 
   return <footer className="market-footer" id="site-footer">
     <div className="shell"><div className="footer-main">
-    <div className="footer-brand-col"><Link className="market-logo footer-logo" href="/">
-    <span className="market-logo-mark">PS
+    <div className="footer-brand-col"><Link className="ps-logo footer-logo" href="/" aria-label="PROFILE STUDIO - Trang chủ">
+      <span className="ps-logo-mark" aria-hidden="true">PS</span>
+      <span className="ps-logo-text">
+        <span className="ps-logo-name">PROFILE STUDIO</span>
+        <span className="ps-logo-sub">PORTFOLIO & LEARNING</span>
       </span>
-      <span>PROFILE STUDIO<span className="market-logo-sub">PORTFOLIO & LEARNING
-        </span>
-        </span>
-        </Link><p>Khóa học tạo landing page portfolio<br />dành cho MC dẫn chương trình.</p>{supportEmail && <a href={`mailto:${supportEmail}`}>{supportEmail}</a>}
+    </Link><p>Khóa học tạo landing page portfolio<br />dành cho MC dẫn chương trình.</p>{supportEmail && <a href={`mailto:${supportEmail}`}>{supportEmail}</a>}
         </div>
     <div className="footer-column">
       <h3>KHÁM PHÁ</h3>

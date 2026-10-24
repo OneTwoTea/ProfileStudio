@@ -95,7 +95,7 @@ export function PinnedLearningPath() {
       <figure className="pinned-image">
         <div className="pinned-image-frame">
           <Image
-            src="/images/effect/lotrinh.png"
+            src="/images/effect/lotrinh1.png"
             alt="Portfolio MC hiển thị trên laptop"
             fill
             sizes="(max-width: 760px) 100vw, 42vw"

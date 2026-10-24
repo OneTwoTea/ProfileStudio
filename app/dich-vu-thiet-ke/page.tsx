@@ -19,7 +19,7 @@ const plans = [
   },
   {
     name: "Gói Plus",
-    price: "999.000",
+    price: "799.000",
     tagline: "Lựa chọn tối ưu để quảng bá bản thân",
     features: [
       "Landing page theo mẫu có sẵn",
@@ -32,7 +32,7 @@ const plans = [
   },
   {
     name: "Gói Pro",
-    price: "3.599.000",
+    price: "2.599.000",
     tagline: "Đẳng cấp khác biệt, nâng tầm thương hiệu",
     features: [
       "Thiết kế landing page theo yêu cầu riêng",

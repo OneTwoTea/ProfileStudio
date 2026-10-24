@@ -65,7 +65,7 @@ export default async function Home() {
               <span className="ps-hero-accent">chuyên nghiệp.</span>
             </h1>
             <p className="ps-hero-description">
-              Học cách xây landing page giới thiệu bản thân, showreel và sự kiện đã dẫn - để khách hàng <strong>tin chọn bạn ngay từ lần đầu</strong> xem hồ sơ.
+              Học cách xây landing page giới thiệu bản thân để khách hàng ấn tượng <strong>tin chọn bạn ngay từ lần đầu</strong> xem hồ sơ.
             </p>
             <HeroSearch />
           </div>

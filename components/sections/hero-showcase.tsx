@@ -3,15 +3,11 @@
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 
-const showcaseImages = [
-  { src: "/images/hero/anh1.png", width: 2560, height: 3842 },
-  { src: "/images/effect/lotrinh.png", width: 2126, height: 1294 },
-  { src: "/images/hero/anh2.png", width: 1280, height: 1620 },
-  { src: "/images/courses/course-landing-page.webp", width: 1600, height: 1000 },
-  { src: "/images/hero/anh3.png", width: 2560, height: 3062 },
-  { src: "/images/courses/courses.png", width: 2620, height: 1600 },
-  { src: "/images/about/anhdaidienmau.png", width: 1856, height: 2266 },
-];
+const showcaseImages = Array.from({ length: 15 }, (_, i) => ({
+  src: `/images/ads/${i + 1}.png`,
+  width: 1920,
+  height: 1080,
+}));
 
 const COLUMN_COUNT = 5;
 const IMAGES_PER_COLUMN = 5;

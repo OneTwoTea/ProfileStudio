@@ -129,12 +129,6 @@ export function StoreHeader() {
             <Link href="/ve-chung-toi" onClick={() => setMenuOpen(false)}>
               Về chúng tôi
             </Link>
-            <button
-              type="button"
-              onClick={() => chooseCategory("thiet-ke-landing-page")}
-            >
-              Thiết kế landing page
-            </button>
           </nav>
           <div className="mobile-utilities">
             <button
@@ -143,7 +137,7 @@ export function StoreHeader() {
               aria-pressed={dark}
               onClick={toggleTheme}
             >
-              <ThemeIcon dark={dark} /> Giao diện sáng/tối
+              <ThemeIcon dark={dark} />
             </button>
           </div>
         </div>

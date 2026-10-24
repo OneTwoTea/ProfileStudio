@@ -33,7 +33,7 @@ export const mockCourses: Course[] = [
     originalPrice: 399000,
     currency: "VND",
     cover: {
-      url: "/images/courses/courses.png",
+      url: "/images/courses/courses-page.png",
       alt: "Khóa học tự tạo landing page portfolio MC",
       width: 1600,
       height: 1000,
